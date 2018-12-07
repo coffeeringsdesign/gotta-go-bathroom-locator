@@ -6,7 +6,7 @@ import './styles.scss';
 function Logo(){
   return (
     <div>
-      <img className="logoImage" src={logo} />
+      <img className="logoImage" alt="Gotta Go Logo" src={logo} />
     </div>
   )
 };
