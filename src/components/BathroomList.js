@@ -48,25 +48,34 @@ const initialBathroomList = {
   }
 }
 
+
+Object.keys(initialBathroomList).map(i => {
+  let room = initialBathroomList[i];
+}
+)
+
 function BathroomList() {
+  console.log(room);
   return (
     <div>
-      <h1>BathroomList</h1>
-      {Object.keys(initialBathroomList).map((room) =>
-      <Bathroom name={room.name}
-              address={room.address}
-              longLat={room.longLat}
-              needsCode={room.needsCode}
-              needsKey={room.needsKey}
-              handicapAccess={room.handicapAccess}
-              gendered={room.gendered}
-              code={room.code}
-              id={room.id}
-      />
-    )}
+      <h2>bathroomlis</h2>
     </div>
+
   )
-}
+};
+//
+// {Object.keys(initialBathroomList).map((i) =>
+// <Bathroom name={i.name}
+//         address={i.address}
+//         longLat={i.longLat}
+//         needsCode={i.needsCode}
+//         needsKey={i.needsKey}
+//         handicapAccess={i.handicapAccess}
+//         gendered={i.gendered}
+//         code={i.code}
+//         id={i.id}
+// />
+// )}
 
 // {Object.keys(initialBathroomList).map(i => {
 //   let room = initialBathroomList[i];
