@@ -11,7 +11,7 @@ function Bathroom( props ) {
     <div className="indivBathroomDisplay">
       <div className="bathroomTextInfoBlock">
         <div>
-          <h3>1)</h3>
+          <h3 className="numbered">1)</h3>
         </div>
         <div className="stackedNameAddressLines">
           <div className="nameDistanceLine">
@@ -25,6 +25,7 @@ function Bathroom( props ) {
       <div className="iconDisplay">
         <img className="icon" src={genderedIcon} alt="is gender neutral" />
         <img className="icon" src={handicapIcon} alt="is gender neutral" />
+        <img className="icon" src={codeIcon} alt="is gender neutral" />
         <img className="icon" src={codeIcon} alt="is gender neutral" />
       </div>
 

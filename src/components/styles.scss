@@ -12,7 +12,7 @@
 }
 
 .searchBarContainer {
-  width: 95%;
+  width: 30em;
   .searchForm {
     display: flex;
     align-items: center;
@@ -46,10 +46,11 @@
 }
 
 .indivBathroomDisplay {
+  width: 30em;
   display: flex;
   align-items: center;
+  margin: 18px 0px;
   @include boxStyles;
-  @include informationDisplayWidth;
   & h3 {
     font-family: $bodyTextFont;
     font-weight: 300;
@@ -58,15 +59,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    .numbered {
+      margin-left: 10px;
+      font-weight: 400;
+    }
     .stackedNameAddressLines {
       margin-left: 20px;
+      width: 350px;
+      display: flex;
       flex-direction: column;
-      width: 400px;
-      border: solid 1px red;
       .nameDistanceLine {
+        margin-top: 10px;
+        margin-bottom: -5px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        height: 20px;
         .distance {
           font-size: 12px;
         }
@@ -74,10 +82,14 @@
       .addressLine {
         font-size: 15px;
         text-align: left;
+        height: 15px;
       }
     }
   }
-  .icon {
-    width: 30px;
+  .iconDisplay {
+    margin-left: 10px;
+    .icon {
+      width: 30px;
+    }
   }
 }
