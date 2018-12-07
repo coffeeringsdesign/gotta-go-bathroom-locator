@@ -6,6 +6,7 @@ const initialBathroomList = {
     name: 'Books with Pictures',
     address: '1100 SE Division St #103, Portland, OR 97202',
     longLat: '45.504873, -122.654415',
+    distance: null,
     needsCode: true,
     needsKey: false,
     handicapAccess: true,
@@ -17,6 +18,7 @@ const initialBathroomList = {
     name: 'Pine State Biscuits',
     address: '1100 SE Division St #100, Portland, OR 97202',
     longLat: '45.504661, -122.654554',
+    distance: null,
     needsCode: true,
     needsKey: false,
     handicapAccess: true,
@@ -28,6 +30,7 @@ const initialBathroomList = {
     name: 'The Bakers Mark',
     address: '1126 SE Division St, Portland, OR 97202',
     longLat: '45.504660, -122.653991',
+    distance: null,
     needsCode: true,
     needsKey: false,
     handicapAccess: true,
@@ -39,6 +42,7 @@ const initialBathroomList = {
     name: 'Virtuous Pie',
     address: '1126 SE Division St #200, Portland, OR 97202',
     longLat: '45.504492, -122.653861',
+    distance: null,
     needsCode: true,
     needsKey: false,
     handicapAccess: true,
@@ -48,13 +52,7 @@ const initialBathroomList = {
   }
 }
 
-
-// Object.keys(initialBathroomList).map(i => {
-//   let room = initialBathroomList[i];
-// }
-// )
-
-function BathroomList(props) {
+function BathroomList() {
   return (
     <div>
     {Object.keys(initialBathroomList).map((i) => {
@@ -62,36 +60,16 @@ function BathroomList(props) {
         return <Bathroom name={room.name}
             address={room.address}
             longLat={room.longLat}
+            distance={room.distance}
             needsCode={room.needsCode}
             needsKey={room.needsKey}
             handicapAccess={room.handicapAccess}
             gendered={room.gendered}
             code={room.code}
-            id={room.id}
-            />
-            // console.log(room);
-          })}
-        </div>
-);
+            id={room.id} />
+      })}
+    </div>
+  );
 }
-//
-// {Object.keys(initialBathroomList).map((i) =>
-// <Bathroom name={i.name}
-//         address={i.address}
-//         longLat={i.longLat}
-//         needsCode={i.needsCode}
-//         needsKey={i.needsKey}
-//         handicapAccess={i.handicapAccess}
-//         gendered={i.gendered}
-//         code={i.code}
-//         id={i.id}
-// />
-// )}
-
-// {Object.keys(initialBathroomList).map(i => {
-//   let room = initialBathroomList[i];
-
-
-
 
 export default BathroomList;
