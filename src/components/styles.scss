@@ -40,15 +40,44 @@
   }
 }
 
-
-
-
 .mapRenderContainer {
   height: 100%;
   @include boxStyles;
 }
 
 .indivBathroomDisplay {
+  display: flex;
+  align-items: center;
   @include boxStyles;
   @include informationDisplayWidth;
+  & h3 {
+    font-family: $bodyTextFont;
+    font-weight: 300;
+  }
+  .bathroomTextInfoBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .stackedNameAddressLines {
+      margin-left: 20px;
+      flex-direction: column;
+      width: 400px;
+      border: solid 1px red;
+      .nameDistanceLine {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .distance {
+          font-size: 12px;
+        }
+      }
+      .addressLine {
+        font-size: 15px;
+        text-align: left;
+      }
+    }
+  }
+  .icon {
+    width: 30px;
+  }
 }
