@@ -1,12 +1,25 @@
 $darkBlue: #2d3142;
 $medBlue: #4f5d75;
-$grey: #ef937f;
+$grey: #BFC0C0;
 $white: #ffffff;
 $salmonPink: #ef8354;
 $titleFont: 'Dosis', sans-serif;
+$bodyTextFont: 'Roboto', sans-serif;
+$roundedCorners: 5px;
 
 .App {
   text-align: center;
   display: flex;
   width: 1240px;
+  margin: 30px auto;
+}
+
+.mapContainer {
+  width: 570px;
+  height: 80vh;
+}
+
+.searchAndReturnContainer {
+  width: 570px;
+  height: 80vh;
 }
