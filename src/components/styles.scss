@@ -1,44 +1,52 @@
 @import './../App.scss';
 
+@mixin boxStyles {
+  border-radius: 5px;
+  background-color: $white;
+}
+
 .logoImage {
   width: 90%;
   margin-bottom: 1em;
 }
 
-.searchForm {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchInputBar {
-  height: 25px;
-  width: 70%;
-  margin-right: 18px;
-  border-radius: $roundedCorners;
-  border-style: solid;
-  &::placeholder {
-    padding-left: 10px;
-    color: $grey;
+.searchBarContainer {
+  width: 95%;
+  .searchForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .searchInputBar {
+      height: 25px;
+      width: 70%;
+      margin-right: 18px;
+      @include boxStyles;
+      border-style: solid;
+      &::placeholder {
+        padding-left: 10px;
+        color: $grey;
+      }
+    }
+    .searchButton {
+      height: 28px;
+      width: 8em;
+      @include boxStyles;
+      color: $darkBlue;
+      font-family: $bodyTextFont;
+      font-weight: 400;
+      letter-spacing: .5px;
+    }
   }
 }
 
-.searchButton {
-  height: 28px;
-  width: 8em;
-  border-radius: $roundedCorners;
-  color: $darkBlue;
-  font-family: $bodyTextFont;
-  font-weight: 400;
-  letter-spacing: .5px;
-}
+
+
 
 .mapRenderContainer {
-  background-color: $white;
   height: 100%;
-  border-radius: $roundedCorners;
+  @include boxStyles;
 }
 
 .indivBathroomDisplay {
-  background-color: $white;
+  @include boxStyles;
 }
