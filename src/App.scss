@@ -7,6 +7,6 @@ $titleFont: 'Dosis', sans-serif;
 
 .App {
   text-align: center;
-  background-color: $darkBlue;
-  height: 100vh;
+  display: flex;
+  width: 1240px;
 }
