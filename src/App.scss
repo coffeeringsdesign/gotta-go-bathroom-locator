@@ -6,11 +6,16 @@ $salmonPink: #ef8354;
 $titleFont: 'Dosis', sans-serif;
 $bodyTextFont: 'Roboto', sans-serif;
 
+@mixin informationDisplayWidth {
+  width: 570px;
+}
+
 .App {
   text-align: center;
   display: flex;
-  width: 1240px;
+  width: 1200px;
   margin: 30px auto;
+  justify-content: space-between;
 }
 
 .mapContainer {
@@ -22,6 +27,6 @@ $bodyTextFont: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 570px;
   height: 80vh;
+  @include informationDisplayWidth;
 }

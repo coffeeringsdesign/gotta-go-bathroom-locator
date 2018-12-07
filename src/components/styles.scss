@@ -5,6 +5,7 @@
   background-color: $white;
 }
 
+
 .logoImage {
   width: 90%;
   margin-bottom: 1em;
@@ -49,4 +50,5 @@
 
 .indivBathroomDisplay {
   @include boxStyles;
+  @include informationDisplayWidth;
 }
