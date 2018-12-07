@@ -52,9 +52,26 @@ function BathroomList() {
   return (
     <div>
       <h1>BathroomList</h1>
-      <Bathroom initialBathroomList={initialBathroomList}/>
+      {Object.keys(initialBathroomList).map((room) =>
+      <Bathroom name={room.name}
+              address={room.address}
+              longLat={room.longLat}
+              needsCode={room.needsCode}
+              needsKey={room.needsKey}
+              handicapAccess={room.handicapAccess}
+              gendered={room.gendered}
+              code={room.code}
+              id={room.id}
+      />
+    )}
     </div>
   )
-};
+}
+
+// {Object.keys(initialBathroomList).map(i => {
+//   let room = initialBathroomList[i];
+
+
+
 
 export default BathroomList;

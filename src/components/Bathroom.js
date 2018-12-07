@@ -13,17 +13,24 @@ import PropTypes from 'prop-types';
 //   code={room.code}
 //   }
 
-function Bathroom({ initialBathroomList }) { //bathroom list coming thru well
-console.log(initialBathroomList);
+function Bathroom(props) { //bathroom list coming thru well
+  console.log(props);
   return (
-    <div>
-      <h2>{initialBathroomList[0].name}</h2>
+    <div className="indivBathroomDisplay">
+
+      <div>
+        <h2>{props.name}</h2>
+        <h2>hello</h2>
+
+      </div>
+
+
     </div>
   );
 }
 
-Bathroom.propTypes = {
-  initialBathroomList: PropTypes.object
-};
+// Bathroom.propTypes = {
+//   initialBathroomList: PropTypes.object
+// };
 
 export default Bathroom;
