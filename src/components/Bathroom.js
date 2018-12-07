@@ -13,14 +13,17 @@ import PropTypes from 'prop-types';
 //   code={room.code}
 //   }
 
-function Bathroom({ i }) { //bathroom list coming thru well
-  console.log(i);
+function Bathroom( props ) { //bathroom list coming thru well
+  const bathroomInformation =
+  <div>
+  <h3></h3>
+  </div>
   return (
     <div className="indivBathroomDisplay">
 
       <div>
 
-        <h2>hello</h2>
+        <h2{props.name}</h2>
 
       </div>
 
