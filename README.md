@@ -1,44 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Kendra Kelly Logo](/src/assets/images/kkgithub.png)
 
-## Available Scripts
+# Gotta Go - Bathroom Locator
+###### Planning Repository: [Gotta Go Planning Repository](https://github.com/coffeeringsdesign/gotta-go-bathroom-locator)
 
-In the project directory, you can run:
+#### By _**Kendra Kelly**_
 
-### `npm start`
+## Project Description
+Gotta Go - Bathroom Locator, my Epicodus Capstone project:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### Name of Student:
+Kendra Kelly
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##### Name of Project:
+Gotta Go
 
-### `npm test`
+##### Project’s Purpose or Goal:
+Bathroom finder by location. Focused on the needs of the person.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### List the absolute minimum features the project requires to meet this purpose or goal:
+* Uses a map API (google or other) to find the users location and displays the nearest bathrooms and a rundown of their features.
+* Creating and/or connecting to a database that includes these bathroom locations and information.
+* Information about bathrooms include: gender neutrality, handicap accessibility, how to access (code needed or purchase requirement).
 
-### `npm run build`
+##### What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.
+* Google Maps, Mapbox or another Map API.
+* Refuge Restrooms API, or possibly build one from scratch if needed.
+* React, Redux, Sass, Webpack, JavaScript.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.
+* A form that allows visitors to add a bathroom and it's appropriate features.
+* Add more information about the bathroom within the database. This includes information about stalls, cleanliness, size, etc.
+* Great design including Sass.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+##### What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
+* Sass
+* Firebase
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## User Needs/Wishes:
+1.  As a user I would like to enter a location and be able to see a list of bathrooms located near me for easy access.
+2.  As a user I would like to have the app automatically render bathrooms near me by my location so that I don't have to manually search.
+3.  As a user I would like to be able to see a map and see the bathrooms near me visually represented for navigation purposes.
+4.  I would like to know of the nearest bathroom has handicap access and room for wheelchairs.
+5.  I would like to know if the bathrooms are gendered and are appropriately setup for my needs.
+6. I would like to know what I need to do to access the bathroom. Is a code needed, if so what is it? Do I need to make a purchase prior to access?
 
-### `npm run eject`
+## Initial Interface Sketches:
+| Splash Page | Search Interface |
+| --------- | --------------|
+| ![Splash Page Mockup](/src/assets/images/mockup-splash-interface.jpeg) | ![Search Page Mockup](/src/assets/images/mockup-search-interface.jpeg) |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Component Tree:
+![Component Tree Layout](/src/assets/images/GottaGoComponentTree.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Splash Page High Res Wireframe
+![Splash Page Mockup](/src/assets/images/mockup-splash-page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Search Page High Res Wireframe
+![Search Page Mockup](/src/assets/images/mockup-search-page.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Detail Page High Res Wireframe
+![Search Page Mockup](/src/assets/images/mockup-search-detail-page.png)
 
-## Learn More
+## Support and contact details
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Please feel free to get in touch. Reach out to me at kendra@coffeeringsdesign.com.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies Used
+
+Javascript, Webpack, Sketch, Sass, React, Redux, & Atom.
+
+### License
+
+*MIT*
+
+Copyright (c) 2018 **Kendra Kelly**
