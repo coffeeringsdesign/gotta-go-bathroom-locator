@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-const API_KEY = process.env.REACT_APP_API_KEY
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export class MapContainer extends Component {
   state = {
@@ -26,6 +26,7 @@ export class MapContainer extends Component {
   };
 
   render() {
+    console.log(API_KEY);
     return (
       <Map google={this.props.google}
           onClick={this.onMapClicked}>

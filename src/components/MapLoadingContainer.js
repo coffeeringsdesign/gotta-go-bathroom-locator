@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import Map from './Map';
-const API_KEY = process.env.REACT_APP_API_KEY
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MapLoadingContainer = (props) => (
   <div className="mapRenderContainer"><Map google={this.props.google}
