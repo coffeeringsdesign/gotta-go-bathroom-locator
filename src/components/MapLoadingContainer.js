@@ -4,8 +4,7 @@ import Map from './Map';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MapLoadingContainer = (props) => (
-  <div className="mapRenderContainer"><Map google={this.props.google}
-    style={{width: '100%', height: '100%', position: 'relative'}}
+  <div><Map className="map" google={this.props.google}
     className={'map'}
     zoom={14}>
   <Marker

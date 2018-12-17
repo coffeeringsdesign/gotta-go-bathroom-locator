@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import './styles.scss';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export class MapContainer extends Component {
@@ -28,7 +29,7 @@ export class MapContainer extends Component {
   render() {
     console.log(API_KEY);
     return (
-      <Map className="mapRenderContainer" google={this.props.google}
+      <Map className="map" google={this.props.google}
           onClick={this.onMapClicked}>
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />

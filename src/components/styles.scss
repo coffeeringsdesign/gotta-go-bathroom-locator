@@ -5,7 +5,6 @@
   background-color: $white;
 }
 
-
 .logoImage {
   width: 90%;
   margin-bottom: 1em;
@@ -38,13 +37,6 @@
       letter-spacing: .5px;
     }
   }
-}
-
-.mapRenderContainer {
-  height: 100%;
-  @include boxStyles;
-  width: .5vw;
-  border: red solid 3px;
 }
 
 .indivBathroomDisplay {

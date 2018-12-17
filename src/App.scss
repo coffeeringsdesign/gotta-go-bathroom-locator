@@ -19,9 +19,27 @@ $bodyTextFont: 'Roboto', sans-serif;
 }
 
 .mapContainer {
-  width: 570px;
-  height: 80vh;
+  width: 300px;
+  height: 300px;
+  border: green 2px solid;
+  overflow: scroll;
 }
+
+.map {
+  height: 300px;
+  width: 300px;
+  padding: 10px;
+  border: grey solid 4px;
+  overflow: hidden;
+}
+
+.mapRenderContainer {
+  height: 300px;
+  width: 300px;
+  border: red solid 3px;
+  overflow: hidden;
+}
+
 
 .searchAndReturnContainer {
   display: flex;
