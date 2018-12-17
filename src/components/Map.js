@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './styles.scss';
+import CurrentLocation from './CurrentLocation';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const mapStyles = {
@@ -8,53 +9,46 @@ const mapStyles = {
   height: '50%'
 };
 
-
-
 export class MapContainer extends Component {
   state = {
-     showingInfoWindow: false,  //Hides or the shows the infoWindow
-     activeMarker: {},          //Shows the active marker upon click
-     selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-   };
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
 
-   onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
       this.setState({
-        selectedPlace: props,
-        activeMarker: marker,
-        showingInfoWindow: true
+        showingInfoWindow: false,
+        activeMarker: null
       });
+    }
+  };
 
-    onClose = props => {
-      if (this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker: null
-        });
-      }
-    };
-
-    // lat: 45.5197,
-    // lng: -122.6671
-
- render() {
+  render() {
     return (
-      <Map
+      <CurrentLocation
+        centerAroundCurrentLocation
         google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={{ lat: 45.5197, lng: -122.6671 }}>
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Here is marker'} />
+      >
+        <Marker onClick={this.onMarkerClick} name={'current location'} />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
-          onClose={this.onClose}>
+          onClose={this.onClose}
+        >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
         </InfoWindow>
-      </Map>
+      </CurrentLocation>
     );
   }
 }
