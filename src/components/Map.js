@@ -5,8 +5,8 @@ import CurrentLocation from './CurrentLocation';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const mapStyles = {
-  width: '50%',
-  height: '50%'
+  width: '300px',
+  height: '800px'
 };
 
 export class MapContainer extends Component {
