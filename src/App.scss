@@ -16,24 +16,7 @@ $bodyTextFont: 'Roboto', sans-serif;
   width: 1150px;
   margin: 30px auto;
   justify-content: space-between;
-}
-
-
-.map {
-  height: 300px;
-  width: 300px;
-  padding: 10px;
-  border: grey solid 4px;
-  overflow: hidden;
-}
-
-.mapRenderContainer {
-  height: 300px;
-  width: 300px;
-  border: red solid 3px;
-  overflow: hidden;
-}
-
+} 
 
 .searchAndReturnContainer {
   display: flex;

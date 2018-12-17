@@ -32,21 +32,33 @@ export class MapContainer extends Component {
         });
       }
     };
-    
-  render() {
+
+    // lat: 45.5197,
+    // lng: -122.6671
+
+ render() {
     return (
       <Map
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        initialCenter={{
-         lat: 45.5197,
-         lng: -122.6671
-        }}
-      />
+        initialCenter={{ lat: 45.5197, lng: -122.6671 }}>
+        <Marker
+          onClick={this.onMarkerClick}
+          name={'Here is marker'} />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}>
+          <div>
+            <h4>{this.state.selectedPlace.name}</h4>
+          </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
+
 
 export default GoogleApiWrapper({
   apiKey: (API_KEY)
