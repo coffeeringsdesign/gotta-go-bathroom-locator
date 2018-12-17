@@ -43,6 +43,8 @@
 .mapRenderContainer {
   height: 100%;
   @include boxStyles;
+  width: .5vw;
+  border: red solid 3px;
 }
 
 .indivBathroomDisplay {

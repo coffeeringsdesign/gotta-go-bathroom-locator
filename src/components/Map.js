@@ -28,7 +28,7 @@ export class MapContainer extends Component {
   render() {
     console.log(API_KEY);
     return (
-      <Map google={this.props.google}
+      <Map className="mapRenderContainer" google={this.props.google}
           onClick={this.onMapClicked}>
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />
