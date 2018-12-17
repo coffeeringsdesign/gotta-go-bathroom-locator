@@ -5,7 +5,6 @@ import SearchBar from './components/SearchBar';
 import Logo from './components/Logo';
 import Map from './components/Map';
 
-
 class App extends Component {
   render() {
     return (
@@ -15,7 +14,7 @@ class App extends Component {
           <SearchBar />
           <BathroomList />
         </div>
-        <div className="mapContainer">
+        <div>
           <Map />
         </div>
       </div>
