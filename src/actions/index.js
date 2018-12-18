@@ -1,9 +1,9 @@
 import constants from './../constants';
 // import firebase from 'firebase';
-const { firebaseConfig } = constants;
-const firebase = require('firebase/app');
-
-firebase.initializeApp(firebaseConfig);
+// const { firebaseConfig } = constants;
+// const firebase = require('firebase/app');
+//
+// firebase.initializeApp(firebaseConfig);
 // const bathrooms = firebase.database().ref('bathrooms');
 //
 // export function addBathroom()
