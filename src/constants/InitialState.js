@@ -53,4 +53,4 @@ export const initialState = {
   selectedPlace: null
 };
 
-selectedPlace: props,
+// selectedPlace: props,

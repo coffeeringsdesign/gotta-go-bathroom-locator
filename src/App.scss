@@ -11,11 +11,13 @@ $bodyTextFont: 'Roboto', sans-serif;
 }
 
 .App {
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   display: flex;
-  // width: 400px;
-  margin: 30px auto;
+  // margin: 30px auto;
   justify-content: space-between;
+  border: 1px green solid;
 }
 
 .searchAndReturnContainer {

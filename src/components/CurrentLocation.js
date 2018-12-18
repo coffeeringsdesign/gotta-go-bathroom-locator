@@ -5,7 +5,7 @@ const mapStyles = {
   map: {
     position: 'absolute',
     width: '30em',
-    height: '800px'
+    height: '700px'
   }
 };
 
@@ -26,8 +26,8 @@ export class CurrentLocation extends React.Component {
 
     recenterMap() {
      const map = this.map;  //map is now map object
-     console.log(this.map);
      const current = this.state.currentLocation;
+     console.log(current);
 
      const google = this.props.google;
      const maps = google.maps;

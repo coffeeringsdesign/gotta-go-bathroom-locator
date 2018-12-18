@@ -9,6 +9,7 @@ const mapStyles = {
   height: '800px'
 };
 
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
