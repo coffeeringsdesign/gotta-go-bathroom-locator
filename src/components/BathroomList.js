@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Bathroom from './Bathroom';
 import * as actions from './../actions';
 import firebaseConfig from '../constants/firebaseConfig';
+// import firebase from 'firebase';
 require('firebase/database');
 const firebase = require('firebase/app');
 
@@ -11,6 +12,7 @@ class BathroomList extends Component {
     this.state = {
       bathrooms: []
     }
+
   }
 
     componentDidMount() { //being called successfully
