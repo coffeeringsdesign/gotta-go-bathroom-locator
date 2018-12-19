@@ -15,17 +15,17 @@ class BathroomList extends Component {
 
   }
 
-    componentDidMount() { //being called successfully
+    componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
-      let bathrooms = snapshot.val();
+      let bathrooms = snapshot.val(); //data is getting in from firebase
+      console.log(bathrooms);
       let newState = [];
       for (let bathroom in bathrooms) {
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
-          lat: bathrooms[bathroom].lat,
-          lng: bathrooms[bathroom].lng,
+          longLat: bathrooms[bathroom].longLat,
           distance: bathrooms[bathroom].distance,
           needsCode: bathrooms[bathroom].needsCode,
           needsKey: bathrooms[bathroom].needsKey,
@@ -35,9 +35,11 @@ class BathroomList extends Component {
           id: bathrooms[bathroom].id
         })
       }
+      console.log(newState);
       this.setState({
         bathrooms: newState
       });
+      console.log(this.state);
     });
   }
 
@@ -48,8 +50,7 @@ class BathroomList extends Component {
             let room = this.state.bathrooms[i];
             return <Bathroom name={room.name}
               address={room.address}
-              lat={room.lat}
-              lng={room.lng}
+              longLat={room.longLat}
               distance={room.distance}
               needsCode={room.needsCode}
               needsKey={room.needsKey}
@@ -62,8 +63,7 @@ class BathroomList extends Component {
             let room = this.state.bathrooms[i];
             return <Map name={room.name}
               address={room.address}
-              lat={room.lat}
-              lng={room.lng}
+              longLat={room.longLat}
               distance={room.distance}
               needsCode={room.needsCode}
               needsKey={room.needsKey}

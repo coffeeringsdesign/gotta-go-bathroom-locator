@@ -30,9 +30,11 @@ export class MapContainer extends Component {
 
 
   render() {
-    console.log(this.props.lat);
-
-    const markerLoop = <Marker onClick={this.onMarkerClick} name={this.props.lat} position={{lat: 45.504661, lng: -122.654554}}/>
+    console.log(this.props);
+    const markerLoop = <Marker
+      onClick={this.onMarkerClick}
+      name={this.props.name}
+      position={this.props.longLat}/>
 
 
     return (
@@ -44,10 +46,10 @@ export class MapContainer extends Component {
 
           <Marker onClick={this.onMarkerClick} name={'you are here'}
             icon={{
-      url: "https://vignette.wikia.nocookie.net/run1438/images/a/a5/X.png/revision/latest?cb=20180419021039",
-      anchor: new this.props.google.maps.Point(32,32),
-      scaledSize: new this.props.google.maps.Size(30,30)}} />
-
+              url: "https://vignette.wikia.nocookie.net/run1438/images/a/a5/X.png/revision/latest?cb=20180419021039",
+              anchor: new this.props.google.maps.Point(32,32),
+              scaledSize: new this.props.google.maps.Size(30,30)}} />
+          {markerLoop}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
