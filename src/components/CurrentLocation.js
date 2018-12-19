@@ -11,9 +11,16 @@ const mapStyles = {
 
 export class CurrentLocation extends React.Component {
   constructor(props) {
-    // console.log(props); props here containes object of google maps with initial center, visible to true, zoom 14, and center around currentLocation to true
+    console.log(props);
     super(props);
 
+    // let locationLatLng = {lat: {this.props.lat}, lng: {this.props.lng}}
+
+    // let marker = new this.props.google.maps.Marker({
+    //   position: this.props.newProps.lat,
+    //   map: this.map,
+    //   title: this.props.newProps.name
+    // });
 
     const { lat, lng } = this.props.initialCenter;
     this.state = {
@@ -27,7 +34,6 @@ export class CurrentLocation extends React.Component {
     recenterMap() {
      const map = this.map;  //map is now map object
      const current = this.state.currentLocation;
-     console.log(current);
 
      const google = this.props.google;
      const maps = google.maps;
@@ -57,12 +63,18 @@ export class CurrentLocation extends React.Component {
 
     loadMap() {
       if (this.props && this.props.google) {
-        // checks if google is available
         const { google } = this.props;
         const maps = google.maps;
 
         const mapRef = this.refs.map;
 
+        // const marker = new google.maps.Marker({
+        //   position: this.props.newProps.lat,
+        //   map: this.map,
+        //   title: this.props.newProps.name
+        // });
+
+        // marker.setMap(this.map);
         // reference to the actual DOM element
         const node = ReactDOM.findDOMNode(mapRef);
 

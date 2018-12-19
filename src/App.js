@@ -14,9 +14,6 @@ class App extends Component {
           <SearchBar />
           <BathroomList />
         </div>
-        <div>
-          <Map />
-        </div>
       </div>
     );
   }

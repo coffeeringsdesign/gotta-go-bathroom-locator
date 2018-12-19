@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Bathroom from './Bathroom';
 import * as actions from './../actions';
-import firebaseConfig from '../constants/firebaseConfig';
-// import firebase from 'firebase';
+// import firebaseConfig from '../constants/firebaseConfig';
+import Map from './Map';
 require('firebase/database');
 const firebase = require('firebase/app');
 
@@ -19,7 +19,6 @@ class BathroomList extends Component {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
-      console.log(bathrooms);
       let newState = [];
       for (let bathroom in bathrooms) {
         newState.push({
@@ -36,37 +35,47 @@ class BathroomList extends Component {
           id: bathrooms[bathroom].id
         })
       }
-      console.log(newState);
       this.setState({
         bathrooms: newState
       });
-      console.log(this.state);
-
     });
   }
 
     render() {
       return (
         <div>
-          <Bathroom />
+          {Object.keys(this.state.bathrooms).map((i) => {
+            let room = this.state.bathrooms[i];
+            return <Bathroom name={room.name}
+              address={room.address}
+              lat={room.lat}
+              lng={room.lng}
+              distance={room.distance}
+              needsCode={room.needsCode}
+              needsKey={room.needsKey}
+              handicapAccess={room.handicapAccess}
+              gendered={room.gendered}
+              code={room.code}
+              id={room.id} />
+          })},
+          {Object.keys(this.state.bathrooms).map((i) => {
+            let room = this.state.bathrooms[i];
+            return <Map name={room.name}
+              address={room.address}
+              lat={room.lat}
+              lng={room.lng}
+              distance={room.distance}
+              needsCode={room.needsCode}
+              needsKey={room.needsKey}
+              handicapAccess={room.handicapAccess}
+              gendered={room.gendered}
+              code={room.code}
+              id={room.id} />
+          })},
         </div>
       );
     }
 
 }
-
-// {Object.keys(initialBathroomList).map((i) => {
-//   let room = initialBathroomList[i];
-//   return <Bathroom name={room.name}
-//     address={room.address}
-//     longLat={room.longLat}
-//     distance={room.distance}
-//     needsCode={room.needsCode}
-//     needsKey={room.needsKey}
-//     handicapAccess={room.handicapAccess}
-//     gendered={room.gendered}
-//     code={room.code}
-//     id={room.id} />
-// })}
 
 export default BathroomList;

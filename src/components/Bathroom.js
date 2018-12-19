@@ -40,7 +40,8 @@ function Bathroom( props ) {
 Bathroom.propTypes = {
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  longLat: PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
   distance: PropTypes.string,
   needsCode: PropTypes.bool.isRequired,
   needsKey: PropTypes.bool.isRequired,
