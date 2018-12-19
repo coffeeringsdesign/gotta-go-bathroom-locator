@@ -21,7 +21,6 @@
       width: 70%;
       margin-right: 18px;
       @include boxStyles;
-      border-style: solid;
       &::placeholder {
         padding-left: 10px;
         color: $grey;
@@ -85,5 +84,13 @@
     .icon {
       width: 30px;
     }
+  }
+}
+
+.resultsMapContainer {
+  display: flex;
+  flex-direction: row;
+  .listResultsContainer{
+    margin: 0 30px 0 40px;
   }
 }

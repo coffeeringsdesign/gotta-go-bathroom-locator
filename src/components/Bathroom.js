@@ -36,17 +36,17 @@ function Bathroom( props ) {
       );
     }
   };
-
+// <h3 className="distance">(distance away)</h3>
   const bathroomInformation =
     <div className="indivBathroomDisplay">
       <div className="bathroomTextInfoBlock">
         <div>
-          <h3 className="numbered">1)</h3>
+          <h3 className="numbered">{props.id})</h3>
         </div>
         <div className="stackedNameAddressLines">
           <div className="nameDistanceLine">
             <h3>{props.name}</h3>
-            <h3 className="distance">(distance away)</h3>
+
           </div>
           <h3 className="addressLine">{props.address}</h3>
         </div>

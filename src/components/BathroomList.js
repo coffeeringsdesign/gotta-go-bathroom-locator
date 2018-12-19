@@ -3,6 +3,9 @@ import Bathroom from './Bathroom';
 import * as actions from './../actions';
 // import firebaseConfig from '../constants/firebaseConfig';
 import Map from './Map';
+import './styles.scss';
+import SearchBar from './SearchBar';
+import Logo from './Logo';
 require('firebase/database');
 const firebase = require('firebase/app');
 
@@ -45,7 +48,10 @@ class BathroomList extends Component {
 
     render() {
       return (
-        <div>
+        <div className="resultsMapContainer">
+          <div className="listResultsContainer">
+            <Logo />
+            <SearchBar />
           {Object.keys(this.state.bathrooms).map((i) => {
             let room = this.state.bathrooms[i];
             return <Bathroom name={room.name}
@@ -59,10 +65,13 @@ class BathroomList extends Component {
               code={room.code}
               id={room.id} />
           })},
+          </div>
+          <div className="mapResultsContainer">
           {Object.keys(this.state.bathrooms).map((i) => {
             let rooms = this.state.bathrooms;
             return <Map bathroom={rooms} />
           })},
+          </div>
         </div>
       );
     }
