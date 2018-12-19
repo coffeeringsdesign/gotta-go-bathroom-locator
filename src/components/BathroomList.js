@@ -6,17 +6,20 @@ import './styles.scss';
 import SearchBar from './SearchBar';
 import Logo from './Logo';
 import CurrentLocation from './CurrentLocation';
+import {GoogleApiWrapper} from 'google-maps-react';
+const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
 const firebase = require('firebase/app');
 const distance = require('google-distance-matrix');
+distance.key(API_KEY);
 
 class BathroomList extends Component {
-  constructor(props) {
+  constructor() {
     // console.log(props);
-    super(props);
+    super();
     this.state = {
       bathrooms: [],
-      // currentLocation: props.currentLocation
+      currentLocation: null
     }
   }
 
@@ -30,17 +33,9 @@ class BathroomList extends Component {
         }
       });
     });
-    console.log(this.state);
   }
 
 
-  // let origins = ['San Francisco CA'];
-  // let destinations = ['New York NY', '41.8337329,-87.7321554'];
-  //
-  // distance.matrix(origins, destinations, function (err, distances) {
-  //     if (!err)
-  //         console.log(distances);
-  // })
 
     componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
@@ -66,10 +61,19 @@ class BathroomList extends Component {
       this.setState({
         bathrooms: newState
       });
-      console.log(this.state.currentLocation);
+      console.log(this.state);
     });
+  }
 
+  calculateDistances(longLat) {
+    console.log(longLat);
+    let origins = [this.state.currentLocation];
+    let destinations = [longLat];
 
+    distance.matrix(origins, destinations, function (err, distances) {
+      if (!err)
+      console.log(distances);
+    })
   }
 
     render() {
@@ -81,6 +85,7 @@ class BathroomList extends Component {
             <SearchBar />
           {Object.keys(this.state.bathrooms).map((i) => {
             let room = this.state.bathrooms[i];
+            {this.calculateDistances(room.longLat)}
             return <Bathroom name={room.name}
               address={room.address}
               longLat={room.longLat}
@@ -105,4 +110,6 @@ class BathroomList extends Component {
 
 }
 
-export default BathroomList;
+export default GoogleApiWrapper({
+  apiKey: (API_KEY)
+})(BathroomList)
