@@ -19,7 +19,7 @@ class BathroomList extends Component {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val(); //data is getting in from firebase
-      console.log(bathrooms);
+      // console.log(bathrooms);
       let newState = [];
       for (let bathroom in bathrooms) {
         newState.push({
@@ -35,7 +35,7 @@ class BathroomList extends Component {
           id: bathrooms[bathroom].id
         })
       }
-      console.log(newState);
+      // console.log(newState);
       this.setState({
         bathrooms: newState
       });

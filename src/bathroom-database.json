@@ -59,6 +59,36 @@
       "gendered" : false,
       "code" : "415 + enter",
       "id" : 4
+    },
+    "5" : {
+      "name" : "The Amigos Taqueria",
+      "address" : "1864 SE Hawthorne Blvd, Portland, OR 97214",
+      "longLat" : {
+        "lat" : 45.512061,
+        "lng" : -122.646326
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : false,
+      "code" : "",
+      "id" : 5
+    },
+    "6" : {
+      "name" : "Little Big Burger",
+      "address" : "2028 SE Hawthorne Blvd, Portland, OR 97214",
+      "longLat" : {
+        "lat" : 45.511993,
+        "lng" : -122.644962
+      },
+      "distance" : null,
+      "needsCode" : true,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : false,
+      "code" : "531",
+      "id" : 6
     }
   }
 }

@@ -30,10 +30,11 @@ export class MapContainer extends Component {
 
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const markerLoop = <Marker
       onClick={this.onMarkerClick}
       name={this.props.name}
+      code={this.props.code}
       position={this.props.longLat}/>
 
 
@@ -57,6 +58,7 @@ export class MapContainer extends Component {
 
             <div>
               <h4>{this.state.selectedPlace.name}</h4>
+              <h3>Code: {this.state.selectedPlace.code}</h3>
             </div>
 
           </InfoWindow>

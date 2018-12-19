@@ -11,7 +11,7 @@ const mapStyles = {
 
 export class CurrentLocation extends React.Component {
   constructor(props) {
-    console.log(props);
+    // console.log(props);
     super(props);
 
     // let locationLatLng = {lat: {this.props.lat}, lng: {this.props.lng}}
