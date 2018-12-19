@@ -60,17 +60,8 @@ class BathroomList extends Component {
               id={room.id} />
           })},
           {Object.keys(this.state.bathrooms).map((i) => {
-            let room = this.state.bathrooms[i];
-            return <Map name={room.name}
-              address={room.address}
-              longLat={room.longLat}
-              distance={room.distance}
-              needsCode={room.needsCode}
-              needsKey={room.needsKey}
-              handicapAccess={room.handicapAccess}
-              gendered={room.gendered}
-              code={room.code}
-              id={room.id} />
+            let rooms = this.state.bathrooms;
+            return <Map bathroom={rooms} />
           })},
         </div>
       );
