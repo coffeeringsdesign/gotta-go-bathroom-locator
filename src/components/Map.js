@@ -33,7 +33,6 @@ export class MapContainer extends Component {
 
 
   render() {
-    console.log(this.props.bathroom); //this is the bathrooms array
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
       return <Marker name={room.name}
@@ -49,9 +48,6 @@ export class MapContainer extends Component {
         id={room.id} />
     });
 
-
-
-
     return (
       <div>
         <CurrentLocation
@@ -64,7 +60,7 @@ export class MapContainer extends Component {
               url: "https://vignette.wikia.nocookie.net/run1438/images/a/a5/X.png/revision/latest?cb=20180419021039",
               anchor: new this.props.google.maps.Point(32,32),
               scaledSize: new this.props.google.maps.Size(30,30)}} />
-            {markerLoop}
+          {markerLoop}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
@@ -72,6 +68,7 @@ export class MapContainer extends Component {
 
             <div>
               <h4>{this.state.selectedPlace.name}</h4>
+
             </div>
 
           </InfoWindow>

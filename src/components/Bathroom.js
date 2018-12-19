@@ -6,6 +6,36 @@ import handicapIcon from './../assets/images/handicap-icon.png';
 import codeIcon from './../assets/images/code-icon.png';
 
 function Bathroom( props ) {
+  console.log(props);
+
+  function renderGenderIcon() {
+    if(props.gendered === false) {
+      return(
+        <img className="icon" src={genderedIcon} alt="is gender neutral" />
+      );
+    }
+  };
+  function renderHandicapIcon() {
+    if(props.handicapAccess === true) {
+      return(
+        <img className="icon" src={handicapIcon} alt="is handicap accessible" />
+      );
+    }
+  };
+  function renderCodeIcon() {
+    if(props.needsCode === true) {
+      return(
+        <img className="icon" src={codeIcon} alt="needs a code for access" />
+      );
+    }
+  };
+  function renderKeyIcon() {
+    if(props.needsKey === true) {
+      return(
+        <img className="icon" src={codeIcon} alt="needs a key for access" />
+      );
+    }
+  };
 
   const bathroomInformation =
     <div className="indivBathroomDisplay">
@@ -23,10 +53,10 @@ function Bathroom( props ) {
       </div>
 
       <div className="iconDisplay">
-        <img className="icon" src={genderedIcon} alt="is gender neutral" />
-        <img className="icon" src={handicapIcon} alt="is gender neutral" />
-        <img className="icon" src={codeIcon} alt="is gender neutral" />
-        <img className="icon" src={codeIcon} alt="is gender neutral" />
+        {renderGenderIcon()}
+        {renderHandicapIcon()}
+        {renderCodeIcon()}
+        {renderKeyIcon()}
       </div>
 
     </div>

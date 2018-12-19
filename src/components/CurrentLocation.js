@@ -136,7 +136,7 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
-  zoom: 10,
+  zoom: 14,
   initialCenter: {
     lat: 45.5197,
     lng: -122.6671
