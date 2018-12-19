@@ -69,13 +69,7 @@ export class CurrentLocation extends React.Component {
 
         const mapRef = this.refs.map;
 
-        // const marker = new google.maps.Marker({
-        //   position: this.props.newProps.lat,
-        //   map: this.map,
-        //   title: this.props.newProps.name
-        // });
 
-        // marker.setMap(this.map);
         // reference to the actual DOM element
         const node = ReactDOM.findDOMNode(mapRef);
 
@@ -114,7 +108,8 @@ export class CurrentLocation extends React.Component {
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.state.currentLocation
+        mapCenter: this.state.currentLocation,
+        currentLocation: this.state.currentLocation
       });
     });
   }

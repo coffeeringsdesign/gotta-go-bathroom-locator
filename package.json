@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.7.0",
+    "google-distance-matrix": "^1.1.1",
     "google-maps-react": "^2.0.2",
     "node-sass": "^4.10.0",
     "prop-types": "^15.5.10",

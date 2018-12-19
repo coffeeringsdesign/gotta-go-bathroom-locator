@@ -5,17 +5,42 @@ import Map from './Map';
 import './styles.scss';
 import SearchBar from './SearchBar';
 import Logo from './Logo';
+import CurrentLocation from './CurrentLocation';
 require('firebase/database');
 const firebase = require('firebase/app');
+const distance = require('google-distance-matrix');
 
 class BathroomList extends Component {
   constructor(props) {
+    // console.log(props);
     super(props);
     this.state = {
-      bathrooms: []
+      bathrooms: [],
+      // currentLocation: props.currentLocation
     }
-
   }
+
+  findCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const coords = pos.coords;
+      this.setState({
+        currentLocation: {
+          lat: coords.latitude,
+          lng: coords.longitude
+        }
+      });
+    });
+    console.log(this.state);
+  }
+
+
+  // let origins = ['San Francisco CA'];
+  // let destinations = ['New York NY', '41.8337329,-87.7321554'];
+  //
+  // distance.matrix(origins, destinations, function (err, distances) {
+  //     if (!err)
+  //         console.log(distances);
+  // })
 
     componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
@@ -41,13 +66,16 @@ class BathroomList extends Component {
       this.setState({
         bathrooms: newState
       });
-      console.log(this.state);
+      console.log(this.state.currentLocation);
     });
+
+
   }
 
     render() {
       return (
         <div className="resultsMapContainer">
+          {this.findCurrentLocation()}
           <div className="listResultsContainer">
             <Logo />
             <SearchBar />

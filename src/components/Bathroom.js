@@ -6,7 +6,7 @@ import handicapIcon from './../assets/images/handicap-icon.png';
 import codeIcon from './../assets/images/code-icon.png';
 
 function Bathroom( props ) {
-  console.log(props);
+  // console.log(props);
 
   function renderGenderIcon() {
     if(props.gendered === false) {
