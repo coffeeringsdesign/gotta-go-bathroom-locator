@@ -66,7 +66,8 @@ class BathroomList extends Component {
   }
 
   calculateDistances(longLat) {
-    console.log(longLat);
+    // newLoggedInUserStateSlice = Object.assign({}, user, googleEmail);
+    console.log(this.state.currentLocation);
     let origins = [this.state.currentLocation];
     let destinations = [longLat];
 
