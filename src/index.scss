@@ -14,19 +14,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: $darkBlue;
   height: 100vh;
-  width: 600px;
+  // width: 600px;
   color: $darkBlue;
   font-family: $bodyTextFont;
   font-size: 18px;
-}
-
-html {
-  width: 1150px;
-
-}
-
-#root {
-  width: 33em;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 code {

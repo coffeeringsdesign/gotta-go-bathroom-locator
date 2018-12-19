@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Bathroom from './Bathroom';
 import * as actions from './../actions';
-// import firebaseConfig from '../constants/firebaseConfig';
 import Map from './Map';
 import './styles.scss';
 import SearchBar from './SearchBar';
