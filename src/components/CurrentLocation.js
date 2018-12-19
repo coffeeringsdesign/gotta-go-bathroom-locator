@@ -5,7 +5,8 @@ const mapStyles = {
   map: {
     position: 'absolute',
     width: '30em',
-    height: '750px'
+    height: '750px',
+    borderRadius: '5px'
   }
 };
 
