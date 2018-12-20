@@ -45,7 +45,11 @@ export class MapContainer extends Component {
         handicapAccess={room.handicapAccess}
         gendered={room.gendered}
         code={room.code}
-        id={room.id} />
+        id={room.id}
+        icon={{
+          url: "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c1bc09dcd83669fc0dd58e9/1545322656436/filled.png?format=100w",
+          anchor: new this.props.google.maps.Point(32,32),
+          scaledSize: new this.props.google.maps.Size(20,30)}} />
     });
 
     return (
@@ -57,18 +61,23 @@ export class MapContainer extends Component {
 
           <Marker onClick={this.onMarkerClick} name={'you are here'}
             icon={{
-              url: "https://vignette.wikia.nocookie.net/run1438/images/a/a5/X.png/revision/latest?cb=20180419021039",
+              url: "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c1bbf92032be44a0209449f/1545322390351/X.png?format=300w",
               anchor: new this.props.google.maps.Point(32,32),
-              scaledSize: new this.props.google.maps.Size(30,30)}} />
+              scaledSize: new this.props.google.maps.Size(40,40)}} />
           {markerLoop}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             onClose={this.onClose}>
 
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-
+            <div className="mapModalStyles">
+              <h3>{this.state.selectedPlace.name}</h3>
+              <h4>{this.state.selectedPlace.adddress}</h4>
+              <h5>Is Gendered: No</h5>
+              <h5>Needs Key: No</h5>
+              <h5>Handicap Access: Yes</h5>
+              <h5>Requires Code: Yes</h5>
+              <h5>Code: 513 + enter</h5>
             </div>
 
           </InfoWindow>

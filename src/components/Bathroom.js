@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import genderedIcon from './../assets/images/genderneutral-icon.png';
 import handicapIcon from './../assets/images/handicap-icon.png';
 import codeIcon from './../assets/images/code-icon.png';
+import keyIcon from './../assets/images/key-icon.png';
 
 function Bathroom( props ) {
   // console.log(props);
@@ -32,7 +33,7 @@ function Bathroom( props ) {
   function renderKeyIcon() {
     if(props.needsKey === true) {
       return(
-        <img className="icon" src={codeIcon} alt="needs a key for access" />
+        <img className="icon" src={keyIcon} alt="needs a key for access" />
       );
     }
   };

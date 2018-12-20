@@ -1,6 +1,66 @@
 {
   "bathrooms" : {
     "1" : {
+      "name" : "The Original Dinerant",
+      "address" : "300 SW 6th Ave, Portland, OR 97204",
+      "longLat" : {
+        "lat" : 45.521536,
+        "lng" : -122.677015
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : false,
+      "code" : "",
+      "id" : 1
+    },
+    "2" : {
+      "name" : "Peets Coffee",
+      "address" : "508 SW Broadway, Portland, OR 97205",
+      "longLat" : {
+        "lat" : 45.520615,
+        "lng" : -122.678810
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : true,
+      "handicapAccess" : true,
+      "gendered" : false,
+      "code" : "",
+      "id" : 2
+    },
+    "3" : {
+      "name" : "Bailey's Taproom",
+      "address" : "213 SW Broadway, Portland, OR 97205",
+      "longLat" : {
+        "lat" : 45.522630,
+        "lng" : -122.678117
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : true,
+      "code" : "",
+      "id" : 3
+    },
+    "4" : {
+      "name" : "Portland Loo",
+      "address" : "129 NW 8th Ave, Portland, OR 97209",
+      "longLat" : {
+        "lat" : 45.524376,
+        "lng" : -122.678667
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : false,
+      "code" : "",
+      "id" : 4
+    },
+    "5" : {
       "name" : "Books with Pictures",
       "address" : "1100 SE Division St #103, Portland, OR 97202",
       "longLat" : {
@@ -13,9 +73,9 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "415 + enter",
-      "id" : 1
+      "id" : 5
     },
-    "2" : {
+    "6" : {
       "name" : "Pine State Biscuits",
       "address" : "1100 SE Division St #100, Portland, OR 97202",
       "longLat" : {
@@ -28,9 +88,9 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "415 + enter",
-      "id" : 2
+      "id" : 6
     },
-    "3" : {
+    "7" : {
       "name" : "The Bakers Mark",
       "address" : "1126 SE Division St, Portland, OR 97202",
       "longLat" : {
@@ -43,9 +103,9 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "415 + enter",
-      "id" : 3
+      "id" : 7
     },
-    "4" : {
+    "8" : {
       "name" : "Virtuous Pie",
       "address" : "1126 SE Division St #200, Portland, OR 97202",
       "longLat" : {
@@ -58,9 +118,9 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "415 + enter",
-      "id" : 4
+      "id" : 8
     },
-    "5" : {
+    "9" : {
       "name" : "The Amigos Taqueria",
       "address" : "1864 SE Hawthorne Blvd, Portland, OR 97214",
       "longLat" : {
@@ -73,9 +133,9 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "",
-      "id" : 5
+      "id" : 9
     },
-    "6" : {
+    "10" : {
       "name" : "Little Big Burger",
       "address" : "2028 SE Hawthorne Blvd, Portland, OR 97214",
       "longLat" : {
@@ -88,7 +148,7 @@
       "handicapAccess" : true,
       "gendered" : false,
       "code" : "531",
-      "id" : 6
+      "id" : 10
     }
   }
 }
