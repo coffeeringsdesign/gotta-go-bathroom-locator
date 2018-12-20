@@ -11,6 +11,7 @@ export class MapContainer extends Component {
     selectedPlace: {}
   };
 
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -49,7 +50,7 @@ export class MapContainer extends Component {
         icon={{
           url: "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c1bc09dcd83669fc0dd58e9/1545322656436/filled.png?format=100w",
           anchor: new this.props.google.maps.Point(32,32),
-          scaledSize: new this.props.google.maps.Size(20,30)}} />
+          scaledSize: new this.props.google.maps.Size(25,35)}} />
     });
 
     return (

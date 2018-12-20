@@ -6,9 +6,10 @@ const mapStyles = {
     position: 'absolute',
     width: '30em',
     height: '750px',
-    borderRadius: '5px'
+    borderRadius: '5px',
   }
-};
+}
+
 
 export class CurrentLocation extends React.Component {
   constructor(props) {
