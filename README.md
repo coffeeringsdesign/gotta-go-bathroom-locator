@@ -67,7 +67,7 @@ Using Command Line:
 2. ``cd ~`` to navigate to base directory
 3. ``cd Desktop `` to navigate to your desktop
 4. ``cd gotta-go-bathroom-locator`` to enter the site folder
-5.  You will need to get an API key from Google Maps in order to access the database. https://developers.google.com/maps/documentation/javascript/tutorial
+5.  You will need to get an API key from Google Maps in order to access Google Maps. https://developers.google.com/maps/documentation/javascript/tutorial
 6.  Place it within this text: ``REACT_APP_API_KEY=PLACE_YOUR_KEY_HERE`` in a file called .env inside the main directory 
 7.  Place ``.env`` in the .gitignore file.
 8. ``npm install`` to install all webpack dependencies
