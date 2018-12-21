@@ -61,13 +61,33 @@ Bathroom finder by location. Focused on the needs of the person.
 ## Detail Page High Res Wireframe
 ![Search Page Mockup](/src/assets/images/mockup-search-detail-page.png)
 
+## Setup/Installation Requirements
+Using Command Line:
+1. ``git clone https://github.com/coffeeringsdesign/gotta-go-bathroom-locator.git `` to clone the site.
+2. ``cd ~`` to navigate to base directory
+3. ``cd Desktop `` to navigate to your desktop
+4. ``cd gotta-go-bathroom-locator`` to enter the site folder
+5.  You will need to get an API key from Google Maps in order to access the database. https://developers.google.com/maps/documentation/javascript/tutorial
+6.  Place it within this text: ``REACT_APP_API_KEY=PLACE_YOUR_KEY_HERE`` in a file called .env inside the main directory 
+7.  Place ``.env`` in the .gitignore file.
+8. ``npm install`` to install all webpack dependencies
+9. ``npm run start`` this will webpack and immediate pop open the site on your brower. I recommend Chrome.
+10. I recommend Atom to edit any html, javascript, or sass.
+
 ## Support and contact details
 
 Please feel free to get in touch. Reach out to me at kendra@coffeeringsdesign.com.
 
 ## Technologies Used
 
-Javascript, Webpack, Sketch, Sass, React, Redux, & Atom.
+Javascript, JSX, Sketch, Sass, React, Redux, Atom,
+Googe Maps React: https://www.npmjs.com/package/google-map-react,
+Google Distance Matrix API: https://www.npmjs.com/package/google-distance-matrix
+
+## Documentation Used:
+This tutorial was really helpful: https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
+Google Map APIs docs are pretty good but not necessarily helpful with react: https://developers.google.com/maps/documentation/javascript/tutorial
+I would recommend searching for your question + React to find a more specific answer.
 
 ### License
 
