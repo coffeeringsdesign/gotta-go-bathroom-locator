@@ -27,10 +27,28 @@ export class MapContainer extends Component {
       });
     }
   };
-  // onClick={this.onMarkerClick}
-  // name={this.props.name}
-  // code={this.props.code}
-  // position={this.props.longLat}/>
+
+  determineModalValues(){
+    let needsKeyValue;
+    let needsCodeValue;
+    let handicapAcessValue;
+    let isGenderedValue;
+    if (this.state.selectedPlace.needsKey === true) {
+      let needsKeyValue = <h5>Requires Key: Yes</h5>;
+    };
+    if (this.state.selectedPlace.needsCode === true) {
+      let needsCodeValue = <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
+    };
+    if (this.state.selectedPlace.handicapAccess === true) {
+      let handicapAcessValue = <h5>Handicap Accessable: Yes</h5>;
+    };
+    if (this.state.selectedPlace.handicapAcess === false) {
+      let handicapAcessValue = <h5>Handicap Accessable: No</h5>;
+    };
+    if (this.state.selectedPlace.gendered === true) {
+      let isGenderedValue = <h5>Gender Neutral: No</h5>;
+    };
+  }
 
 
   render() {
@@ -72,13 +90,13 @@ export class MapContainer extends Component {
             onClose={this.onClose}>
 
             <div className="mapModalStyles">
+              {this.determineModalValues}
               <h3>{this.state.selectedPlace.name}</h3>
-              <h4>{this.state.selectedPlace.adddress}</h4>
-              <h5>Is Gendered: No</h5>
-              <h5>Needs Key: No</h5>
-              <h5>Handicap Access: Yes</h5>
-              <h5>Requires Code: Yes</h5>
-              <h5>Code: 513 + enter</h5>
+              <h4>{this.state.selectedPlace.address}</h4>
+              <h5>{this.isGenderedValue}</h5>
+              <h5>{this.needsKeyValue}</h5>
+              <h5>{this.needsCodeValue}</h5>
+              <h5>{this.handicapAcessValue}</h5>
             </div>
 
           </InfoWindow>
