@@ -149,6 +149,21 @@
       "gendered" : false,
       "code" : "531",
       "id" : 10
+    },
+    "11" : {
+      "name" : "McDonalds",
+      "address" : "10970 SE Oak St, Milwaukie, OR 97222",
+      "longLat" : {
+        "lat" : 45.446631,
+        "lng" : -122.628977
+      },
+      "distance" : null,
+      "needsCode" : false,
+      "needsKey" : false,
+      "handicapAccess" : true,
+      "gendered" : true,
+      "code" : "",
+      "id" : 11
     }
   }
 }

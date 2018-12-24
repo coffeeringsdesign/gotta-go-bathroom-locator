@@ -28,27 +28,38 @@ export class MapContainer extends Component {
     }
   };
 
-  determineModalValues(){
-    let needsKeyValue;
-    let needsCodeValue;
-    let handicapAcessValue;
-    let isGenderedValue;
+  keyedModalValues(){
+    console.log("yeeee");//being called
     if (this.state.selectedPlace.needsKey === true) {
-      let needsKeyValue = <h5>Requires Key: Yes</h5>;
-    };
+      return <h5>Requires Key: Yes</h5>;
+    } else {
+      return <h5>Requires Key: No</h5>;
+    }
+  };
+
+  codedModalValues(){
     if (this.state.selectedPlace.needsCode === true) {
-      let needsCodeValue = <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
-    };
+      return <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
+    } else {
+      return <h5>Requires Code: No</h5>;
+    }
+  };
+
+  handicapModalValues(){
     if (this.state.selectedPlace.handicapAccess === true) {
-      let handicapAcessValue = <h5>Handicap Accessable: Yes</h5>;
-    };
-    if (this.state.selectedPlace.handicapAcess === false) {
-      let handicapAcessValue = <h5>Handicap Accessable: No</h5>;
-    };
+      return <h5>Handicap Accessable: Yes</h5>;
+    } else {
+      return <h5>Handicap Accessable: No</h5>
+    }
+  };
+
+  genderedModalValues() {
     if (this.state.selectedPlace.gendered === true) {
-      let isGenderedValue = <h5>Gender Neutral: No</h5>;
-    };
-  }
+      return <h5>Gender Neutral: No</h5>;
+    } else {
+      return <h5>Gender Neutral: Yes</h5>;
+    }
+  };
 
 
   render() {
@@ -90,13 +101,12 @@ export class MapContainer extends Component {
             onClose={this.onClose}>
 
             <div className="mapModalStyles">
-              {this.determineModalValues}
               <h3>{this.state.selectedPlace.name}</h3>
               <h4>{this.state.selectedPlace.address}</h4>
-              <h5>{this.isGenderedValue}</h5>
-              <h5>{this.needsKeyValue}</h5>
-              <h5>{this.needsCodeValue}</h5>
-              <h5>{this.handicapAcessValue}</h5>
+              <h5>{this.keyedModalValues()}</h5>
+              <h5>{this.codedModalValues()}</h5>
+              <h5>{this.handicapModalValues()}</h5>
+              <h5>{this.genderedModalValues()}</h5>
             </div>
 
           </InfoWindow>

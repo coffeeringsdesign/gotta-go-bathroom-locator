@@ -61,19 +61,19 @@ class BathroomList extends Component {
       this.setState({
         bathrooms: newState
       });
-      console.log(this.state);
+      // console.log(this.state);
     });
   }
 
   calculateDistances(longLat) {
     // newLoggedInUserStateSlice = Object.assign({}, user, googleEmail);
-    console.log(this.state.currentLocation);
+    // console.log(this.state.currentLocation);
     let origins = [this.state.currentLocation];
     let destinations = [longLat];
 
     distance.matrix(origins, destinations, function (err, distances) {
       if (!err)
-      console.log(distances);
+      console.log("this should be distances when ready");
     })
   }
 
