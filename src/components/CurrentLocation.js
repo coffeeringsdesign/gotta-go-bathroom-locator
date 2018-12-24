@@ -10,27 +10,19 @@ const mapStyles = {
   }
 }
 
-
 export class CurrentLocation extends React.Component {
   constructor(props) {
-    // console.log(props);
     super(props);
-
-    // let locationLatLng = {lat: {this.props.lat}, lng: {this.props.lng}}
-
-    // let marker = new this.props.google.maps.Marker({
-    //   position: this.props.newProps.lat,
-    //   map: this.map,
-    //   title: this.props.newProps.name
-    // });
 
     const { lat, lng } = this.props.initialCenter;
     this.state = {
-      currentLocation: {
+      currentLocation: { //these are connecting to the componentDidMount to grab currrent location and set them as state
         lat: lat,
         lng: lng
       }
     };
+    console.log(props);
+    //props includes all default props listed at the bottom, a NewProps value that includes our bathroom array from firebase, and children array that includes 2 symbols and an array of symbols that include the bathroom array, and a maps object nested inside a google object
   }
 
     recenterMap() {

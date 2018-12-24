@@ -32,10 +32,9 @@ class BathroomList extends Component {
           lng: coords.longitude
         }
       });
+      console.log(this.state.currentLocation);
     });
   }
-
-
 
     componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
@@ -57,23 +56,19 @@ class BathroomList extends Component {
           id: bathrooms[bathroom].id
         })
       }
-      // console.log(newState);
       this.setState({
         bathrooms: newState
       });
-      // console.log(this.state);
     });
   }
 
-  calculateDistances(longLat) {
-    // newLoggedInUserStateSlice = Object.assign({}, user, googleEmail);
-    // console.log(this.state.currentLocation);
-    let origins = [this.state.currentLocation];
+  calculateDistances(longLat) { //longlats are bathroom longlats
+    let origins = [this.state.currentLocation]; //current location by long lat
     let destinations = [longLat];
 
     distance.matrix(origins, destinations, function (err, distances) {
       if (!err)
-      console.log("this should be distances when ready");
+      console.log(distances);
     })
   }
 

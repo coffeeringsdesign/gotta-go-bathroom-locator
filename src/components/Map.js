@@ -28,8 +28,7 @@ export class MapContainer extends Component {
     }
   };
 
-  keyedModalValues(){
-    console.log("yeeee");//being called
+  keyedModalValues() {
     if (this.state.selectedPlace.needsKey === true) {
       return <h5>Requires Key: Yes</h5>;
     } else {
@@ -37,7 +36,7 @@ export class MapContainer extends Component {
     }
   };
 
-  codedModalValues(){
+  codedModalValues() {
     if (this.state.selectedPlace.needsCode === true) {
       return <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
     } else {
@@ -45,7 +44,7 @@ export class MapContainer extends Component {
     }
   };
 
-  handicapModalValues(){
+  handicapModalValues() {
     if (this.state.selectedPlace.handicapAccess === true) {
       return <h5>Handicap Accessable: Yes</h5>;
     } else {
