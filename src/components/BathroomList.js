@@ -63,12 +63,15 @@ class BathroomList extends Component {
   }
 
   calculateDistances(longLat) { //longlats are bathroom longlats
-    let origins = [this.state.currentLocation]; //current location by long lat
+    let stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
+    let origins = [stringOfCurrentLongLat];
+    //origins are currentLocation correctly formatted
     let destinations = [longLat];
 
     distance.matrix(origins, destinations, function (err, distances) {
-      if (!err)
-      console.log(distances);
+      if (!err) {
+      let thiser = null;}
+      // console.log(distances);
     })
   }
 
