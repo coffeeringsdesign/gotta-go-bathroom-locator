@@ -62,16 +62,16 @@ class BathroomList extends Component {
     });
   }
 
-  calculateDistances(longLat) { //longlats are bathroom longlats
+  calculateDistances(longLat) { 
     let stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
     let origins = [stringOfCurrentLongLat];
-    //origins are currentLocation correctly formatted
-    let destinations = [longLat];
+    let stringOfBathroomsLongLat = Object.values(longLat).join();
+    let destinations = [stringOfBathroomsLongLat];
+//both origins and desinations are correctly formatted and logging correctly
 
     distance.matrix(origins, destinations, function (err, distances) {
-      if (!err) {
-      let thiser = null;}
-      // console.log(distances);
+      if (!err)
+      console.log(distances);
     })
   }
 
