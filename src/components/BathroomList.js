@@ -64,31 +64,22 @@ class BathroomList extends Component {
   }
 
   calculateDistances(longLat) {
-    // console.log(this.state);
-    let stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
-    let origins = [stringOfCurrentLongLat];
-    let stringOfBathroomsLongLat = Object.values(longLat).join();
-    let destinations = [stringOfBathroomsLongLat];
-    let travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-//both origins and desinations are correctly formatted and logging correctly
+    const stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
+    const origins = [stringOfCurrentLongLat];
+    const stringOfBathroomsLongLat = Object.values(longLat).join();
+    const destinations = [stringOfBathroomsLongLat];
+    const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 
-    // distance.matrix(origins, destinations, function (err, distances) {
-    //   if (!err)
-    //   console.log(distances);
     distance.matrix(origins, destinations, travelMode, (err, distances) => {
       Object.keys(distances.rows).map((i) => {
-        let firster = distances.rows[i];
+        const firster = distances.rows[i];
         Object.keys(firster.elements).map((i) => {
-          let seconder = firster.elements[i];
-          let walkingDistance = seconder.distance.text;
-          // let walkingTime = seconder.duraction.text;
-          console.log(walkingDistance);
-          // console.log(walkingTime);
+          const seconder = firster.elements[i];
+          const currentDistance = seconder.distance ? seconder.distance.text : null;
+          const currentDuration = seconder.duration ? seconder.duration.text : null;
+          return [currentDistance, currentDuration];
         })
       });
-      // .then(res => res.data)
-      // .then(data => this.props.setDist(data))
-      // .catch(err => console.log('unable to get distances'))
     })
   }
 
