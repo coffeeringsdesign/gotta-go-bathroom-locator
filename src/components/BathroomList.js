@@ -14,12 +14,13 @@ const distance = require('google-distance-matrix');
 distance.key(API_KEY);
 
 class BathroomList extends Component {
-  constructor() {
+  constructor(props) {
     // console.log(props);
-    super();
+    super(props);
     this.state = {
       bathrooms: [],
-      currentLocation: null
+      currentLocation: null,
+      travelMode: ''
     }
   }
 
@@ -32,7 +33,7 @@ class BathroomList extends Component {
           lng: coords.longitude
         }
       });
-      console.log(this.state.currentLocation);
+      // console.log(this.state.currentLocation);
     });
   }
 
@@ -62,16 +63,32 @@ class BathroomList extends Component {
     });
   }
 
-  calculateDistances(longLat) { 
+  calculateDistances(longLat) {
+    // console.log(this.state);
     let stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
     let origins = [stringOfCurrentLongLat];
     let stringOfBathroomsLongLat = Object.values(longLat).join();
     let destinations = [stringOfBathroomsLongLat];
+    let travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 //both origins and desinations are correctly formatted and logging correctly
 
-    distance.matrix(origins, destinations, function (err, distances) {
-      if (!err)
-      console.log(distances);
+    // distance.matrix(origins, destinations, function (err, distances) {
+    //   if (!err)
+    //   console.log(distances);
+    distance.matrix(origins, destinations, travelMode, (err, distances) => {
+      Object.keys(distances.rows).map((i) => {
+        let firster = distances.rows[i];
+        Object.keys(firster.elements).map((i) => {
+          let seconder = firster.elements[i];
+          let walkingDistance = seconder.distance.text;
+          // let walkingTime = seconder.duraction.text;
+          console.log(walkingDistance);
+          // console.log(walkingTime);
+        })
+      });
+      // .then(res => res.data)
+      // .then(data => this.props.setDist(data))
+      // .catch(err => console.log('unable to get distances'))
     })
   }
 
@@ -84,11 +101,11 @@ class BathroomList extends Component {
             <SearchBar />
           {Object.keys(this.state.bathrooms).map((i) => {
             let room = this.state.bathrooms[i];
-            {this.calculateDistances(room.longLat)}
+            // {this.calculateDistances(room.longLat)}
             return <Bathroom name={room.name}
               address={room.address}
               longLat={room.longLat}
-              distance={room.distance}
+              distance={this.calculateDistances(room.longLat)}
               needsCode={room.needsCode}
               needsKey={room.needsKey}
               handicapAccess={room.handicapAccess}
