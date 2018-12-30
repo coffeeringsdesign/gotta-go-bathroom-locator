@@ -19,7 +19,7 @@ class BathroomList extends Component {
     this.state = {
       bathrooms: [],
       currentLocation: null,
-      travelMode: '',
+      travelMode: ''
     }
   }
 
@@ -68,22 +68,16 @@ class BathroomList extends Component {
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 
     distance.matrix(origins, destinations, travelMode, (err, distances) => {
-      if (!!distances) {
-        const currentDistance = distances.rows[0].elements[0].distance.text;
-        const currentDuration = distances.rows[0].elements[0].duration.text; //these are getting setup properly
-        this.newProps = [currentDistance, currentDuration]
-      } else {
-        console.error(err, 'status:', distances);
-      }
+      return this.newProps = ({
+        distance: distances.rows[0].elements[0].distance.text,
+        duration: distances.rows[0].elements[0].duration.text,
+      })
     })
   }
 
 
     render() {
-      {Object.keys(this.state.bathrooms).map((i) => {
-        let room = this.state.bathrooms[i];
-        let distanceDuration = this.calculateDistances(room.longLat);
-      })}
+      console.log(this.newProps); //currently returning correct amount of distances/durations but all the same one
       return (
         <div className="resultsMapContainer">
           {this.findCurrentLocation()}
@@ -93,12 +87,13 @@ class BathroomList extends Component {
 
               {Object.keys(this.state.bathrooms).map((i) => {
                 let room = this.state.bathrooms[i];
-                {this.calculateDistances(room.longLat)}
+                let indivRoom = this.calculateDistances(room.longLat)
+                console.log(this.newProps);
                 return <Bathroom name={room.name}
                   address={room.address}
                   longLat={room.longLat}
                   needsCode={room.needsCode}
-                  distanceDuration={this.newProps}
+
                   needsKey={room.needsKey}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}

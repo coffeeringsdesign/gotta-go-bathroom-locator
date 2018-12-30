@@ -6,7 +6,7 @@ import handicapIcon from './../assets/images/handicap-icon.png';
 import codeIcon from './../assets/images/code-icon.png';
 import keyIcon from './../assets/images/key-icon.png';
 
-function Bathroom( props ) {
+function Bathroom( props, {newProps} ) {
   console.log(props);
 
   function renderGenderIcon() {
@@ -73,7 +73,8 @@ Bathroom.propTypes = {
   address: PropTypes.string.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
-  distanceDuration: PropTypes.array,
+  distance: PropTypes.string,
+  duration: PropTypes.string,
   needsCode: PropTypes.bool.isRequired,
   needsKey: PropTypes.bool.isRequired,
   handicapAccess: PropTypes.bool.isRequired,
