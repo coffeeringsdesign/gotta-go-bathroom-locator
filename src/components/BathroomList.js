@@ -15,12 +15,11 @@ distance.key(API_KEY);
 
 class BathroomList extends Component {
   constructor(props) {
-    // console.log(props);
     super(props);
     this.state = {
       bathrooms: [],
       currentLocation: null,
-      travelMode: ''
+      travelMode: '',
     }
   }
 
@@ -63,47 +62,49 @@ class BathroomList extends Component {
     });
   }
 
-  calculateDistances(longLat) {
-    const stringOfCurrentLongLat = Object.values(this.state.currentLocation).join();
-    const origins = [stringOfCurrentLongLat];
-    const stringOfBathroomsLongLat = Object.values(longLat).join();
-    const destinations = [stringOfBathroomsLongLat];
+  calculateDistances(longLat, newProps) {
+    const origins = [Object.values(this.state.currentLocation).join()];
+    const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 
     distance.matrix(origins, destinations, travelMode, (err, distances) => {
-      Object.keys(distances.rows).map((i) => {
-        const firster = distances.rows[i];
-        Object.keys(firster.elements).map((i) => {
-          const seconder = firster.elements[i];
-          const currentDistance = seconder.distance ? seconder.distance.text : null;
-          const currentDuration = seconder.duration ? seconder.duration.text : null;
-          return [currentDistance, currentDuration];
-        })
-      });
+      if (!!distances) {
+        const currentDistance = distances.rows[0].elements[0].distance.text;
+        const currentDuration = distances.rows[0].elements[0].duration.text; //these are getting setup properly
+        this.newProps = [currentDistance, currentDuration]
+      } else {
+        console.error(err, 'status:', distances);
+      }
     })
   }
 
+
     render() {
+      {Object.keys(this.state.bathrooms).map((i) => {
+        let room = this.state.bathrooms[i];
+        let distanceDuration = this.calculateDistances(room.longLat);
+      })}
       return (
         <div className="resultsMapContainer">
           {this.findCurrentLocation()}
           <div className="listResultsContainer">
             <Logo />
             <SearchBar />
-          {Object.keys(this.state.bathrooms).map((i) => {
-            let room = this.state.bathrooms[i];
-            // {this.calculateDistances(room.longLat)}
-            return <Bathroom name={room.name}
-              address={room.address}
-              longLat={room.longLat}
-              distance={this.calculateDistances(room.longLat)}
-              needsCode={room.needsCode}
-              needsKey={room.needsKey}
-              handicapAccess={room.handicapAccess}
-              gendered={room.gendered}
-              code={room.code}
-              id={room.id} />
-          })},
+
+              {Object.keys(this.state.bathrooms).map((i) => {
+                let room = this.state.bathrooms[i];
+                {this.calculateDistances(room.longLat)}
+                return <Bathroom name={room.name}
+                  address={room.address}
+                  longLat={room.longLat}
+                  needsCode={room.needsCode}
+                  distanceDuration={this.newProps}
+                  needsKey={room.needsKey}
+                  handicapAccess={room.handicapAccess}
+                  gendered={room.gendered}
+                  code={room.code}
+                  id={room.id} />
+              })},
           </div>
           <div className="mapResultsContainer">
           {Object.keys(this.state.bathrooms).map((i) => {
@@ -114,8 +115,24 @@ class BathroomList extends Component {
         </div>
       );
     }
-
 }
+
+//goes right below the <SearchBar>
+// {Object.keys(this.state.bathrooms).map((i) => {
+//   let room = this.state.bathrooms[i];
+//   return <Bathroom name={room.name}
+//     address={room.address}
+//     longLat={room.longLat}
+//     needsCode={room.needsCode}
+//     distanceDuration={this.calculateDistances(room.longLat)}
+//     needsKey={room.needsKey}
+//     handicapAccess={room.handicapAccess}
+//     gendered={room.gendered}
+//     code={room.code}
+//     id={room.id} />
+// })},
+
+// distance={this.calculateDistances(room.longLat)}
 
 export default GoogleApiWrapper({
   apiKey: (API_KEY)

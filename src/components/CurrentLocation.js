@@ -21,7 +21,7 @@ export class CurrentLocation extends React.Component {
         lng: lng
       }
     };
-    console.log(props);
+    // console.log(props);
     //props includes all default props listed at the bottom, a NewProps value that includes our bathroom array from firebase, and children array that includes 2 symbols and an array of symbols that include the bathroom array, and a maps object nested inside a google object
   }
 
