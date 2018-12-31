@@ -6,9 +6,10 @@ import handicapIcon from './../assets/images/handicap-icon.png';
 import codeIcon from './../assets/images/code-icon.png';
 import keyIcon from './../assets/images/key-icon.png';
 
-function Bathroom( props, {newProps} ) {
+function Bathroom( props ) {
   console.log(props);
-
+  //
+  // console.log(newProps);
   function renderGenderIcon() {
     if(props.gendered === false) {
       return(
@@ -47,7 +48,6 @@ function Bathroom( props, {newProps} ) {
         <div className="stackedNameAddressLines">
           <div className="nameDistanceLine">
             <h3>{props.name}</h3>
-            <h3 className="distance">{props.distanceDuration}</h3>
           </div>
           <h3 className="addressLine">{props.address}</h3>
         </div>
@@ -73,8 +73,9 @@ Bathroom.propTypes = {
   address: PropTypes.string.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
-  distance: PropTypes.string,
-  duration: PropTypes.string,
+  distanceDuration: PropTypes.object,
+  // distance: PropTypes.string,
+  // duration: PropTypes.string,
   needsCode: PropTypes.bool.isRequired,
   needsKey: PropTypes.bool.isRequired,
   handicapAccess: PropTypes.bool.isRequired,

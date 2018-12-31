@@ -62,22 +62,35 @@ class BathroomList extends Component {
     });
   }
 
-  calculateDistances(longLat, newProps) {
+  grabCurrentLocationInfo(longLat, newProps) {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
+    this.calculateDistances(origins, destinations, travelMode);
+  }
 
+  calculateDistances(origins, destinations, travelMode) {
     distance.matrix(origins, destinations, travelMode, (err, distances) => {
-      return this.newProps = ({
-        distance: distances.rows[0].elements[0].distance.text,
-        duration: distances.rows[0].elements[0].duration.text,
-      })
+      this.sendNewCaculatedLocationInfo(distances);
+      // let sendNewCaculatedLocationInfo = distances => ({distance: distances.rows[0].elements[0].distance.text, duration: distances.rows[0].elements[0].duration.text})
+      // console.log(sendNewCaculatedLocationInfo);
+    })
+  }
+
+  sendNewCaculatedLocationInfo(distances){
+    // console.log(distances);
+    ({
+      distance: distances.rows[0].elements[0].distance.text,
+      duration: distances.rows[0].elements[0].duration.text,
     })
   }
 
 
+
+
     render() {
-      console.log(this.newProps); //currently returning correct amount of distances/durations but all the same one
+      console.log(this.finalAnswer);
+      // console.log(this.sendNewCaculatedLocationInfo()); //currently returning correct amount of distances/durations but all the same info
       return (
         <div className="resultsMapContainer">
           {this.findCurrentLocation()}
@@ -87,13 +100,11 @@ class BathroomList extends Component {
 
               {Object.keys(this.state.bathrooms).map((i) => {
                 let room = this.state.bathrooms[i];
-                let indivRoom = this.calculateDistances(room.longLat)
-                console.log(this.newProps);
                 return <Bathroom name={room.name}
                   address={room.address}
                   longLat={room.longLat}
                   needsCode={room.needsCode}
-
+                  distanceDuration={this.grabCurrentLocationInfo(room.longLat)}
                   needsKey={room.needsKey}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
@@ -109,8 +120,12 @@ class BathroomList extends Component {
           </div>
         </div>
       );
+      console.log(this.sendNewCaculatedLocationInfo());
     }
 }
+// let indivRoom = this.calculateDistances(room.longLat)
+// distance={this.newProps.distance}
+// duration={this.newProps.duration}
 
 //goes right below the <SearchBar>
 // {Object.keys(this.state.bathrooms).map((i) => {
