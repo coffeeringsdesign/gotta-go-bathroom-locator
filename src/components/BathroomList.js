@@ -66,20 +66,22 @@ class BathroomList extends Component {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    this.calculateDistances(origins, destinations, travelMode);
+    console.log(this.calculateDistances(origins, destinations, travelMode));
   }
 
   calculateDistances(origins, destinations, travelMode) {
-    distance.matrix(origins, destinations, travelMode, (err, distances) => {
-      this.sendNewCaculatedLocationInfo(distances);
-      // let sendNewCaculatedLocationInfo = distances => ({distance: distances.rows[0].elements[0].distance.text, duration: distances.rows[0].elements[0].duration.text})
-      // console.log(sendNewCaculatedLocationInfo);
+    return distance.matrix(origins, destinations, travelMode, (err, distances) => {
+
+      // console.log(this.sendNewCaculatedLocationInfo(distances));
+
+      //the above console log is getting back the exact object we want including the breakdown of the distance and duration
+      
+       return this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not a single one!!!!
     })
   }
 
-  sendNewCaculatedLocationInfo(distances){
-    // console.log(distances);
-    ({
+  sendNewCaculatedLocationInfo(distances) {
+    return ({
       distance: distances.rows[0].elements[0].distance.text,
       duration: distances.rows[0].elements[0].duration.text,
     })
@@ -89,8 +91,6 @@ class BathroomList extends Component {
 
 
     render() {
-      console.log(this.finalAnswer);
-      // console.log(this.sendNewCaculatedLocationInfo()); //currently returning correct amount of distances/durations but all the same info
       return (
         <div className="resultsMapContainer">
           {this.findCurrentLocation()}
@@ -105,6 +105,7 @@ class BathroomList extends Component {
                   longLat={room.longLat}
                   needsCode={room.needsCode}
                   distanceDuration={this.grabCurrentLocationInfo(room.longLat)}
+
                   needsKey={room.needsKey}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
@@ -120,7 +121,6 @@ class BathroomList extends Component {
           </div>
         </div>
       );
-      console.log(this.sendNewCaculatedLocationInfo());
     }
 }
 // let indivRoom = this.calculateDistances(room.longLat)
