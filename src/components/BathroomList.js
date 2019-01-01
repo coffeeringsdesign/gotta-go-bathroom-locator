@@ -4,6 +4,7 @@ import * as actions from './../actions';
 import Map from './Map';
 import './styles.scss';
 import SearchBar from './SearchBar';
+import AddBathroomForm from './AddBathroomForm';
 import Logo from './Logo';
 import CurrentLocation from './CurrentLocation';
 import {GoogleApiWrapper} from 'google-maps-react';
@@ -70,13 +71,13 @@ class BathroomList extends Component {
   }
 
   calculateDistances(origins, destinations, travelMode) {
-    return distance.matrix(origins, destinations, travelMode, (err, distances) => {
+     distance.matrix(origins, destinations, travelMode, (err, distances) => {
 
       // console.log(this.sendNewCaculatedLocationInfo(distances));
 
       //the above console log is getting back the exact object we want including the breakdown of the distance and duration
-      
-       return this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not a single one!!!!
+
+       this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not a single one!!!!
     })
   }
 
@@ -105,13 +106,13 @@ class BathroomList extends Component {
                   longLat={room.longLat}
                   needsCode={room.needsCode}
                   distanceDuration={this.grabCurrentLocationInfo(room.longLat)}
-
                   needsKey={room.needsKey}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
                   code={room.code}
                   id={room.id} />
               })},
+              <AddBathroomForm />
           </div>
           <div className="mapResultsContainer">
           {Object.keys(this.state.bathrooms).map((i) => {

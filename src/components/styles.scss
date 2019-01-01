@@ -87,6 +87,16 @@
   }
 }
 
+.addBathroomForm {
+  color: $white;
+  .newBathroomInputs {
+    width: 300px;
+  }
+  .newBathroomRadios {
+    margin-left: 20px;
+  }
+}
+
 .resultsMapContainer {
   margin-left: auto;
   margin-right: auto;
