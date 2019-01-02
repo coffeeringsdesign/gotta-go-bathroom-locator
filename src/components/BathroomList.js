@@ -48,7 +48,6 @@ class BathroomList extends Component {
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
           longLat: bathrooms[bathroom].longLat,
-          distance: bathrooms[bathroom].distance,
           needsCode: bathrooms[bathroom].needsCode,
           needsKey: bathrooms[bathroom].needsKey,
           handicapAccess: bathrooms[bathroom].handicapAccess,
@@ -67,7 +66,7 @@ class BathroomList extends Component {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    console.log(this.calculateDistances(origins, destinations, travelMode));
+    // console.log(this.calculateDistances(origins, destinations, travelMode));
   }
 
   calculateDistances(origins, destinations, travelMode) {
