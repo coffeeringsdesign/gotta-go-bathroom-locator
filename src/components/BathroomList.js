@@ -67,11 +67,11 @@ class BathroomList extends Component {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    this.calculateDistances(origins, destinations, travelMode);
+    return this.calculateDistances(origins, destinations, travelMode);
   }
 
   calculateDistances(origins, destinations, travelMode) {
-     distance.matrix(origins, destinations, travelMode, (err, distances) => {
+     return distance.matrix(origins, destinations, travelMode, (err, distances) => {
 
       // console.log(this.sendNewCaculatedLocationInfo(distances));
 
@@ -84,10 +84,10 @@ class BathroomList extends Component {
   sendNewCaculatedLocationInfo(distances) {
     // console.log(distances); getting to this point
     // console.log(distances.rows[0].elements[0].distance.text); working perfectly... now just to get it sent to bathroom
-    return ({
+    return {
       distance: distances.rows[0].elements[0].distance.text,
       duration: distances.rows[0].elements[0].duration.text,
-    })
+    }
   }
 
 
@@ -114,7 +114,7 @@ class BathroomList extends Component {
                   code={room.code}
                   id={room.id} />
               })},
-
+            <AddBathroomForm />
           </div>
           <div className="mapResultsContainer">
           {Object.keys(this.state.bathrooms).map((i) => {

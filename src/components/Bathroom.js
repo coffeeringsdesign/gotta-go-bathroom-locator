@@ -7,7 +7,7 @@ import codeIcon from './../assets/images/code-icon.png';
 import keyIcon from './../assets/images/key-icon.png';
 
 function Bathroom( props ) {
-  // console.log(props);
+  console.log(props);
   //
   // console.log(newProps);
   function renderGenderIcon() {
@@ -72,7 +72,7 @@ Bathroom.propTypes = {
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   longLat: PropTypes.object.isRequired,
-  // distanceDuration: PropTypes.func,
+  distanceDuration: PropTypes.object,
   // distance: PropTypes.string,
   // duration: PropTypes.string,
   needsCode: PropTypes.bool.isRequired,
