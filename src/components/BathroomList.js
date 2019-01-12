@@ -48,6 +48,7 @@ class BathroomList extends Component {
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
           longLat: bathrooms[bathroom].longLat,
+          distance: bathrooms[bathroom].distance,
           needsCode: bathrooms[bathroom].needsCode,
           needsKey: bathrooms[bathroom].needsKey,
           handicapAccess: bathrooms[bathroom].handicapAccess,
@@ -66,7 +67,7 @@ class BathroomList extends Component {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    // console.log(this.calculateDistances(origins, destinations, travelMode));
+    this.calculateDistances(origins, destinations, travelMode);
   }
 
   calculateDistances(origins, destinations, travelMode) {
@@ -76,11 +77,13 @@ class BathroomList extends Component {
 
       //the above console log is getting back the exact object we want including the breakdown of the distance and duration
 
-       this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not a single one!!!!
+       return this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not just a single one!!!!
     })
   }
 
   sendNewCaculatedLocationInfo(distances) {
+    // console.log(distances); getting to this point
+    // console.log(distances.rows[0].elements[0].distance.text); working perfectly... now just to get it sent to bathroom
     return ({
       distance: distances.rows[0].elements[0].distance.text,
       duration: distances.rows[0].elements[0].duration.text,
@@ -111,7 +114,7 @@ class BathroomList extends Component {
                   code={room.code}
                   id={room.id} />
               })},
-              <AddBathroomForm />
+
           </div>
           <div className="mapResultsContainer">
           {Object.keys(this.state.bathrooms).map((i) => {
