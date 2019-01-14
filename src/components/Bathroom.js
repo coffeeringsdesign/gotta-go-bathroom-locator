@@ -72,7 +72,7 @@ Bathroom.propTypes = {
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   longLat: PropTypes.object.isRequired,
-  distanceDuration: PropTypes.object,
+  distanceDuration: PropTypes.array,
   // distance: PropTypes.string,
   // duration: PropTypes.string,
   needsCode: PropTypes.bool.isRequired,

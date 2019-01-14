@@ -5,7 +5,7 @@ import firebase from 'firebase';
 class AddBathroomForm extends Component {
   constructor(props, { state }) {
     super(props, { state });
-    console.log(state);
+    // console.log(state);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

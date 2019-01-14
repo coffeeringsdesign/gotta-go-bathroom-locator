@@ -33,16 +33,16 @@ class BathroomList extends Component {
           lng: coords.longitude
         }
       });
-      // console.log(this.state.currentLocation);
     });
   }
 
+    //grabbing bathrooms from firebase and setting them as state
     componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
-      let bathrooms = snapshot.val(); //data is getting in from firebase
-      // console.log(bathrooms);
+      let bathrooms = snapshot.val();
       let newState = [];
+      let bathDistance;
       for (let bathroom in bathrooms) {
         newState.push({
           name: bathrooms[bathroom].name,
@@ -63,40 +63,56 @@ class BathroomList extends Component {
     });
   }
 
-  grabCurrentLocationInfo(longLat, newProps) {
+  calculateDistances(longLat) {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    return this.calculateDistances(origins, destinations, travelMode);
-  }
-
-  calculateDistances(origins, destinations, travelMode) {
-     return distance.matrix(origins, destinations, travelMode, (err, distances) => {
-
-      // console.log(this.sendNewCaculatedLocationInfo(distances));
-
-      //the above console log is getting back the exact object we want including the breakdown of the distance and duration
-
-       return this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not just a single one!!!!
+    let newMeasure = [];
+    var distanceFinal = distance.matrix(origins, destinations, travelMode, (err, distances) => {
+        newMeasure.push({
+          distance: distances.rows[0].elements[0].distance.text,
+          duration: distances.rows[0].elements[0].duration.text,
+        })
     })
-  }
-
-  sendNewCaculatedLocationInfo(distances) {
-    // console.log(distances); getting to this point
-    // console.log(distances.rows[0].elements[0].distance.text); working perfectly... now just to get it sent to bathroom
-    return {
-      distance: distances.rows[0].elements[0].distance.text,
-      duration: distances.rows[0].elements[0].duration.text,
-    }
+    console.log(newMeasure);
+    return newMeasure;
   }
 
 
+  // grabCurrentLocationInfo(longLat) {
+  //   const origins = [Object.values(this.state.currentLocation).join()];
+  //   const destinations = [Object.values(longLat).join()];
+  //   console.log(destinations);
+  //   const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
+  //   return this.calculateDistances(origins, destinations, travelMode);
+  // }
+  //
+  // calculateDistances(origins, destinations, travelMode) {
+  //     distance.matrix(origins, destinations, travelMode, (err, distances) => {
+  //
+  //     // console.log(this.sendNewCaculatedLocationInfo(distances));
+  //     let bathDistance = distances.rows[0].elements[0].distance.text;
+  //     return bathDistance;
+  //     //the above console log is getting back the exact object we want including the breakdown of the distance and duration
+  //
+  //       // this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not just a single one!!!!
+  //   })
+  // }
+  //
+  // sendNewCaculatedLocationInfo(distances) {
+  //   // console.log(distances); getting to this point
+  //   // console.log(distances.rows[0].elements[0].distance.text); working perfectly... now just to get it sent to bathroom
+  //
+  //   return distances.rows[0].elements[0].distance.text
+  // }
 
+// duration: distances.rows[0].elements[0].duration.text,
 
+//   {this.findCurrentLocation()} // this was being called near the top of the return = currently moved into componentDidMount
     render() {
       return (
         <div className="resultsMapContainer">
-          {this.findCurrentLocation()}
+                {this.findCurrentLocation()}
           <div className="listResultsContainer">
             <Logo />
             <SearchBar />
@@ -107,8 +123,8 @@ class BathroomList extends Component {
                   address={room.address}
                   longLat={room.longLat}
                   needsCode={room.needsCode}
-                  distanceDuration={this.grabCurrentLocationInfo(room.longLat)}
                   needsKey={room.needsKey}
+                  distanceDuration={this.calculateDistances(room.longLat)}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
                   code={room.code}
