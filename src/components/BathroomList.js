@@ -15,11 +15,13 @@ const distance = require('google-distance-matrix');
 distance.key(API_KEY);
 
 class BathroomList extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
       bathrooms: [],
-      currentLocation: null,
+      currentLocation: this.findCurrentLocation(),
       travelMode: ''
     }
   }
@@ -63,52 +65,29 @@ class BathroomList extends Component {
     });
   }
 
+
+
+
+
+
+
+
   calculateDistances(longLat) {
     const origins = [Object.values(this.state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    let newMeasure = [];
-    var distanceFinal = distance.matrix(origins, destinations, travelMode, (err, distances) => {
-        newMeasure.push({
-          distance: distances.rows[0].elements[0].distance.text,
-          duration: distances.rows[0].elements[0].duration.text,
-        })
+    distance.matrix(origins, destinations, travelMode, (err, distances) => {
+      let dist = distances.rows[0].elements[0].distance.text;
+      // console.log(dist);
+      // return dist
+      // return distance;
+        // distDurArray.push(distances.rows[0].elements[0].distance.text);
+        // distDurArray.push(distances.rows[0].elements[0].duration.text);
+        // return trial = new Array(distances.rows[0].elements[0].distance.text, distances.rows[0].elements[0].duration.text)
     })
-    console.log(newMeasure);
-    return newMeasure;
+    // return dist;
   }
 
-
-  // grabCurrentLocationInfo(longLat) {
-  //   const origins = [Object.values(this.state.currentLocation).join()];
-  //   const destinations = [Object.values(longLat).join()];
-  //   console.log(destinations);
-  //   const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-  //   return this.calculateDistances(origins, destinations, travelMode);
-  // }
-  //
-  // calculateDistances(origins, destinations, travelMode) {
-  //     distance.matrix(origins, destinations, travelMode, (err, distances) => {
-  //
-  //     // console.log(this.sendNewCaculatedLocationInfo(distances));
-  //     let bathDistance = distances.rows[0].elements[0].distance.text;
-  //     return bathDistance;
-  //     //the above console log is getting back the exact object we want including the breakdown of the distance and duration
-  //
-  //       // this.sendNewCaculatedLocationInfo(distances); // here distances are each one!!!!!! not just a single one!!!!
-  //   })
-  // }
-  //
-  // sendNewCaculatedLocationInfo(distances) {
-  //   // console.log(distances); getting to this point
-  //   // console.log(distances.rows[0].elements[0].distance.text); working perfectly... now just to get it sent to bathroom
-  //
-  //   return distances.rows[0].elements[0].distance.text
-  // }
-
-// duration: distances.rows[0].elements[0].duration.text,
-
-//   {this.findCurrentLocation()} // this was being called near the top of the return = currently moved into componentDidMount
     render() {
       return (
         <div className="resultsMapContainer">
@@ -142,26 +121,6 @@ class BathroomList extends Component {
       );
     }
 }
-// let indivRoom = this.calculateDistances(room.longLat)
-// distance={this.newProps.distance}
-// duration={this.newProps.duration}
-
-//goes right below the <SearchBar>
-// {Object.keys(this.state.bathrooms).map((i) => {
-//   let room = this.state.bathrooms[i];
-//   return <Bathroom name={room.name}
-//     address={room.address}
-//     longLat={room.longLat}
-//     needsCode={room.needsCode}
-//     distanceDuration={this.calculateDistances(room.longLat)}
-//     needsKey={room.needsKey}
-//     handicapAccess={room.handicapAccess}
-//     gendered={room.gendered}
-//     code={room.code}
-//     id={room.id} />
-// })},
-
-// distance={this.calculateDistances(room.longLat)}
 
 export default GoogleApiWrapper({
   apiKey: (API_KEY)
