@@ -6,7 +6,7 @@ const distance = require('google-distance-matrix');
 export function fetchDistanceDuration(longLat) {
   return function (dispatch) {
     const localLocation = v4();
-    const origins = [Object.values(this.state.currentLocation).join()];
+    const origins = [Object.values(state.currentLocation).join()];
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 

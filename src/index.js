@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import findIndivDistanceDurationReducer from './reducers/findIndivDistanceDurationReducer';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
