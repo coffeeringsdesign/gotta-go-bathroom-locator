@@ -20,8 +20,9 @@ distance.key(API_KEY);
 class BathroomList extends Component {
 
 
-  constructor(props) {
+  constructor(props, { dispatch }) {
     super(props);
+    console.log(props);
     this.state = {
       bathrooms: [],
       currentLocation: this.findCurrentLocation(),
@@ -48,7 +49,7 @@ class BathroomList extends Component {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-        dispatch()
+        // dispatch()
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
@@ -125,6 +126,10 @@ class BathroomList extends Component {
 }
 // distanceDuration={this.calculateDistances(room.longLat)}
 
-export default GoogleApiWrapper({
+BathroomList.propTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect()(GoogleApiWrapper({
   apiKey: (API_KEY)
-})(BathroomList)
+})(BathroomList))

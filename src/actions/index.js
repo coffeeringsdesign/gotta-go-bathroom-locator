@@ -8,7 +8,7 @@ export function fetchDistanceDuration(longLat) {
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 
-    return fetch(----api url goes here --).then(
+    return fetch(travelMode).then(
       response => response.json(),
       error => console.log('an error occured.', error)
     ).then(function(json) {
