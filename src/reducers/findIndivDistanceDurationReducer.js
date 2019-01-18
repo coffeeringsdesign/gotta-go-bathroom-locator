@@ -1,7 +1,7 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const findIndivDistanceDuration = (state = bathrooms, action) => {
+const findIndivDistanceDuration = (state = initialState.bathrooms, action) => {
   let newDistanceDurationSlice;
   switch (action.type) {
 
