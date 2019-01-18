@@ -6,13 +6,15 @@
     "firebase": "^5.7.0",
     "google-distance-matrix": "^1.1.1",
     "google-maps-react": "^2.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.10.0",
     "prop-types": "^15.5.10",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.0.6",
     "react-scripts": "2.1.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -44,7 +44,6 @@ class BathroomList extends Component {
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
       let newState = [];
-      let bathDistance;
       for (let bathroom in bathrooms) {
         newState.push({
           name: bathrooms[bathroom].name,
@@ -72,21 +71,21 @@ class BathroomList extends Component {
 
 
 
-  calculateDistances(longLat) {
-    const origins = [Object.values(this.state.currentLocation).join()];
-    const destinations = [Object.values(longLat).join()];
-    const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-    distance.matrix(origins, destinations, travelMode, (err, distances) => {
-      let dist = distances.rows[0].elements[0].distance.text;
-      // console.log(dist);
-      // return dist
-      // return distance;
-        // distDurArray.push(distances.rows[0].elements[0].distance.text);
-        // distDurArray.push(distances.rows[0].elements[0].duration.text);
-        // return trial = new Array(distances.rows[0].elements[0].distance.text, distances.rows[0].elements[0].duration.text)
-    })
-    // return dist;
-  }
+  // calculateDistances(longLat) {
+  //   const origins = [Object.values(this.state.currentLocation).join()];
+  //   const destinations = [Object.values(longLat).join()];
+  //   const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
+  //   distance.matrix(origins, destinations, travelMode, (err, distances) => {
+  //     let dist = distances.rows[0].elements[0].distance.text;
+  //     // console.log(dist);
+  //     // return dist
+  //     // return distance;
+  //       // distDurArray.push(distances.rows[0].elements[0].distance.text);
+  //       // distDurArray.push(distances.rows[0].elements[0].duration.text);
+  //       // return trial = new Array(distances.rows[0].elements[0].distance.text, distances.rows[0].elements[0].duration.text)
+  //   })
+  //   // return dist;
+  // }
 
     render() {
       return (
@@ -103,7 +102,6 @@ class BathroomList extends Component {
                   longLat={room.longLat}
                   needsCode={room.needsCode}
                   needsKey={room.needsKey}
-                  distanceDuration={this.calculateDistances(room.longLat)}
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
                   code={room.code}
@@ -121,6 +119,7 @@ class BathroomList extends Component {
       );
     }
 }
+// distanceDuration={this.calculateDistances(room.longLat)}
 
 export default GoogleApiWrapper({
   apiKey: (API_KEY)
