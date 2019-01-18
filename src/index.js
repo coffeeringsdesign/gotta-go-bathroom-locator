@@ -7,8 +7,10 @@ import { createStore } from 'redux';
 import findIndivDistanceDurationReducer from './reducers/findIndivDistanceDurationReducer';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+import middlewareLogger from './middleware/middleware-logger';
 
-const store = createStore(findIndivDistanceDurationReducer);
+const store = createStore(findIndivDistanceDurationReducer, applyMiddleware(middlewareLogger, thunkMiddleware));
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
@@ -18,7 +20,7 @@ const render = (Component) => {
   ReactDOM.render(
     <HashRouter>
       <Provider store={store}>
-        <Component/>
+        <App />
       </Provider>
     </HashRouter>,
     document.getElementById('root')
