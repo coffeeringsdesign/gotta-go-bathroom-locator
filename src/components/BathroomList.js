@@ -49,7 +49,7 @@ class BathroomList extends Component {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-        // dispatch()
+        // dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat));
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
@@ -126,9 +126,9 @@ class BathroomList extends Component {
 }
 // distanceDuration={this.calculateDistances(room.longLat)}
 
-BathroomList.propTypes = {
-  dispatch: PropTypes.func
-};
+// BathroomList.propTypes = {
+//   dispatch: PropTypes.func
+// };
 
 export default connect()(GoogleApiWrapper({
   apiKey: (API_KEY)
