@@ -1,5 +1,6 @@
 import constants from './../constants';
 import v4 from 'uuid/v4';
+import * as types from './../constants/ActionTypes';
 const distance = require('google-distance-matrix');
 
 export function fetchDistanceDuration(longLat) {
@@ -9,13 +10,30 @@ export function fetchDistanceDuration(longLat) {
     const destinations = [Object.values(longLat).join()];
     const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
 
-    return fetch(destinations).then(
+    return fetch(destinations)
+    .then(
       response => response.json(),
       error => console.log('an error occured.', error)
-    ).then(function(json) {
-      console.log('here is the api response', json);
-    });
-  };
+    ).then(json => {
+      console.log('api results:', json);
+      dispatch(findDistDur(json));
+      console.log(json);
+      return json
+    })
+  }
+}
+
+
+// dispatch(findDistDur(response)),
+// ).then(function(json) {
+// console.log('here is the api response', json);
+// });
+// };
+
+export const findDistDur = (dontknowwhatgoeshere) => {
+  return ({
+    type: types.FETCH_DISTANCE_DURATIONS,
+  })
 }
 
   // let dist = distances.rows[0].elements[0].distance.text;

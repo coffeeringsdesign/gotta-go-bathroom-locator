@@ -20,9 +20,10 @@ distance.key(API_KEY);
 class BathroomList extends Component {
 
 
-  constructor(props, { dispatch }) {
+  constructor(props) {
+    let dispatch = props.dispatch;
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       bathrooms: [],
       currentLocation: this.findCurrentLocation(),
@@ -44,12 +45,13 @@ class BathroomList extends Component {
 
     //grabbing bathrooms from firebase and setting them as state
     componentDidMount() {
+      // console.log(this.props);
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-        // dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat));
+      this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat));
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
