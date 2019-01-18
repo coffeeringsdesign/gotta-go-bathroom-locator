@@ -1,6 +1,5 @@
 export const initialState = {
   currentLocation: '',
-  // nearbyBathrooms: initialBathroomList,
   selectedLocation: {
     name: null,
     longLat: null
@@ -8,4 +7,5 @@ export const initialState = {
   activeMarker: null,
   showingInfoWindow: false,
   selectedPlace: null,
+  bathrooms: []
 };
