@@ -7,7 +7,10 @@ import SearchBar from './SearchBar';
 import AddBathroomForm from './AddBathroomForm';
 import Logo from './Logo';
 import CurrentLocation from './CurrentLocation';
-import {GoogleApiWrapper} from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
+import PropTypes from 'prop-types';
+import { fetchDistanceDuration } from './../actions';
+import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
 const firebase = require('firebase/app');
@@ -45,6 +48,7 @@ class BathroomList extends Component {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
+        dispatch()
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
