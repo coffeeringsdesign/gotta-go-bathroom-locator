@@ -51,7 +51,7 @@ class BathroomList extends Component {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-      this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat));
+      this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat, this.state));
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
