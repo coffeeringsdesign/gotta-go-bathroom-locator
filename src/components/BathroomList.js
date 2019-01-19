@@ -45,18 +45,19 @@ class BathroomList extends Component {
 
     //grabbing bathrooms from firebase and setting them as state
     componentDidMount() {
-      // console.log(this.props);
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-      this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat, this.state));
+      let indivBathlocation = this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom].longLat, this.state));
+      console.log(indivBathlocation);
         newState.push({
           name: bathrooms[bathroom].name,
           address: bathrooms[bathroom].address,
           longLat: bathrooms[bathroom].longLat,
           distance: bathrooms[bathroom].distance,
+
           needsCode: bathrooms[bathroom].needsCode,
           needsKey: bathrooms[bathroom].needsKey,
           handicapAccess: bathrooms[bathroom].handicapAccess,

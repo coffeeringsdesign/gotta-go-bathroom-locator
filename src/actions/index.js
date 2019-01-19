@@ -12,29 +12,21 @@ export function fetchDistanceDuration(longLat, props) {
     const travelMode = props.travelMode.length ? this.state.travelMode : 'WALKING';
 
     return fetch(distance.matrix(origins, destinations, travelMode, (err, distances) => {
-        console.log(distances.rows[0].elements[0].distance.text);}))
-    .then(
-      response => response.json(),
-      error => console.log('an error occured.', error)
-    ).then(json => {
-      console.log('api results:', json);
-      dispatch(findDistDur(json));
-      console.log(json);
-      return json
+      let dist = distances.rows[0].elements[0].distance.text;
+      let dur = distances.rows[0].elements[0].duration.text;
+      let distDurArray = [dist, dur];
+    })).then(distDurArray => {
+    dispatch(findDistDur(distDurArray));
     })
   }
 }
 
-export const findDistDur = (dontknowwhatgoeshere) => {
+export const findDistDur = distDurArray => {
   return ({
     type: types.FETCH_DISTANCE_DURATIONS,
+    distDurArray
   })
 }
-
-// return fetch(distance.matrix(origins, destinations, travelMode, (err, distances) => {
-//     let dist = distances.rows[0].elements[0].distance.text;
-//     let dur = distances.rows[0].elements[0].duration.text;}))
-
 
   // calculateDistances(longLat) {
   //   const origins = [Object.values(this.state.currentLocation).join()];
