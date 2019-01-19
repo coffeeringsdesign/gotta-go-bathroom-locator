@@ -38,7 +38,7 @@ function Bathroom( props ) {
   };
 
   function getIndivDurations() {
-    console.log(props.distanceDuration);
+    // console.log(props.distanceDuration);
     // let array = [0, 1, 2, 3, 4];
     // let duration = props.distanceDuration.pop();
     // console.log(array);
