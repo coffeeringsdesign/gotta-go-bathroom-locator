@@ -21,17 +21,19 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
     const origins = [Object.values(props.currentLocation).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
     const travelMode = props.travelMode.length ? this.state.travelMode : 'WALKING';
+    const distDurArray = [];
 
     return fetch(distance.matrix(origins, destinations, travelMode, (err, distances) => {
+
       let dist = distances.rows[0].elements[0].distance.text;
       let dur = distances.rows[0].elements[0].duration.text;
-      let distDurArray = [dist, dur]; //this is coming thru correctly
-    })).then(distDurArray => {
-    dispatch(findDistDur(distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId));
-    })
+      let distDurArray = [dist, dur];
+      console.log(distDurArray);
+    })).then(findDistDur(distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId))
   }
 }
 
+//all bathroom specs are reaching correctly below!!! need to get LongLat to work
 export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId) => {
   return ({
     type: types.FETCH_DISTANCE_DURATIONS,
