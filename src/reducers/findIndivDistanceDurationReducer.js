@@ -1,17 +1,17 @@
 import constants from './../constants';
-const { initialState, types } = constants;
+const { initialState, c } = constants;
 
 const findIndivDistanceDuration = (state = initialState.bathrooms, action) => {
-  let newDistanceDurationSlice;
-  switch (action.type) {
+  let newBathroomArraySlice; // getting called
+  const { distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId } = action;
 
-    // Mark the state as "loading" so we can show a spinner or something
-    // Also, reset any errors. We're starting fresh.
-    case types.FETCH_DISTANCE_DURATIONS:
+  switch (action.type) {
+    case c.FETCH_DISTANCE_DURATIONS:
+    console.log("bitch");
     const duration = action.duration;
     const distance = action.distance;
-    newDistanceDurationSlice = Object.assign({}, duration, distance);
-      return newDistanceDurationSlice;
+    newBathroomArraySlice = Object.assign({}, duration, distance);
+      return newBathroomArraySlice;
 
 // ALWAYS have a default case in a reducer
   default:
