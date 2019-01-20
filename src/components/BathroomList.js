@@ -40,11 +40,11 @@ class BathroomList extends Component {
           lng: coords.longitude
         }
       });
-    }).then(this.retrieveBathroomInfo);
+    });
   }
 
     //grabbing bathrooms from firebase and setting them as state
-    retrieveBathroomInfo() {
+    componentDidMount() {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
