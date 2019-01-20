@@ -38,15 +38,14 @@ export function fetchDistance(origins, destinations, travelMode, bathName, bathA
 
 //all bathroom specs are reaching correctly below!!!
 export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId) => ({
-    type: c.FETCH_DISTANCE_DURATIONS,
-    bDistance: distDurArray[0],
-    bDuration: distDurArray[1],
-    bName: bathName,
-    bAddress: bathAddress,
-    bNeedCode: bathNeedsCode,
-    bNeedKey: bathNeedsKey,
-    bHandicap: bathHandicapAccess,
-    bGendered: bathGendered,
-    bCode: bathCode,
-    bId: bathId,
-  });
+    type: types.FETCH_DISTANCE_DURATIONS,
+    distDurArray,
+    bathName,
+    bathAddress,
+    bathNeedsCode,
+    bathNeedsKey,
+    bathHandicapAccess,
+    bathGendered,
+    bathCode,
+    bathId,
+  }); //when logged the bathroom details are getting to this point
