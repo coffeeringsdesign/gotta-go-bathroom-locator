@@ -22,45 +22,26 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
     const origins = [Object.values(props.currentLocation).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
     const travelMode = props.travelMode.length ? this.state.travelMode : 'WALKING';
+    
     fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch);
   }
 }
 
 export function fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch) {
+
   return fetch(distance.matrix([origins], [destinations], [travelMode], (err, distances) => {
 
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
     let distDurArray = [dist, dur];
-    dispatch(findDistDur(distDurArray));
+
+    dispatch(findDistDur(distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId));
   }));
 }
-// , bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
 
+export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId) => {
 
-export const findDistDur = distDurArray => {
   return ({
     type: types.DISTANCE_DURATIONS,
-    distDurArray
+    distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
   });} //when logged the bathroom details are getting to this point
-
-
-
-
-
-
-//
-//
-// //all bathroom specs are reaching correctly below!!!
-// export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId) => ({
-//     type: types.FETCH_DISTANCE_DURATIONS,
-//     distDurArray,
-//     bathName,
-//     bathAddress,
-//     bathNeedsCode,
-//     bathNeedsKey,
-//     bathHandicapAccess,
-//     bathGendered,
-//     bathCode,
-//     bathId,
-//   }); //when logged the bathroom details are getting to this point

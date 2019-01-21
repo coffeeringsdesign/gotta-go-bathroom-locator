@@ -3,12 +3,25 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
+  let indivBathroomArray = [];
   let newBathroomArraySlice;
+
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-    const theArray = action.distDurArray;
-    console.log(theArray);
-    newBathroomArraySlice = Object.assign({}, theArray);
+    const bDistance = action.distDurArray[0];
+    const bDuration = action.distDurArray[1];
+    const bName = action.bathName;
+    const bAddress = action.bathAddress;
+    const bNeedsCode = action.bathNeedsCode;
+    const bNeedsKey = action.bathNeedsKey;
+    const bHandicapAccess = action.bathHandicapAccess;
+    const bGendered = action.bathGendered;
+    const bCode = action.bathCode;
+    const bId = action.bathId;
+    indivBathroomArray.push(bDistance, bDuration, bName, bAddress, bNeedsCode, bNeedsKey, bHandicapAccess, bGendered, bCode, bId);
+
+    console.log(indivBathroomArray);
+    // newBathroomArraySlice = Object.assign({}, theArray);
 
     return newBathroomArraySlice;
 
