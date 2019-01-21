@@ -5,5 +5,5 @@ import firebaseConfig from './firebaseConfig';
 export default {
   firebaseConfig: firebaseConfig,
   initialState: initialState,
-  c: types
+  types: types
 };
