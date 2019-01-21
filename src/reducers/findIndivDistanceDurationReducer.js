@@ -4,6 +4,7 @@ const { initialState, types } = constants;
 
 const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
   let indivBathroomArray = [];
+  let allBathroomArray = [];
   let newBathroomArraySlice;
 
   switch (action.type) {
@@ -18,9 +19,12 @@ const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action
     const bGendered = action.bathGendered;
     const bCode = action.bathCode;
     const bId = action.bathId;
+
     indivBathroomArray.push(bDistance, bDuration, bName, bAddress, bNeedsCode, bNeedsKey, bHandicapAccess, bGendered, bCode, bId);
 
-    console.log(indivBathroomArray);
+    allBathroomArray.push(indivBathroomArray);
+
+    console.log(allBathroomArray);
     // newBathroomArraySlice = Object.assign({}, theArray);
 
     return newBathroomArraySlice;

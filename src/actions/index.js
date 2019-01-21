@@ -21,15 +21,15 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
 
     const origins = [Object.values(props.currentLocation).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
-    const travelMode = props.travelMode.length ? this.state.travelMode : 'WALKING';
-    
+    const travelMode = 'WALKING';
+
     fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch);
   }
 }
 
 export function fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch) {
 
-  return fetch(distance.matrix([origins], [destinations], [travelMode], (err, distances) => {
+  return fetch(distance.matrix([origins], [destinations], travelMode, (err, distances) => {
 
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
