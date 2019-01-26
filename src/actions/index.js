@@ -37,7 +37,8 @@ export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, 
   return ({
     type: types.DISTANCE_DURATIONS,
     distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
-  });}
+  });
+}
 
 export function fetchCurrentLocation(coords, props, dispatch) {
   // props is state
@@ -46,10 +47,10 @@ export function fetchCurrentLocation(coords, props, dispatch) {
   findCurLocation(newCoords);
 };
 
-export const findCurLocation = newCoords => {
+export const findCurLocation = (newCoords) => {
   // coords are getting here
   return ({
     type: types.FIND_CURRENT_LOCATION,
     newCoords
-  })
+  });
 }

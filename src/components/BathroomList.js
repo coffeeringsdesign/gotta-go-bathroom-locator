@@ -22,12 +22,10 @@ class BathroomList extends Component {
 
 
   constructor(props) {
-    let dispatch = props.dispatch;
     super(props);
-    // console.log(props);
     this.state = {
       bathrooms: [],
-      currentLocation: this.findCurrentLocation(),
+      // currentLocation: this.findCurrentLocation(),
       travelMode: ''
     }
   }
