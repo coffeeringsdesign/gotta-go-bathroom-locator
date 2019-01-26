@@ -2,32 +2,36 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
-  let indivBathroomArray = [];
-  let allBathroomArray = [];
-  let newBathroomArraySlice;
+const findIndivDistanceDurationReducer = (state = initialState.individualBathroom, action) => {
+  let newBathroomArrayStateSlice;
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-    const bDistance = action.distDurArray[0];
-    const bDuration = action.distDurArray[1];
-    const bName = action.bathName;
-    const bAddress = action.bathAddress;
-    const bNeedsCode = action.bathNeedsCode;
-    const bNeedsKey = action.bathNeedsKey;
-    const bHandicapAccess = action.bathHandicapAccess;
-    const bGendered = action.bathGendered;
-    const bCode = action.bathCode;
-    const bId = action.bathId;
+    const newBathroom = ({
+      name: action.bathName,
+      address: action.bathAddress,
+      distance: action.distDurArray[0],
+      duration: action.distDurArray[1],
+      needsCode: action.bathNeedsCode,
+      needsKey: action.bathNeedsKey,
+      handicapAccess: action.bathHandicapAccess,
+      gendered: action.bathGendered,
+      code: action.bathCode,
+      id: action.bathId
+    })
+    console.log(newBathroom);
+    newBathroomArrayStateSlice = Object.assign({}, state, newBathroom);
 
-    indivBathroomArray.push(bDistance, bDuration, bName, bAddress, bNeedsCode, bNeedsKey, bHandicapAccess, bGendered, bCode, bId);
+    //so step 1: create an object of indiv bathroom properties. push it to an empty array,
+    //step 2: there is an empty array meant for all bathrooms in state.
+    //step 3: make a copy of that state bathroom array.
 
-    allBathroomArray.push(indivBathroomArray);
+    // allBathroomArray.push(indivBathroomArray);
 
-    console.log(allBathroomArray);
+    // console.log(newBathroomArrayStateSlice);
     // newBathroomArraySlice = Object.assign({}, theArray);
 
-    return newBathroomArraySlice;
+    return newBathroomArrayStateSlice;
 
 
 

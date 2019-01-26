@@ -7,5 +7,6 @@ export const initialState = {
   activeMarker: null,
   showingInfoWindow: false,
   selectedPlace: null,
+  individualBathroom: {},
   bathrooms: []
 };

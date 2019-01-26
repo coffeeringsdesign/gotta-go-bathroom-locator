@@ -52,50 +52,29 @@ class BathroomList extends Component {
       for (let bathroom in bathrooms) {
       let indivBathlocation = this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
       // console.log(indivBathlocation);
-        newState.push({
-          name: bathrooms[bathroom].name,
-          address: bathrooms[bathroom].address,
-          longLat: bathrooms[bathroom].longLat,
-          distance: bathrooms[bathroom].distance,
-
-          needsCode: bathrooms[bathroom].needsCode,
-          needsKey: bathrooms[bathroom].needsKey,
-          handicapAccess: bathrooms[bathroom].handicapAccess,
-          gendered: bathrooms[bathroom].gendered,
-          code: bathrooms[bathroom].code,
-          id: bathrooms[bathroom].id
-        })
+      //   newState.push({
+      //     name: bathrooms[bathroom].name,
+      //     address: bathrooms[bathroom].address,
+      //     longLat: bathrooms[bathroom].longLat,
+      //     distance: bathrooms[bathroom].distance,
+      //
+      //     needsCode: bathrooms[bathroom].needsCode,
+      //     needsKey: bathrooms[bathroom].needsKey,
+      //     handicapAccess: bathrooms[bathroom].handicapAccess,
+      //     gendered: bathrooms[bathroom].gendered,
+      //     code: bathrooms[bathroom].code,
+      //     id: bathrooms[bathroom].id
+      //   })
       }
-      this.setState({
-        bathrooms: newState
-      });
+      // console.log(this.state);
+      // this.setState({
+      //   bathrooms: newState
+      // });
     });
   }
 
-
-
-
-
-
-
-
-  // calculateDistances(longLat) {
-  //   const origins = [Object.values(this.state.currentLocation).join()];
-  //   const destinations = [Object.values(longLat).join()];
-  //   const travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING';
-  //   distance.matrix(origins, destinations, travelMode, (err, distances) => {
-  //     let dist = distances.rows[0].elements[0].distance.text;
-  //     // console.log(dist);
-  //     // return dist
-  //     // return distance;
-  //       // distDurArray.push(distances.rows[0].elements[0].distance.text);
-  //       // distDurArray.push(distances.rows[0].elements[0].duration.text);
-  //       // return trial = new Array(distances.rows[0].elements[0].distance.text, distances.rows[0].elements[0].duration.text)
-  //   })
-  //   // return dist;
-  // }
-
     render() {
+      console.log(this.state.individualBathroom);
       return (
         <div className="resultsMapContainer">
                 {this.findCurrentLocation()}
