@@ -40,13 +40,14 @@ export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, 
   });}
 
 export function fetchCurrentLocation(coords, props, dispatch) {
-  let newCoords = {lat: coords.latitude, lng: coords.longitude}
-
-  dispatch(findCurLocation(newCoords));
+  // props is state
+  let newCoords = {lat: coords.latitude, lng: coords.longitude};
+  // return newCoords;
+  findCurLocation(newCoords);
 };
 
 export const findCurLocation = newCoords => {
-  console.log(newCoords);
+  // coords are getting here
   return ({
     type: types.FIND_CURRENT_LOCATION,
     newCoords

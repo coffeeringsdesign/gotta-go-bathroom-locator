@@ -4,13 +4,13 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
-import findIndivDistanceDurationReducer from './reducers/findIndivDistanceDurationReducer';
+import rootReducer from './reducers/findIndivDistanceDurationReducer';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
 
-const store = createStore(findIndivDistanceDurationReducer, applyMiddleware(middlewareLogger, thunkMiddleware));
+const store = createStore(rootReducer, applyMiddleware(middlewareLogger, thunkMiddleware));
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
