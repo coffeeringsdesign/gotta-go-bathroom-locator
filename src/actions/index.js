@@ -8,7 +8,6 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
   // indivBathroomInfo is bringing in each bathroom entry individually
   // props contains bathroom array, currentLocation YAY and travelMode as empty string
   return function (dispatch) {
-
     const localLocation = v4();
     const bathName = indivBathroomInfo.name;
     const bathAddress = indivBathroomInfo.address;
@@ -18,30 +17,38 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
     const bathGendered = indivBathroomInfo.gendered;
     const bathCode = indivBathroomInfo.code;
     const bathId = indivBathroomInfo.id;
-
     const origins = [Object.values(props.currentLocation).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
     const travelMode = 'WALKING';
-
     fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch);
   }
 }
 
 export function fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch) {
-
   return fetch(distance.matrix([origins], [destinations], travelMode, (err, distances) => {
-
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
     let distDurArray = [dist, dur];
-
     dispatch(findDistDur(distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId));
   }));
 }
 
 export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId) => {
-
   return ({
     type: types.DISTANCE_DURATIONS,
     distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
-  });} //when logged the bathroom details are getting to this point
+  });}
+
+export function fetchCurrentLocation(coords, props, dispatch) {
+  let newCoords = {lat: coords.latitude, lng: coords.longitude}
+
+  dispatch(findCurLocation(newCoords));
+};
+
+export const findCurLocation = newCoords => {
+  console.log(newCoords);
+  return ({
+    type: types.FIND_CURRENT_LOCATION,
+    newCoords
+  })
+}

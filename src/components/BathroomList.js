@@ -10,6 +10,7 @@ import CurrentLocation from './CurrentLocation';
 import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import { fetchDistanceDuration } from './../actions';
+import { fetchCurrentLocation } from './../actions';
 import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
@@ -31,15 +32,23 @@ class BathroomList extends Component {
     }
   }
 
+  // findCurrentLocation() {
+  //   navigator.geolocation.getCurrentPosition(pos => {
+  //     const coords = pos.coords;
+  //     this.setState({
+  //       currentLocation: {
+  //         lat: coords.latitude,
+  //         lng: coords.longitude
+  //       }
+  //     });
+  //     console.log(this.state.currentLocation);
+  //   });
+  // }
+
   findCurrentLocation() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
-      this.setState({
-        currentLocation: {
-          lat: coords.latitude,
-          lng: coords.longitude
-        }
-      });
+      this.props.dispatch(fetchCurrentLocation(coords, this.state));
     });
   }
 
@@ -50,7 +59,11 @@ class BathroomList extends Component {
       let bathrooms = snapshot.val();
       let newState = [];
       for (let bathroom in bathrooms) {
-      let indivBathlocation = this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
+        if(this.state.currentLocation){
+          this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
+      } else {
+        return this.state;
+      }
       // console.log(indivBathlocation);
       //   newState.push({
       //     name: bathrooms[bathroom].name,
@@ -74,7 +87,7 @@ class BathroomList extends Component {
   }
 
     render() {
-      console.log(this.state.individualBathroom);
+      // console.log(this.state.individualBathroom);
       return (
         <div className="resultsMapContainer">
                 {this.findCurrentLocation()}

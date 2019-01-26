@@ -1,4 +1,3 @@
-
 import constants from './../constants';
 const { initialState, types } = constants;
 
@@ -21,6 +20,7 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
     })
     console.log(newBathroom);
     newBathroomArrayStateSlice = Object.assign({}, state, newBathroom);
+
 
     //so step 1: create an object of indiv bathroom properties. push it to an empty array,
     //step 2: there is an empty array meant for all bathrooms in state.

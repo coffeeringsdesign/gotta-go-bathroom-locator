@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 findCurrentLocation() {
   navigator.geolocation.getCurrentPosition(pos => {
     const coords = pos.coords;
