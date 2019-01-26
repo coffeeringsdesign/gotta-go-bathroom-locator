@@ -2,6 +2,7 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const findCurrentLocationReducer = (state = initialState.currentLocation, action) => {
+  console.log("yo botch");
   let newCurrentLocationStateSlice;
 
   switch (action.type) {
