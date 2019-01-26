@@ -2,18 +2,13 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const findCurrentLocationReducer = (state = initialState.currentLocation, action) => {
-  console.log("yo botch");
   let newCurrentLocationStateSlice;
 
   switch (action.type) {
     case types.FIND_CURRENT_LOCATION:
-    console.log(action);
-    newCurrentLocationStateSlice = Object.assign({}, state);
-
-
+    let coords = action.newCoords;
+    newCurrentLocationStateSlice = Object.assign({}, coords);
     return newCurrentLocationStateSlice;
-
-
 
   default:
     return state;
@@ -21,16 +16,3 @@ const findCurrentLocationReducer = (state = initialState.currentLocation, action
 }
 
 export default findCurrentLocationReducer;
-
-// findCurrentLocation() {
-//   navigator.geolocation.getCurrentPosition(pos => {
-//     const coords = pos.coords;
-//     this.setState({
-//       currentLocation: {
-//         lat: coords.latitude,
-//         lng: coords.longitude
-//       }
-//     });
-//     console.log(this.state.currentLocation);
-//   });
-// }

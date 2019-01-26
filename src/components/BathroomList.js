@@ -24,9 +24,7 @@ class BathroomList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bathrooms: [],
-      // currentLocation: this.findCurrentLocation(),
-      travelMode: ''
+      bathrooms: []
     }
   }
 
