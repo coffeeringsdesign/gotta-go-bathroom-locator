@@ -20,28 +20,17 @@ const distance = require('google-distance-matrix');
 distance.key(API_KEY);
 
 class BathroomList extends Component {
-
-
   constructor(props, state) {
     super(props, state);
     console.log(state);
-    // this.state = {
-    //   bathrooms: []
-    // }
+    console.log(this.props);
   }
 
-  // findCurrentLocation() {
-  //   navigator.geolocation.getCurrentPosition(pos => {
-  //     const coords = pos.coords;
-  //     this.setState({
-  //       currentLocation: {
-  //         lat: coords.latitude,
-  //         lng: coords.longitude
-  //       }
-  //     });
-  //     console.log(this.state.currentLocation);
-  //   });
-  // }
+  componentDidMount() {
+    // console.log(this.props.individualBathroom);
+    this.findCurrentLocation();
+    // this.fetchBathroomData();
+  }
 
   findCurrentLocation() {
     navigator.geolocation.getCurrentPosition(pos => {
@@ -50,49 +39,15 @@ class BathroomList extends Component {
     });
   }
 
-  fetchBathroomData(){
-    this.props.dispatch(fetchInitialBathroomInformation());
-  }
-
-    //grabbing bathrooms from firebase and setting them as state
-  //   findBathroomData() {
-  //   const bathroomsRef = firebase.database().ref('bathrooms');
-  //   bathroomsRef.on('value', (snapshot) => {
-  //     let bathrooms = snapshot.val();
-  //     let newState = [];
-  //     console.log('shiiiit');
-  //     for (let bathroom in bathrooms) {
-  //       if(this.state.currentLocation){
-  //         this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
-  //     } else {
-  //       return this.state;
-  //     }
-  //     // console.log(indivBathlocation);
-  //     //   newState.push({
-  //     //     name: bathrooms[bathroom].name,
-  //     //     address: bathrooms[bathroom].address,
-  //     //     longLat: bathrooms[bathroom].longLat,
-  //     //     distance: bathrooms[bathroom].distance,
-  //     //
-  //     //     needsCode: bathrooms[bathroom].needsCode,
-  //     //     needsKey: bathrooms[bathroom].needsKey,
-  //     //     handicapAccess: bathrooms[bathroom].handicapAccess,
-  //     //     gendered: bathrooms[bathroom].gendered,
-  //     //     code: bathrooms[bathroom].code,
-  //     //     id: bathrooms[bathroom].id
-  //     //   })
-  //     }
-  //     // console.log(this.state);
-  //     // this.setState({
-  //     //   bathrooms: newState
-  //     // });
-  //   });
+  // fetchBathroomData(){
+  //   // console.log(this.props);
+  //   this.props.dispatch(fetchInitialBathroomInformation());
   // }
 
     render() {
-      // console.log("bathroom list state:" + this.state);
-      this.findCurrentLocation();
-      this.fetchBathroomData();
+      // console.log("bathroom list state:" + this.props);
+      // this.findCurrentLocation();
+      // this.fetchBathroomData();
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -131,7 +86,7 @@ class BathroomList extends Component {
 
 
 // const mapStateToProps = state => {
-//   console.log(state);
+//   // console.log(state.currentLocation); these are comming in
 //   return {
 //     currentLocation: state.currentLocation,
 //     individualBathroom: state.individualBathroom
@@ -141,6 +96,7 @@ class BathroomList extends Component {
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func
 // };
+
 
 export default connect()(GoogleApiWrapper({
   apiKey: (API_KEY)

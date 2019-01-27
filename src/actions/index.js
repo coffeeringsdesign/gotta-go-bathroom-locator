@@ -9,13 +9,14 @@ const firebase = require('firebase/app');
 export function fetchCurrentLocation(coords, props) {
   return function (dispatch) {
     let newCoords = {lat: coords.latitude, lng: coords.longitude};
-    dispatch(findCurLocation(newCoords))
+    dispatch(findCurLocation(newCoords, dispatch));
   }
 }
 
-export const findCurLocation = newCoords => ({
+export const findCurLocation = (newCoords, dispatch) => ({
   type: types.FIND_CURRENT_LOCATION,
-  newCoords
+  newCoords,
+  dispatch
 })
 // FETCHING CURRENT LOCATION ENDS
 
@@ -42,6 +43,7 @@ export function fetchInitialBathroomInformation(newCoords) {
 
 // FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
 export function fetchDistanceDuration(indivBathroomInfo, props) {
+  console.log(props);
   return function (dispatch) {
     const localLocation = v4();
     const bathName = indivBathroomInfo.name;
