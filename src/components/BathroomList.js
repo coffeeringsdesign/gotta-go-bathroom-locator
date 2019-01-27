@@ -24,20 +24,13 @@ class BathroomList extends Component {
     // current location is now in props
   }
 
-  // componentDidMount() {
-  //   // console.log(this.props.individualBathroom);
-  //   this.findCurrentLocation();
-  //   // this.fetchBathroomData();
-  // }
-
-  // fetchBathroomData(){
-  //   // console.log(this.props);
-  //   this.props.dispatch(fetchInitialBathroomInformation());
-  // }
+  fetchBathroomData(){
+    // console.log(this.props);
+    this.props.dispatch(fetchInitialBathroomInformation(this.props.currentLocation));
+  }
 
     render() {
-      // console.log("bathroom list state:" + this.props);
-      // this.fetchBathroomData();
+      this.fetchBathroomData();
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
