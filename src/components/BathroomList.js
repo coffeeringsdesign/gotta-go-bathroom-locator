@@ -11,6 +11,7 @@ import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import { fetchDistanceDuration } from './../actions';
 import { fetchCurrentLocation } from './../actions';
+import { fetchInitialBathroomInformation } from './../actions';
 import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
@@ -21,8 +22,9 @@ distance.key(API_KEY);
 class BathroomList extends Component {
 
 
-  constructor(props) {
-    super(props);
+  constructor(props, state) {
+    super(props, state);
+    console.log(state);
     // this.state = {
     //   bathrooms: []
     // }
@@ -44,8 +46,12 @@ class BathroomList extends Component {
   findCurrentLocation() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
-      this.props.dispatch(fetchCurrentLocation(coords, this.state));
+      this.props.dispatch(fetchCurrentLocation(coords, this.props));
     });
+  }
+
+  fetchBathroomData(){
+    this.props.dispatch(fetchInitialBathroomInformation());
   }
 
     //grabbing bathrooms from firebase and setting them as state
@@ -84,8 +90,9 @@ class BathroomList extends Component {
   // }
 
     render() {
-      console.log("bathroom list state:" + this.state);
+      // console.log("bathroom list state:" + this.state);
       this.findCurrentLocation();
+      this.fetchBathroomData();
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -123,18 +130,18 @@ class BathroomList extends Component {
 // })},
 
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    currentLocation: state.currentLocation,
-    individualBathroom: state.individualBathroom
-  }
-}
+// const mapStateToProps = state => {
+//   console.log(state);
+//   return {
+//     currentLocation: state.currentLocation,
+//     individualBathroom: state.individualBathroom
+//   }
+// }
 
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func
 // };
 
-export default connect(mapStateToProps)(GoogleApiWrapper({
+export default connect()(GoogleApiWrapper({
   apiKey: (API_KEY)
 })(BathroomList))

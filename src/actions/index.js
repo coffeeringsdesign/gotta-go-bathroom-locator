@@ -7,12 +7,9 @@ const firebase = require('firebase/app');
 
 // FETCHING CURRENT LOCATION BEGINS  ------------ WORKING - setting current location to state
 export function fetchCurrentLocation(coords, props) {
-  console.log(props);
   return function (dispatch) {
     let newCoords = {lat: coords.latitude, lng: coords.longitude};
-    fetch(findCurLocation(newCoords)).then(
-      dispatch(fetchInitialBathroomInformation(newCoords))
-    );
+    dispatch(findCurLocation(newCoords))
   }
 }
 
@@ -22,7 +19,9 @@ export const findCurLocation = newCoords => ({
 })
 // FETCHING CURRENT LOCATION ENDS
 
-
+// .then(
+//   dispatch(fetchInitialBathroomInformation(newCoords))
+// );
 
 // FETCHING BATHROOMS FROM DATABASE BEGINS
 export function fetchInitialBathroomInformation(newCoords) {
