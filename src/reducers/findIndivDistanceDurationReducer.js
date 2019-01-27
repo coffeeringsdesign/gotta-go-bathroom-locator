@@ -6,6 +6,7 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
+    console.log('bitch');
     const newBathroom = ({
       name: action.bathName,
       address: action.bathAddress,
