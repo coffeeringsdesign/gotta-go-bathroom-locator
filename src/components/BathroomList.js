@@ -10,7 +10,6 @@ import CurrentLocation from './CurrentLocation';
 import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import { fetchDistanceDuration } from './../actions';
-import { fetchCurrentLocation } from './../actions';
 import { fetchInitialBathroomInformation } from './../actions';
 import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -20,24 +19,18 @@ const distance = require('google-distance-matrix');
 distance.key(API_KEY);
 
 class BathroomList extends Component {
-  constructor(props, state) {
-    super(props, state);
-    console.log(state);
+  constructor(props) {
+    super(props);
     console.log(this.props);
   }
 
-  componentDidMount() {
-    // console.log(this.props.individualBathroom);
-    this.findCurrentLocation();
-    // this.fetchBathroomData();
-  }
+  // componentDidMount() {
+  //   // console.log(this.props.individualBathroom);
+  //   this.findCurrentLocation();
+  //   // this.fetchBathroomData();
+  // }
 
-  findCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(pos => {
-      const coords = pos.coords;
-      this.props.dispatch(fetchCurrentLocation(coords, this.props));
-    });
-  }
+
 
   // fetchBathroomData(){
   //   // console.log(this.props);
@@ -85,19 +78,18 @@ class BathroomList extends Component {
 // })},
 
 
-// const mapStateToProps = state => {
-//   // console.log(state.currentLocation); these are comming in
-//   return {
-//     currentLocation: state.currentLocation,
-//     individualBathroom: state.individualBathroom
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    individualBathroom: state.individualBathroom,
+    currentLocation: state.currentLocation
+  };
+};
 
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func
 // };
 
 
-export default connect()(GoogleApiWrapper({
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)
 })(BathroomList))
