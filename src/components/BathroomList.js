@@ -23,9 +23,9 @@ class BathroomList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      bathrooms: []
-    }
+    // this.state = {
+    //   bathrooms: []
+    // }
   }
 
   // findCurrentLocation() {
@@ -116,7 +116,6 @@ class BathroomList extends Component {
       );
     }
 }
-// distanceDuration={this.calculateDistances(room.longLat)}
 
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func

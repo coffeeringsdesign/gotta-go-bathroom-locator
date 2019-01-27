@@ -5,6 +5,48 @@ const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
 
 
+// FETCHING CURRENT LOCATION BEGINS  ------------ WORKING - setting current location to state
+export function fetchCurrentLocation(coords, props) {
+  console.log(props);
+  return function (dispatch) {
+    let newCoords = {lat: coords.latitude, lng: coords.longitude};
+    fetch(findCurLocation(newCoords)).then(
+      dispatch(fetchInitialBathroomInformation(newCoords))
+    );
+  }
+}
+
+export const findCurLocation = newCoords => ({
+  type: types.FIND_CURRENT_LOCATION,
+  newCoords
+})
+// FETCHING CURRENT LOCATION ENDS
+
+
+
+// FETCHING BATHROOMS FROM DATABASE BEGINS
+export function fetchInitialBathroomInformation(newCoords) {
+  return function (dispatch) {
+    const bathroomsRef = firebase.database().ref('bathrooms');
+    bathroomsRef.on('value', (snapshot) => {
+      let bathrooms = snapshot.val();
+      for (let bathroom in bathrooms) {
+        console.log(bathrooms[bathroom]);
+        dispatch(fetchDistanceDuration(bathrooms[bathroom], newCoords));
+      }
+    })
+  }
+}
+
+// export const findCurLocation = newCoords => ({
+//   type: types.FIND_CURRENT_LOCATION,
+//   newCoords
+// })
+// FETCHING BATHROOMS FROM DATABASE ENDS
+
+
+
+// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
 export function fetchDistanceDuration(indivBathroomInfo, props) {
   // indivBathroomInfo is bringing in each bathroom entry individually
   // props contains bathroom array, currentLocation YAY and travelMode as empty string
@@ -40,36 +82,4 @@ export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, 
     distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
   });
 }
-
-export function fetchCurrentLocation(coords, props) {
-  return function (dispatch) {
-    let newCoords = {lat: coords.latitude, lng: coords.longitude};
-    fetch(findCurLocation(newCoords)).then(
-      dispatch(fetchInitialBathroomInformation())
-    );
-  }
-}
-
-export const findCurLocation = newCoords => ({
-  type: types.FIND_CURRENT_LOCATION,
-  newCoords
-})
-
-export function fetchInitialBathroomInformation() {
-  return function (dispatch) {
-    const bathroomsRef = firebase.database().ref('bathrooms');
-    bathroomsRef.on('value', (snapshot) => {
-      let bathrooms = snapshot.val();
-      let newState = [];
-      console.log('shiiiit');
-      for (let bathroom in bathrooms) {
-        this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
-      }
-    })
-  }
-}
-
-// export const findCurLocation = newCoords => ({
-//   type: types.FIND_CURRENT_LOCATION,
-//   newCoords
-// })
+// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
