@@ -49,44 +49,45 @@ class BathroomList extends Component {
   }
 
     //grabbing bathrooms from firebase and setting them as state
-    componentDidMount() {
-    const bathroomsRef = firebase.database().ref('bathrooms');
-    bathroomsRef.on('value', (snapshot) => {
-      let bathrooms = snapshot.val();
-      let newState = [];
-      for (let bathroom in bathrooms) {
-        if(this.state.currentLocation){
-          this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
-      } else {
-        return this.state;
-      }
-      // console.log(indivBathlocation);
-      //   newState.push({
-      //     name: bathrooms[bathroom].name,
-      //     address: bathrooms[bathroom].address,
-      //     longLat: bathrooms[bathroom].longLat,
-      //     distance: bathrooms[bathroom].distance,
-      //
-      //     needsCode: bathrooms[bathroom].needsCode,
-      //     needsKey: bathrooms[bathroom].needsKey,
-      //     handicapAccess: bathrooms[bathroom].handicapAccess,
-      //     gendered: bathrooms[bathroom].gendered,
-      //     code: bathrooms[bathroom].code,
-      //     id: bathrooms[bathroom].id
-      //   })
-      }
-      // console.log(this.state);
-      // this.setState({
-      //   bathrooms: newState
-      // });
-    });
-  }
+  //   findBathroomData() {
+  //   const bathroomsRef = firebase.database().ref('bathrooms');
+  //   bathroomsRef.on('value', (snapshot) => {
+  //     let bathrooms = snapshot.val();
+  //     let newState = [];
+  //     console.log('shiiiit');
+  //     for (let bathroom in bathrooms) {
+  //       if(this.state.currentLocation){
+  //         this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
+  //     } else {
+  //       return this.state;
+  //     }
+  //     // console.log(indivBathlocation);
+  //     //   newState.push({
+  //     //     name: bathrooms[bathroom].name,
+  //     //     address: bathrooms[bathroom].address,
+  //     //     longLat: bathrooms[bathroom].longLat,
+  //     //     distance: bathrooms[bathroom].distance,
+  //     //
+  //     //     needsCode: bathrooms[bathroom].needsCode,
+  //     //     needsKey: bathrooms[bathroom].needsKey,
+  //     //     handicapAccess: bathrooms[bathroom].handicapAccess,
+  //     //     gendered: bathrooms[bathroom].gendered,
+  //     //     code: bathrooms[bathroom].code,
+  //     //     id: bathrooms[bathroom].id
+  //     //   })
+  //     }
+  //     // console.log(this.state);
+  //     // this.setState({
+  //     //   bathrooms: newState
+  //     // });
+  //   });
+  // }
 
     render() {
-      // console.log(this.state.individualBathroom);
+      console.log("bathroom list state:" + this.state);
+      this.findCurrentLocation();
       return (
         <div className="resultsMapContainer">
-                {this.findCurrentLocation()}
           <div className="listResultsContainer">
             <Logo />
             <SearchBar />

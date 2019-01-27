@@ -8,5 +8,6 @@ export const initialState = {
   showingInfoWindow: false,
   selectedPlace: null,
   individualBathroom: {},
-  bathrooms: []
+  initialBathroomData: [],
+  Bathrooms: []
 };

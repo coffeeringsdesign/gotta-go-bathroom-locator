@@ -2,6 +2,7 @@ import constants from './../../src/constants';
 import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
 const distance = require('google-distance-matrix');
+const firebase = require('firebase/app');
 
 
 export function fetchDistanceDuration(indivBathroomInfo, props) {
@@ -43,7 +44,9 @@ export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, 
 export function fetchCurrentLocation(coords, props) {
   return function (dispatch) {
     let newCoords = {lat: coords.latitude, lng: coords.longitude};
-    dispatch(findCurLocation(newCoords));
+    fetch(findCurLocation(newCoords)).then(
+      dispatch(fetchInitialBathroomInformation())
+    );
   }
 }
 
@@ -51,3 +54,22 @@ export const findCurLocation = newCoords => ({
   type: types.FIND_CURRENT_LOCATION,
   newCoords
 })
+
+export function fetchInitialBathroomInformation() {
+  return function (dispatch) {
+    const bathroomsRef = firebase.database().ref('bathrooms');
+    bathroomsRef.on('value', (snapshot) => {
+      let bathrooms = snapshot.val();
+      let newState = [];
+      console.log('shiiiit');
+      for (let bathroom in bathrooms) {
+        this.props.dispatch(fetchDistanceDuration(bathrooms[bathroom], this.state));
+      }
+    })
+  }
+}
+
+// export const findCurLocation = newCoords => ({
+//   type: types.FIND_CURRENT_LOCATION,
+//   newCoords
+// })

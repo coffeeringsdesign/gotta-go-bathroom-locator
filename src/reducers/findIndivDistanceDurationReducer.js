@@ -2,7 +2,7 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const findIndivDistanceDurationReducer = (state = initialState.individualBathroom, action) => {
-  let newBathroomArrayStateSlice;
+  let newBathroomStateSlice;
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
@@ -19,19 +19,9 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
       id: action.bathId
     })
     console.log(newBathroom);
-    newBathroomArrayStateSlice = Object.assign({}, state, newBathroom);
+    newBathroomStateSlice = Object.assign({}, newBathroom);
 
-
-    //so step 1: create an object of indiv bathroom properties. push it to an empty array,
-    //step 2: there is an empty array meant for all bathrooms in state.
-    //step 3: make a copy of that state bathroom array.
-
-    // allBathroomArray.push(indivBathroomArray);
-
-    // console.log(newBathroomArrayStateSlice);
-    // newBathroomArraySlice = Object.assign({}, theArray);
-
-    return newBathroomArrayStateSlice;
+    return newBathroomStateSlice;
 
 
 
@@ -54,7 +44,7 @@ export default findIndivDistanceDurationReducer;
 //   let newBathroomArraySlice;
 //
 //   switch (action.types) {
-//     case type.FETCH_DISTANCE_DURATIONS:
+//     case type.DISTANCE_DURATIONS:
 //     console.log('YAYYYYYYYYY');
 //     const bathroomArray = [];
 //     bathroomArray.push(action.bathName, action.bathAddress, action.bathNeedsKey)
