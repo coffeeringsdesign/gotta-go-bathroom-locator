@@ -53,14 +53,23 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     fetchDistance(origins, destinations, travelMode, bathroomPropArray, dispatch);
   }
 }
+
 export function fetchDistance(origins, destinations, travelMode, bathroomPropArray, dispatch) {
-  return fetch(distance.matrix([origins], [destinations], travelMode, (err, distances) => {
+  fetch(distance.matrix([origins], [destinations], travelMode, (err, distances) => {
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
     let distDurArray = [dist, dur];
-    findDistDur(distDurArray, bathroomPropArray);
-  }));
+    return distDurArray;
+    // return (
+    //   dispatch(findDistDur(distDurArray, bathroomPropArray))
+    // )
+  })).then(
+    dispatch(findDistDur(distDurArray, bathroomPropArray))
+  )
 }
+// Right now... dispatch is only being fired once... like I want (no infinite loop), but I am unable to send out distDurArray due to it's local scoping within the fetch function
+
+
 export const findDistDur = (distDurArray, bathroomPropArray) => {
   return ({
     type: types.DISTANCE_DURATIONS,

@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   render(props) {
-    /////props is including Current Location
     this.findCurrentLocation();
     return (
       <div className="App">

@@ -1,5 +1,5 @@
 export const initialState = {
-  currentLocation: '',
+  currentLocation: null,
   selectedLocation: {
     name: null,
     longLat: null

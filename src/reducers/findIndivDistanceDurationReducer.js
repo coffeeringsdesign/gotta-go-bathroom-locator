@@ -6,7 +6,7 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-    console.log('bitch');
+console.log(action);
     const newBathroom = ({
       name: action.bathName,
       address: action.bathAddress,
@@ -23,6 +23,7 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
     return newBathroomStateSlice;
 
   default:
+  console.log('shit');
     return state;
   }
 }
