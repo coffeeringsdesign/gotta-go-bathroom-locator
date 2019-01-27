@@ -37,19 +37,12 @@ export function fetchInitialBathroomInformation(newCoords) {
     })
   }
 }
-
-// export const findCurLocation = newCoords => ({
-//   type: types.FIND_CURRENT_LOCATION,
-//   newCoords
-// })
-// FETCHING BATHROOMS FROM DATABASE ENDS
+// FETCHING BATHROOMS FROM DATABASE BEGINS
 
 
 
 // FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
 export function fetchDistanceDuration(indivBathroomInfo, props) {
-  // indivBathroomInfo is bringing in each bathroom entry individually
-  // props is current location
   return function (dispatch) {
     const localLocation = v4();
     const bathName = indivBathroomInfo.name;

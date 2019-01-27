@@ -123,10 +123,18 @@ class BathroomList extends Component {
 // })},
 
 
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    currentLocation: state.currentLocation,
+    individualBathroom: state.individualBathroom
+  }
+}
+
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func
 // };
 
-export default connect()(GoogleApiWrapper({
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)
 })(BathroomList))
