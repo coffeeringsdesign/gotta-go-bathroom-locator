@@ -6,9 +6,6 @@ import { fetchCurrentLocation } from './../actions';
 
 class App extends Component {
 
-
-
-
   findCurrentLocation() {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
@@ -16,22 +13,22 @@ class App extends Component {
     });
   }
 
-
-  render() {
+  render(props) {
+    /////props is including Current Location
     this.findCurrentLocation();
-    // console.log(this.props);  current location is getting to this fucking point
+    console.log(this.props);
     return (
       <div className="App">
         <div className="searchAndReturnContainer">
-          <BathroomList props={this.props}/>
+          <BathroomList />
         </div>
       </div>
     );
   }
 };
 
-
 const mapStateToProps = state => {
+  // currentLocation is coming thru
   return {
     individualBathroom: state.individualBathroom,
     currentLocation: state.currentLocation

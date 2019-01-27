@@ -12,7 +12,6 @@ export function fetchCurrentLocation(coords, props) {
     dispatch(findCurLocation(newCoords, dispatch));
   }
 }
-
 export const findCurLocation = (newCoords, dispatch) => ({
   type: types.FIND_CURRENT_LOCATION,
   newCoords,

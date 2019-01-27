@@ -21,7 +21,7 @@ distance.key(API_KEY);
 class BathroomList extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    // current location is now in props
   }
 
   // componentDidMount() {
@@ -30,8 +30,6 @@ class BathroomList extends Component {
   //   // this.fetchBathroomData();
   // }
 
-
-
   // fetchBathroomData(){
   //   // console.log(this.props);
   //   this.props.dispatch(fetchInitialBathroomInformation());
@@ -39,7 +37,6 @@ class BathroomList extends Component {
 
     render() {
       // console.log("bathroom list state:" + this.props);
-      // this.findCurrentLocation();
       // this.fetchBathroomData();
       return (
         <div className="resultsMapContainer">
