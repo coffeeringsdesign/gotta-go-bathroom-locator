@@ -30,8 +30,8 @@ export function fetchInitialBathroomInformation(newCoords) {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val();
+      // console.log(bathrooms); this is the array of all bathrooms
       for (let bathroom in bathrooms) {
-        console.log(bathrooms[bathroom]);
         dispatch(fetchDistanceDuration(bathrooms[bathroom], newCoords));
       }
     })
@@ -49,7 +49,7 @@ export function fetchInitialBathroomInformation(newCoords) {
 // FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
 export function fetchDistanceDuration(indivBathroomInfo, props) {
   // indivBathroomInfo is bringing in each bathroom entry individually
-  // props contains bathroom array, currentLocation YAY and travelMode as empty string
+  // props is current location
   return function (dispatch) {
     const localLocation = v4();
     const bathName = indivBathroomInfo.name;
@@ -60,7 +60,7 @@ export function fetchDistanceDuration(indivBathroomInfo, props) {
     const bathGendered = indivBathroomInfo.gendered;
     const bathCode = indivBathroomInfo.code;
     const bathId = indivBathroomInfo.id;
-    const origins = [Object.values(props.currentLocation).join()];
+    const origins = [Object.values(props).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
     const travelMode = 'WALKING';
     fetchDistance(origins, destinations, travelMode, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId, dispatch);
@@ -82,4 +82,4 @@ export const findDistDur = (distDurArray, bathName, bathAddress, bathNeedsCode, 
     distDurArray, bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId
   });
 }
-// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
+// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS ENDS

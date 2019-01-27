@@ -92,30 +92,36 @@ class BathroomList extends Component {
             <Logo />
             <SearchBar />
 
-              {Object.keys(this.state.bathrooms).map((i) => {
-                let room = this.state.bathrooms[i];
-                return <Bathroom name={room.name}
-                  address={room.address}
-                  longLat={room.longLat}
-                  needsCode={room.needsCode}
-                  needsKey={room.needsKey}
-                  handicapAccess={room.handicapAccess}
-                  gendered={room.gendered}
-                  code={room.code}
-                  id={room.id} />
-              })},
+
             <AddBathroomForm />
           </div>
           <div className="mapResultsContainer">
-          {Object.keys(this.state.bathrooms).map((i) => {
-            let rooms = this.state.bathrooms;
-            return <Map bathroom={rooms} />
-          })},
+
           </div>
         </div>
       );
     }
 }
+//   ----goes between searchbar and addbathroomform------
+// {Object.keys(this.state.bathrooms).map((i) => {
+//   let room = this.state.bathrooms[i];
+//   return <Bathroom name={room.name}
+//     address={room.address}
+//     longLat={room.longLat}
+//     needsCode={room.needsCode}
+//     needsKey={room.needsKey}
+//     handicapAccess={room.handicapAccess}
+//     gendered={room.gendered}
+//     code={room.code}
+//     id={room.id} />
+// })},
+
+//   ----goes in mapResultsContainer------
+// {Object.keys(this.state.bathrooms).map((i) => {
+//   let rooms = this.state.bathrooms;
+//   return <Map bathroom={rooms} />
+// })},
+
 
 // BathroomList.propTypes = {
 //   dispatch: PropTypes.func
