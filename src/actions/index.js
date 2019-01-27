@@ -4,43 +4,39 @@ import * as types from './../constants/ActionTypes';
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
 
-
 // FETCHING CURRENT LOCATION BEGINS  ------------ WORKING - setting current location to state
 export function fetchCurrentLocation(coords, props) {
   return function (dispatch) {
     let newCoords = {lat: coords.latitude, lng: coords.longitude};
     dispatch(findCurLocation(newCoords));
   }
-}
+};
 export const findCurLocation = (newCoords) => ({
   type: types.FIND_CURRENT_LOCATION,
   newCoords
-})
+});
 
 
 
-// FETCHING BATHROOMS FROM DATABASE BEGINS
+// FETCHING BATHROOMS FROM DATABASE BEGINS  ------------ WORKING - gets information of each bathroom - sends it and current location onto fetch distance duration function
 export function fetchInitialBathroomInformation(currentLocationCoords, dispatch) {
-  return function () {
-    console.log(currentLocationCoords);
+  return function (dispatch) {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
-      let bathrooms = snapshot.val();
-      // console.log(bathrooms); this is the array of all bathrooms
+      let bathrooms = snapshot.val(); //bathrooms is array of indiv bathrooms
       for (let bathroom in bathrooms) {
+        //above is looping through recieved bathrooms
         dispatch(fetchDistanceDuration(bathrooms[bathroom], currentLocationCoords));
       }
     })
   }
-}
+};
 
 
 
-// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS
+// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS------------ WORKING gets curLocCoords and indivBathrooms
 export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) {
-  // console.log(this.state);
   return function (dispatch) {
-    const localLocation = v4();
     const bathName = indivBathroomInfo.name;
     const bathAddress = indivBathroomInfo.address;
     const bathNeedsCode = indivBathroomInfo.needsCode;
