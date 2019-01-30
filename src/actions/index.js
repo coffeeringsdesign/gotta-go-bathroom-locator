@@ -3,6 +3,7 @@ import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
+const blah = distance.matrix;
 
 // FETCHING CURRENT LOCATION BEGINS  ------------ WORKING - setting current location to state
 export function fetchCurrentLocation(coords, props) {
@@ -53,6 +54,8 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     fetchDistance(origins, destinations, travelMode, bathroomPropArray, dispatch);
   }
 }
+
+
 export function fetchDistance(origins, destinations, travelMode, bathroomPropArray, dispatch) {
   return fetch(distance.matrix([origins], [destinations], travelMode, (err, distances) => {
     let dist = distances.rows[0].elements[0].distance.text;
@@ -61,10 +64,10 @@ export function fetchDistance(origins, destinations, travelMode, bathroomPropArr
     dispatch(findDistDur(distDurArray, bathroomPropArray));
   }));
 }
-export const findDistDur = (distDurArray, bathroomPropArray) => {
+export const findDistDur = (distDurArray, bathroom) => {
   return ({
     type: types.DISTANCE_DURATIONS,
     distDurArray,
-    bathroomPropArray
+    bathroom
   });
 }

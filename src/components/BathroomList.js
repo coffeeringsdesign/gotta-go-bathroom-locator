@@ -70,7 +70,7 @@ class BathroomList extends Component {
 
 const mapStateToProps = state => {
   return {
-    individualBathroom: state.individualBathroom,
+    // individualBathroom: state.individualBathroom,
     currentLocation: state.currentLocation
   };
 };

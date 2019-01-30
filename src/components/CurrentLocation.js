@@ -39,22 +39,22 @@ export class CurrentLocation extends React.Component {
      }
     }
 
-    componentDidMount() {
-    if (this.props.centerAroundCurrentLocation) {
-      if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
-          const coords = pos.coords;
-          this.setState({
-            currentLocation: {
-              lat: coords.latitude,
-              lng: coords.longitude
-            }
-          });
-        });
-      }
-    }
-    this.loadMap();
-  }
+  //   componentDidMount() {
+  //   if (this.props.centerAroundCurrentLocation) {
+  //     if (navigator && navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(pos => {
+  //         const coords = pos.coords;
+  //         this.setState({
+  //           currentLocation: {
+  //             lat: coords.latitude,
+  //             lng: coords.longitude
+  //           }
+  //         });
+  //       });
+  //     }
+  //   }
+  //   this.loadMap();
+  // }
 
     loadMap() {
       if (this.props && this.props.google) {
