@@ -1,9 +1,10 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const findIndivDistanceDurationReducer = (state = initialState.individualBathroom, action) => {
+const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
   let newBathroomStateSlice;
 
+  console.log(state);
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
     const newBathroom = ({
@@ -18,8 +19,11 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
       code: action.bathroom[6],
       id: action.bathroom[7]
     })
-    newBathroomStateSlice = Object.assign({}, newBathroom);
-    return newBathroomStateSlice;
+
+    return [
+        ...state,
+        arr: [...state.bathrooms, newBathroom]
+    ]
 
   default:
     return state;
@@ -27,3 +31,12 @@ const findIndivDistanceDurationReducer = (state = initialState.individualBathroo
 }
 
 export default findIndivDistanceDurationReducer;
+
+//
+// function insertItem(array, action) {
+//   return [
+//     ...array.slice(0, action.index),
+//     action.item,
+//     ...array.slice(action.index)
+//   ]
+// }
