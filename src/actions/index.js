@@ -82,3 +82,40 @@ export const reorderBathrooms = bathrooms => {
     bathrooms
   })
 }
+
+
+// ACTIVE Marker
+export function activeMarker(dispatch){
+  return function (dispatch) {
+    dispatch(setActiveMarker());
+  }
+}
+export const setActiveMarker = () => {
+  return({
+    type: types.ACTIVE_MARKER
+  })
+}
+
+// SHOWING INFO WINDOW
+export function showInfoWindow(dispatch){
+  return function (dispatch) {
+    dispatch(letsShowInfoWindow());
+  }
+}
+export const letsShowInfoWindow = () => {
+  return({
+    type: types.SHOW_INFO_WINDOW
+  })
+}
+
+  // SELECTED A PLACE
+export function selectAPlace(dispatch){
+  return function (dispatch) {
+    dispatch(selectedAPlace());
+  }
+}
+export const selectedAPlace = () => {
+  return({
+    type: types.SELECT_A_PLACE
+  })
+}

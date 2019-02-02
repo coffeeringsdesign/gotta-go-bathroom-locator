@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './styles.scss';
 import CurrentLocation from './CurrentLocation';
+import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+  // state = {
+  //   showingInfoWindow: false,
+  //   activeMarker: {},
+  //   selectedPlace: {}
+  // };
 
 
   onMarkerClick = (props, marker, e) =>
@@ -60,6 +65,7 @@ export class MapContainer extends Component {
 
 
   render() {
+    console.log(this.props);
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
       return <Marker name={room.name}
@@ -113,7 +119,17 @@ export class MapContainer extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    // currentLocation: state.currentLocation,
+    // bathrooms: state.bathrooms,
+    // nearestBathrooms: state.nearestBathrooms
+    activeMarker: state.activeMarker,
+    showingInfoWindow: state.showingInfoWindow,
+    selectedPlace: state.selectedPlace
+  };
+};
 
-export default GoogleApiWrapper({
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)
-})(MapContainer)
+})(MapContainer))

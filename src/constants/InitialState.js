@@ -4,9 +4,9 @@ export const initialState = {
     name: null,
     longLat: null
   },
-  activeMarker: null,
+  activeMarker: {},
   showingInfoWindow: false,
-  selectedPlace: null,
+  selectedPlace: {},
   bathrooms: [],
   nearestBathrooms: []
 };
