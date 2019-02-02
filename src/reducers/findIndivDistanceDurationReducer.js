@@ -4,12 +4,9 @@ const { initialState, types } = constants;
 const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
   let newBathroomStateSlice;
 
-  console.log(state);
+  console.log(this + "bitch");
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-    // const newBathroom = ({
-    //
-    // })
 
     return [
         ...state,
@@ -33,12 +30,3 @@ const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action
 }
 
 export default findIndivDistanceDurationReducer;
-
-//
-// function insertItem(array, action) {
-//   return [
-//     ...array.slice(0, action.index),
-//     action.item,
-//     ...array.slice(action.index)
-//   ]
-// }

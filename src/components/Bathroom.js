@@ -9,6 +9,7 @@ import keyIcon from './../assets/images/key-icon.png';
 function Bathroom( props ) {
 
   function renderGenderIcon() {
+    console.log(this);
     if(props.gendered === false) {
       return(
         <img className="icon" src={genderedIcon} alt="is gender neutral" />
@@ -37,15 +38,7 @@ function Bathroom( props ) {
     }
   };
 
-  function getIndivDurations() {
-    // console.log(props.distanceDuration);
-    // let array = [0, 1, 2, 3, 4];
-    // let duration = props.distanceDuration.pop();
-    // console.log(array);
-  }
 
-
-// <h3 className="distance">{props.distanceDuration}</h3>
   const bathroomInformation =
     <div className="indivBathroomDisplay">
       <div className="bathroomTextInfoBlock">
@@ -57,7 +50,7 @@ function Bathroom( props ) {
         <div className="stackedNameAddressLines">
           <div className="nameDistanceLine">
             <h3>{props.name}</h3>
-            <h5>{getIndivDurations()}</h5>
+            <h5></h5>
           </div>
           <h3 className="addressLine">{props.address}</h3>
         </div>
@@ -83,9 +76,8 @@ Bathroom.propTypes = {
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   longLat: PropTypes.object.isRequired,
-  distanceDuration: PropTypes.any,
-  // distance: PropTypes.string,
-  // duration: PropTypes.string,
+  distance: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
   needsCode: PropTypes.bool.isRequired,
   needsKey: PropTypes.bool.isRequired,
   handicapAccess: PropTypes.bool.isRequired,

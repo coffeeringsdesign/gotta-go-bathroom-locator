@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    // current location is now in props
+  }
 
   findCurrentLocation() {
     navigator.geolocation.getCurrentPosition(pos => {
@@ -14,7 +18,9 @@ class App extends Component {
   }
 
   render(props) {
-    this.findCurrentLocation();
+    if (!this.props.currentLocation) {
+      this.findCurrentLocation();
+    }
     return (
       <div className="App">
         <div className="searchAndReturnContainer">
@@ -26,7 +32,6 @@ class App extends Component {
 };
 
 const mapStateToProps = state => {
-  // currentLocation is coming thru
   return {
     individualBathroom: state.individualBathroom,
     currentLocation: state.currentLocation
