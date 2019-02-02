@@ -2,7 +2,6 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const findDistanceDurationReducer = (state = initialState.bathrooms, action) => {
-  let newBathroomStateSlice;
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:

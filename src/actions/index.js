@@ -4,7 +4,7 @@ import * as types from './../constants/ActionTypes';
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
 
-// FETCHING CURRENT LOCATION BEGINS  ------------ WORKING - setting current location to state
+// FETCHING CURRENT LOCATION
 export function fetchCurrentLocation(coords, props) {
   return function (dispatch) {
     let newCoords = {lat: coords.latitude, lng: coords.longitude};
@@ -18,7 +18,7 @@ export const findCurLocation = (newCoords) => ({
 
 
 
-// FETCHING BATHROOMS FROM DATABASE BEGINS  ------------ WORKING - gets information of each bathroom - sends it and current location onto fetch distance duration function
+// FETCHING BATHROOMS FROM DATABASE
 export function fetchInitialBathroomInformation(currentLocationCoords, dispatch) {
   return function (dispatch) {
     const bathroomsRef = firebase.database().ref('bathrooms');
@@ -34,7 +34,7 @@ export function fetchInitialBathroomInformation(currentLocationCoords, dispatch)
 
 
 
-// FETCHING DISTANCE & DURATION AND MAKING INDIVIDUAL BATHROOM OBJECTS BEGINS------------ WORKING gets curLocCoords and indivBathrooms
+// FETCHING DISTANCE & DURATION
 export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) {
   return function (dispatch) {
     const bathroomPropArray = [];
@@ -71,7 +71,9 @@ export const findDistDur = (distDurArray, bathroom) => {
 
 // REORERING THE BATHROOMS NEAREST USER
 export function reorderNearestBathrooms(bathrooms, dispatch){
-  dispatch(reorderBathrooms(bathrooms));
+  return function (dispatch) {
+    dispatch(reorderBathrooms(bathrooms));
+  }
 }
 
 export const reorderBathrooms = bathrooms => {
