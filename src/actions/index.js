@@ -27,9 +27,7 @@ export function fetchInitialBathroomInformation(currentLocationCoords, dispatch)
       let bathrooms = snapshot.val(); //bathrooms is array of indiv bathrooms
       for (let bathroom in bathrooms) {
         //above is looping through recieved bathrooms
-        if (this.state.bathrooms = null) {
-          dispatch(fetchDistanceDuration(bathrooms[bathroom], currentLocationCoords));
-        }
+        dispatch(fetchDistanceDuration(bathrooms[bathroom], currentLocationCoords));
       }
     })
   }

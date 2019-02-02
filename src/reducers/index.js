@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import findCurrentLocationReducer from './findCurrentLocationReducer';
-import findIndivDistanceDurationReducer from './findIndivDistanceDurationReducer';
+import findDistanceDurationReducer from './findDistanceDurationReducer';
 
 const rootReducer = combineReducers({
   currentLocation: findCurrentLocationReducer,
-  individualBathroom: findIndivDistanceDurationReducer
+  bathrooms: findDistanceDurationReducer
 });
 
 export default rootReducer;

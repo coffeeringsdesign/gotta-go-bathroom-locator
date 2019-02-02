@@ -23,18 +23,18 @@ class BathroomList extends Component {
     super(props);
     // current location is now in props
   }
-  //
-  // fetchBathroomData(){
-  //   if (this.props.currentLocation) {
-  //     this.props.dispatch(fetchInitialBathroomInformation(this.props.currentLocation));
-  //   } else {
-  //     this.fetchBathroomData()
-  //   }
-  // }
+
+  fetchBathroomData(){
+    if (this.props.currentLocation && !this.props.bathrooms[0]) {
+      this.props.dispatch(fetchInitialBathroomInformation(this.props.currentLocation));
+    } else {
+      this.fetchBathroomData()
+    }
+  }
 
     render() {
       // console.log(this.props);
-      // this.fetchBathroomData();
+      this.fetchBathroomData();
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -74,7 +74,6 @@ class BathroomList extends Component {
 
 const mapStateToProps = state => {
   return {
-    // individualBathroom: state.individualBathroom,
     currentLocation: state.currentLocation,
     bathrooms: state.bathrooms
   };

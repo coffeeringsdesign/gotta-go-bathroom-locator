@@ -1,13 +1,11 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action) => {
+const findDistanceDurationReducer = (state = initialState.bathrooms, action) => {
   let newBathroomStateSlice;
 
-  console.log(this + "bitch");
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-
     return [
         ...state,
         {
@@ -29,4 +27,4 @@ const findIndivDistanceDurationReducer = (state = initialState.bathrooms, action
   }
 }
 
-export default findIndivDistanceDurationReducer;
+export default findDistanceDurationReducer;

@@ -33,7 +33,6 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    individualBathroom: state.individualBathroom,
     currentLocation: state.currentLocation
   };
 };
