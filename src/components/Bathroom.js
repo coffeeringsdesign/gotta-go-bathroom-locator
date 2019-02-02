@@ -9,7 +9,6 @@ import keyIcon from './../assets/images/key-icon.png';
 function Bathroom( props ) {
 
   function renderGenderIcon() {
-    console.log(this);
     if(props.gendered === false) {
       return(
         <img className="icon" src={genderedIcon} alt="is gender neutral" />
@@ -44,13 +43,13 @@ function Bathroom( props ) {
       <div className="bathroomTextInfoBlock">
 
         <div>
-          <h3 className="numbered">{props.id})</h3>
+          <h3 className="numbered">{props.count})</h3>
         </div>
 
         <div className="stackedNameAddressLines">
           <div className="nameDistanceLine">
             <h3>{props.name}</h3>
-            <h5></h5>
+            <h5>{props.distance} {props.duration}</h5>
           </div>
           <h3 className="addressLine">{props.address}</h3>
         </div>
@@ -83,6 +82,7 @@ Bathroom.propTypes = {
   handicapAccess: PropTypes.bool.isRequired,
   gendered: PropTypes.bool.isRequired,
   code: PropTypes.string.isRequired,
+  count: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 }
 

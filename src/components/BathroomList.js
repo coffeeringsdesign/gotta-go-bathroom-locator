@@ -46,6 +46,7 @@ class BathroomList extends Component {
           <div className="listResultsContainer">
             <Logo />
               {Object.keys(this.props.nearestBathrooms).map((i) => {
+                let count = parseInt(i) + 1;
                 let room = this.props.nearestBathrooms[i];
                 return <Bathroom name={room.name}
                   address={room.address}
@@ -57,6 +58,7 @@ class BathroomList extends Component {
                   handicapAccess={room.handicapAccess}
                   gendered={room.gendered}
                   code={room.code}
+                  count={count}
                   id={room.id} />
               })},
             <AddBathroomForm />
