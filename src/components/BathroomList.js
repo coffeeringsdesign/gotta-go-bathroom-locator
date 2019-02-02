@@ -11,6 +11,7 @@ import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import { fetchDistanceDuration } from './../actions';
 import { fetchInitialBathroomInformation } from './../actions';
+import { reorderNearestBathrooms } from './../actions';
 import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
@@ -27,14 +28,18 @@ class BathroomList extends Component {
   fetchBathroomData(){
     if (this.props.currentLocation && !this.props.bathrooms[0]) {
       this.props.dispatch(fetchInitialBathroomInformation(this.props.currentLocation));
-    } else {
-      this.fetchBathroomData()
+    }
+  }
+
+  reorderBathrooms(){
+    if (this.props.bathrooms[10]) {
+      this.props.dispatch(reorderNearestBathrooms(this.props.bathrooms));
     }
   }
 
     render() {
-      // console.log(this.props);
       this.fetchBathroomData();
+      this.reorderBathrooms();
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">

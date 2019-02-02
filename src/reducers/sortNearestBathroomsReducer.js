@@ -1,7 +1,7 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const findDistanceDurationReducer = (state = initialState.bathrooms, action) => {
+const sortNearestBathroomsReducer = (state = initialState.bathrooms, action) => {
   let newBathroomStateSlice;
 
   switch (action.type) {
@@ -28,4 +28,4 @@ const findDistanceDurationReducer = (state = initialState.bathrooms, action) => 
   }
 }
 
-export default findDistanceDurationReducer;
+export default sortNearestBathroomsReducer;
