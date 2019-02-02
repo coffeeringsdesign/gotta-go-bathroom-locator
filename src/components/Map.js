@@ -10,12 +10,6 @@ export class MapContainer extends Component {
     super(props);
     console.log(props);
   }
-  // state = {
-  //   showingInfoWindow: false,
-  //   activeMarker: {},
-  //   selectedPlace: {}
-  // };
-
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -35,28 +29,28 @@ export class MapContainer extends Component {
 
   // JUST THE CONDITIONAL RENDER OF BATHROOMS
   keyedModalValues() {
-    if (this.state.selectedPlace.needsKey === true) {
+    if (this.props.selectedPlace.needsKey === true) {
       return <h5>Requires Key: Yes</h5>;
     } else {
       return <h5>Requires Key: No</h5>;
     }
   };
   codedModalValues() {
-    if (this.state.selectedPlace.needsCode === true) {
-      return <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
+    if (this.props.selectedPlace.needsCode === true) {
+      return <h5>Requires Code: {this.props.selectedPlace.code}</h5>;
     } else {
       return <h5>Requires Code: No</h5>;
     }
   };
   handicapModalValues() {
-    if (this.state.selectedPlace.handicapAccess === true) {
+    if (this.props.selectedPlace.handicapAccess === true) {
       return <h5>Handicap Accessable: Yes</h5>;
     } else {
       return <h5>Handicap Accessable: No</h5>
     }
   };
   genderedModalValues() {
-    if (this.state.selectedPlace.gendered === true) {
+    if (this.props.selectedPlace.gendered === true) {
       return <h5>Gender Neutral: No</h5>;
     } else {
       return <h5>Gender Neutral: Yes</h5>;
@@ -99,13 +93,13 @@ export class MapContainer extends Component {
               scaledSize: new this.props.google.maps.Size(40,40)}} />
           {markerLoop}
           <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
+            marker={this.props.activeMarker}
+            visible={this.props.showingInfoWindow}
             onClose={this.onClose}>
 
             <div className="mapModalStyles">
-              <h3>{this.state.selectedPlace.name}</h3>
-              <h4>{this.state.selectedPlace.address}</h4>
+              <h3>{this.props.selectedPlace.name}</h3>
+              <h4>{this.props.selectedPlace.address}</h4>
               <h5>{this.keyedModalValues()}</h5>
               <h5>{this.codedModalValues()}</h5>
               <h5>{this.handicapModalValues()}</h5>
