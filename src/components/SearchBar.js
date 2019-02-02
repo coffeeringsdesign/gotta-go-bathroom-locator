@@ -9,7 +9,6 @@ function SearchBar() {
         <button className="searchButton" type="submit">Search</button>
         <button>Add</button>
       </form>
-      <h2></h2>
     </div>
   )
 };

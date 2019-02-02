@@ -9,9 +9,7 @@ const sortNearestBathroomsReducer = (state = initialState.nearestBathrooms, acti
 
     function compare(a, b) {
       let aDistance = (a.distance.split(' ').shift()) * 1000;
-      // console.log(aDistance);
       let bDistance = (b.distance.split(' ').shift()) * 1000;
-      // console.log(bDistance);
       return aDistance - bDistance;
     }
 
