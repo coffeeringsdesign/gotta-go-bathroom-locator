@@ -8,25 +8,36 @@ const sortNearestBathroomsReducer = (state = initialState.nearestBathrooms, acti
 
     let newBathroomArray = action.bathrooms;
     console.log(newBathroomArray); //getting the correct array
-    function compare(a, b){
 
-      let aDistance = a.distance;
-      console.log(aDistance);
-      let bDistance= b.distance;
-      let comparison = 0;
 
-      if (aDistance > bDistance) {
-        comparison = 1;
-      } else if (aDistance < bDistance) {
-        comparison = -1;
-      }
-      return comparison;
-    }
+    let please = newBathroomArray.sort(function(a, b) {
+      // console.log(newReorderedBathroomsStateSlice);
+      return a.distance.split(" ").shift() - b.distance.split(" ").shift();
+    })
+    let trial = ['what', 'the', 'fucking', 'hell'];
+    console.log(trial);
+    console.log(please);
+    // function compare(a, b){
+    //   let aDistance = a.distance.split(" ").shift();
+    //   // console.log(aDistance);
+    //   let bDistance= b.distance.split(" ").shift();
+    //   // console.log(bDistance);
+    //   let comparison = 0;
+    //
+    //   if (aDistance > bDistance) {
+    //     comparison = 1;
+    //   } else if (aDistance < bDistance) {
+    //     comparison = -1;
+    //   }
+    //   console.log(comparison);
+    //   return comparison;
+    // }
+    //
+    // let newReorderedBathroomsStateSlice = newBathroomArray.sort(compare);
 
-    let newReorderedBathroomsStateSlice = newBathroomArray.sort(compare);
-    console.log(newReorderedBathroomsStateSlice);
+    // console.log(newReorderedBathroomsStateSlice);
 
-    return newReorderedBathroomsStateSlice;
+    return state;
 
   default:
     return state;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 const mapStyles = {
   map: {
@@ -12,7 +13,7 @@ const mapStyles = {
 
 export class CurrentLocation extends React.Component {
   constructor(props) {
-    // console.log(props);
+    console.log(this.state);
     super(props);
 
     const { lat, lng } = this.props.initialCenter;
@@ -120,10 +121,15 @@ export class CurrentLocation extends React.Component {
       </div>
     );
   }
-
 }
 
-export default CurrentLocation;
+const mapStateToProps = state => {
+  return {
+    currentLocation: state.currentLocation,
+  };
+};
+
+export default connect(mapStateToProps)(CurrentLocation);
 
 CurrentLocation.defaultProps = {
   zoom: 14,

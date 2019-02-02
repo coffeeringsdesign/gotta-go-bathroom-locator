@@ -28,6 +28,7 @@ export class MapContainer extends Component {
     }
   };
 
+  // JUST THE CONDITIONAL RENDER OF BATHROOMS
   keyedModalValues() {
     if (this.state.selectedPlace.needsKey === true) {
       return <h5>Requires Key: Yes</h5>;
@@ -35,7 +36,6 @@ export class MapContainer extends Component {
       return <h5>Requires Key: No</h5>;
     }
   };
-
   codedModalValues() {
     if (this.state.selectedPlace.needsCode === true) {
       return <h5>Requires Code: {this.state.selectedPlace.code}</h5>;
@@ -43,7 +43,6 @@ export class MapContainer extends Component {
       return <h5>Requires Code: No</h5>;
     }
   };
-
   handicapModalValues() {
     if (this.state.selectedPlace.handicapAccess === true) {
       return <h5>Handicap Accessable: Yes</h5>;
@@ -51,7 +50,6 @@ export class MapContainer extends Component {
       return <h5>Handicap Accessable: No</h5>
     }
   };
-
   genderedModalValues() {
     if (this.state.selectedPlace.gendered === true) {
       return <h5>Gender Neutral: No</h5>;
