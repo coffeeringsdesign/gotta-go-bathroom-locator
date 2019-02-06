@@ -73,6 +73,14 @@ class BathroomList extends Component {
       );
     }
 }
+/// from previously working version with  map showing
+// <div className="mapResultsContainer">
+//           {Object.keys(this.state.bathrooms).map((i) => {
+//             let rooms = this.state.bathrooms;
+//             return <Map bathroom={rooms} />
+//           })},
+//           </div>
+
 
 // temporarily removing searchbar - goes under <Logo /> above: <SearchBar />
 

@@ -8,15 +8,35 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    //props is activeMarker: null, bathroom array (unordered), dispatch, google: maps object, loaded: true, selectedplace which is an empty object, showingWindow: false
   }
 
   onMarkerClick = (props, marker, e) =>
+
+  //current refactor on pause to get map showing again:
+    // this.props.dispatch(showInfoWindowToTrue());
+    // this.props.dispatch(selectAPlace(props)); //what props am i sending
+    // this.props.dispatch(activeMarker(marker));
+
     this.setState({
+
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+
+
+
+
+//get map showing again... changing state to props
+  // onClose = props => {
+  //   if (this.state.showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null
+  //     });
+  //   }
+  // };
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
@@ -59,7 +79,7 @@ export class MapContainer extends Component {
 
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
       return <Marker name={room.name}
@@ -123,6 +143,8 @@ const mapStateToProps = state => {
     selectedPlace: state.selectedPlace
   };
 };
+
+// in previous map working  version. no props mapped, no connect below... and all props heading down to InfoWindow where state not props
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)

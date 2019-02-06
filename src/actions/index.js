@@ -97,7 +97,7 @@ export const setActiveMarker = () => {
 }
 
 // SHOWING INFO WINDOW
-export function showInfoWindow(dispatch){
+export function showInfoWindowToTrue(dispatch){
   return function (dispatch) {
     dispatch(letsShowInfoWindow());
   }

@@ -14,6 +14,18 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.newProps);
+
+    // props coming from being set below:
+    // centerAroundCurrentLocation: true
+    // initialCenter: which is set at portland
+    // visible: true
+    // zoom 14
+    // props from elsewhere:
+    // children: array
+    // dispatch
+    // google: maps Object
+    // newProps: all my state slices
 
     const { lat, lng } = this.props.initialCenter;
     this.state = {
@@ -28,7 +40,7 @@ export class CurrentLocation extends React.Component {
 
     recenterMap() {
      const map = this.map;  //map is now map object
-     const current = this.state.currentLocation;
+     const current = this.props.newProps.currentLocation;
 
      const google = this.props.google;
      const maps = google.maps;
@@ -68,7 +80,7 @@ export class CurrentLocation extends React.Component {
         const node = ReactDOM.findDOMNode(mapRef);
 
         let { zoom } = this.props;
-        const { lat, lng } = this.state.currentLocation;
+        const { lat, lng } = this.props.newProps.currentLocation;
         const center = new maps.LatLng(lat, lng);
         const mapConfig = Object.assign(
           {},
@@ -87,7 +99,7 @@ export class CurrentLocation extends React.Component {
       if (prevProps.google !== this.props.google) {
         this.loadMap();
       }
-      if (prevState.currentLocation !== this.state.currentLocation) {
+      if (prevState.currentLocation !== this.props.newProps.currentLocation) {
         this.recenterMap();
       }
     }
@@ -102,8 +114,8 @@ export class CurrentLocation extends React.Component {
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.state.currentLocation,
-        currentLocation: this.state.currentLocation
+        mapCenter: this.props.newProps.currentLocation,
+        currentLocation: this.props.newProps.currentLocation
       });
     });
   }
