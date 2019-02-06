@@ -14,26 +14,18 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.newProps);
+    // console.log(props);
+      // currently getting all props of working version
 
-    // props coming from being set below:
-    // centerAroundCurrentLocation: true
-    // initialCenter: which is set at portland
-    // visible: true
-    // zoom 14
-    // props from elsewhere:
-    // children: array
-    // dispatch
-    // google: maps Object
-    // newProps: all my state slices
-
-    const { lat, lng } = this.props.initialCenter;
+    const { lat, lng } = props.initialCenter;
+    // console.log(props.initialCenter);  matches working version
     this.state = {
-      currentLocation: { //these are connecting to the componentDidMount to grab currrent location and set them as state
+      currentLocation: {
         lat: lat,
         lng: lng
       }
     };
+
     // console.log(props);
     //props includes all default props listed at the bottom, a NewProps value that includes our bathroom array from firebase, and children array that includes 2 symbols and an array of symbols that include the bathroom array, and a maps object nested inside a google object
   }
@@ -69,11 +61,14 @@ export class CurrentLocation extends React.Component {
   // }
 
     loadMap() {
+      const coords = this.props.currentLocation;
       if (this.props && this.props.google) {
+
         const { google } = this.props;
         const maps = google.maps;
 
         const mapRef = this.refs.map;
+        // console.log(this.refs.map); currently undefined
 
 
         // reference to the actual DOM element
@@ -104,13 +99,19 @@ export class CurrentLocation extends React.Component {
       }
     }
 
+
+// I do believe this all matches the values from working version
     renderChildren() {
     const { children } = this.props;
-
+    // console.log({ children }); matches working version
+    // console.log(this.props); has all of working version
     if (!children) return;
-
     return React.Children.map(children, c => {
       if (!c) return;
+      // console.log(this.map);  //matches working version
+    // console.log(this.props.google); //matches working version
+    // console.log(this.props.currentLocation);//matches working version
+    // console.log(this.props.currentLocation);//matches working version
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,

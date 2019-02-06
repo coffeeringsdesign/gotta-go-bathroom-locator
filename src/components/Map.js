@@ -85,8 +85,8 @@ export class MapContainer extends Component {
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
-        position={room.longLat}
         distance={room.distance}
+        duration={room.duration}
         needsCode={room.needsCode}
         needsKey={room.needsKey}
         handicapAccess={room.handicapAccess}
@@ -98,6 +98,7 @@ export class MapContainer extends Component {
           anchor: new this.props.google.maps.Point(32,32),
           scaledSize: new this.props.google.maps.Size(25,35)}} />
     });
+  
 
     return (
       <div>
