@@ -14,17 +14,18 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
+    // this.loadMap = this.loadMap.bind(this);
     // console.log(props);
       // currently getting all props of working version
 
-    const { lat, lng } = props.initialCenter;
-    // console.log(props.initialCenter);  matches working version
-    this.state = {
-      currentLocation: {
-        lat: lat,
-        lng: lng
-      }
-    };
+    // const { lat, lng } = props.initialCenter;
+    // // console.log(props.initialCenter);  matches working version
+    // this.state = {
+    //   currentLocation: {
+    //     lat: lat,
+    //     lng: lng
+    //   }
+    // };
 
     // console.log(props);
     //props includes all default props listed at the bottom, a NewProps value that includes our bathroom array from firebase, and children array that includes 2 symbols and an array of symbols that include the bathroom array, and a maps object nested inside a google object
@@ -60,15 +61,22 @@ export class CurrentLocation extends React.Component {
   //   this.loadMap();
   // }
 
-    loadMap() {
-      const coords = this.props.currentLocation;
+    loadMap(ref) {
+      console.log(ref);
+      // console.log(this.props); both match working version
+      // console.log(this.props.google);
+      // const pos = this.props.currentLocation;
       if (this.props && this.props.google) {
 
-        const { google } = this.props;
-        const maps = google.maps;
+        const { google } = this.props; // makes a "google" object of the map object from props
+        // console.log( {google}); matches working version
+        const maps = google.maps; //grabs the map object and calls it maps
+        // console.log(maps); matches working version
 
+        console.log(this);
+        console.log(this.refs);
+        console.log(mapRef);
         const mapRef = this.refs.map;
-        // console.log(this.refs.map); currently undefined
 
 
         // reference to the actual DOM element
@@ -90,7 +98,13 @@ export class CurrentLocation extends React.Component {
       }
     }
 
+
+
+
+// NEED TO COME BACK WHEN COMPONANT CAN ACTUALLY UPDATE
     componentDidUpdate(prevProps, prevState) {
+      // console.log(prevProps);
+      // console.log(prevState);
       if (prevProps.google !== this.props.google) {
         this.loadMap();
       }
@@ -123,16 +137,18 @@ export class CurrentLocation extends React.Component {
 
 
   render() {
-     const style = Object.assign({}, mapStyles.map);
-    return (
-      <div>
-        <div style={style} ref="map">
-          Loading map...
-        </div>
-        {this.renderChildren()}
-      </div>
-    );
-  }
+    // this.loadMap(this.ref);
+    const style = Object.assign({}, mapStyles.map);
+   return (
+     <div>
+       <div ref="map" style={style}>
+         Loading map...
+       </div>
+       {console.log(this.refs.map)}
+       {this.renderChildren()}
+     </div>
+   );
+ }
 }
 
 const mapStateToProps = state => {

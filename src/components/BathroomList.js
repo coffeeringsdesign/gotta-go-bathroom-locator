@@ -38,6 +38,7 @@ class BathroomList extends Component {
   }
 
     render() {
+      // console.log(this.props);
       this.fetchBathroomData();
       this.reorderBathrooms();
       // console.log(this.props); this is reordered
@@ -45,9 +46,9 @@ class BathroomList extends Component {
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
             <Logo />
-              {Object.keys(this.props.nearestBathrooms).map((i) => {
+              {Object.keys(this.props.bathrooms).map((i) => {
                 let count = parseInt(i) + 1;
-                let room = this.props.nearestBathrooms[i];
+                let room = this.props.bathrooms[i];
                 return <Bathroom name={room.name}
                   address={room.address}
                   longLat={room.longLat}
@@ -61,11 +62,11 @@ class BathroomList extends Component {
                   count={count}
                   id={room.id} />
               })},
-            <AddBathroomForm />
+
           </div>
           <div className="mapResultsContainer">
-            {Object.keys(this.props.nearestBathrooms).map((i) => {
-              let rooms = this.props.nearestBathrooms;
+            {Object.keys(this.props.bathrooms).map((i) => {
+              let rooms = this.props.bathrooms;
               return <Map bathroom={rooms} />
             })},
           </div>
@@ -83,6 +84,7 @@ class BathroomList extends Component {
 
 
 // temporarily removing searchbar - goes under <Logo /> above: <SearchBar />
+// temporarily removing the add bathroom form - goes right under the Object.keys under logo <AddBathroomForm />
 
 const mapStateToProps = state => {
   return {
