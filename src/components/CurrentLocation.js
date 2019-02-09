@@ -33,13 +33,15 @@ export class CurrentLocation extends React.Component {
 
     recenterMap() {
      const map = this.map;  //map is now map object
-     const current = this.props.newProps.currentLocation;
+     // console.log(this);
+     const current = this.props.currentLocation;
 
      const google = this.props.google;
      const maps = google.maps;
 
      if (map) {
        let center = new maps.LatLng(current.lat, current.lng);
+       console.log(center);
        map.panTo(center);
      }
     }
@@ -73,9 +75,9 @@ export class CurrentLocation extends React.Component {
         const maps = google.maps; //grabs the map object and calls it maps
         // console.log(maps); matches working version
 
-        console.log(this);
-        console.log(this.refs);
-        console.log(mapRef);
+        // console.log(this.refs);
+        // looks like this.refs should work once i get this sorted
+        // console.log(mapRef);
         const mapRef = this.refs.map;
 
 
@@ -83,7 +85,9 @@ export class CurrentLocation extends React.Component {
         const node = ReactDOM.findDOMNode(mapRef);
 
         let { zoom } = this.props;
-        const { lat, lng } = this.props.newProps.currentLocation;
+        // console.log(zoom);working
+
+        const { lat, lng } = this.props.newProps.currentLocation; //this above is matching working
         const center = new maps.LatLng(lat, lng);
         const mapConfig = Object.assign(
           {},
@@ -95,15 +99,16 @@ export class CurrentLocation extends React.Component {
 
         // maps.Map() is constructor that instantiates the map
         this.map = new maps.Map(node, mapConfig);
+        // console.log(this.map);
       }
     }
 
 
 
 
-// NEED TO COME BACK WHEN COMPONANT CAN ACTUALLY UPDATE
+// NEED TO COME BACK WHEN COMPONANT CAN ACTUALLY UPDATE is called componentDidUpdate
     componentDidUpdate(prevProps, prevState) {
-      // console.log(prevProps);
+      //looks like prevProps and prevState should appear automatically when i get this sorted
       // console.log(prevState);
       if (prevProps.google !== this.props.google) {
         this.loadMap();
@@ -129,22 +134,20 @@ export class CurrentLocation extends React.Component {
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.props.newProps.currentLocation,
-        currentLocation: this.props.newProps.currentLocation
+        mapCenter: this.props.currentLocation,
+        currentLocation: this.props.currentLocation
       });
     });
   }
 
 
   render() {
-    // this.loadMap(this.ref);
-    const style = Object.assign({}, mapStyles.map);
+    const style = Object.assign({}, mapStyles.map); // style is matching working version but with the object showing - old one said Object
    return (
      <div>
        <div ref="map" style={style}>
          Loading map...
        </div>
-       {console.log(this.refs.map)}
        {this.renderChildren()}
      </div>
    );
