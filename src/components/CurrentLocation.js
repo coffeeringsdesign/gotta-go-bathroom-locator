@@ -12,8 +12,9 @@ const mapStyles = {
 }
 
 export class CurrentLocation extends React.Component {
-  constructor(props) {
+  constructor(props) { // props is including newProps
     super(props);
+    console.log(props);
     // this.loadMap = this.loadMap.bind(this);
     // console.log(props);
       // currently getting all props of working version
@@ -87,7 +88,7 @@ export class CurrentLocation extends React.Component {
         let { zoom } = this.props;
         // console.log(zoom);working
 
-        const { lat, lng } = this.props.newProps.currentLocation; //this above is matching working
+        const { lat, lng } = this.props.currentLocation; //this above is matching working
         const center = new maps.LatLng(lat, lng);
         const mapConfig = Object.assign(
           {},
@@ -99,50 +100,47 @@ export class CurrentLocation extends React.Component {
 
         // maps.Map() is constructor that instantiates the map
         this.map = new maps.Map(node, mapConfig);
-        // console.log(this.map);
+        console.log(this.map);
       }
     }
 
 
 
 
-// NEED TO COME BACK WHEN COMPONANT CAN ACTUALLY UPDATE is called componentDidUpdate
+// NOT MOUNTING CANNOT TEST YET
+// Both props should be good no prevState - sometimes prevProps
     componentDidUpdate(prevProps, prevState) {
-      //looks like prevProps and prevState should appear automatically when i get this sorted
+
+      // console.log(prevProps);
       // console.log(prevState);
       if (prevProps.google !== this.props.google) {
-        this.loadMap();
+        this.loadMap(); // working sometimes - working
       }
-      if (prevState.currentLocation !== this.props.newProps.currentLocation) {
+      if (prevState.currentLocation !== this.props.currentLocation) { // not working -working
         this.recenterMap();
       }
     }
 
 
-// I do believe this all matches the values from working version
+// FINISHED GOING THRU - 1 NOT WORKING
     renderChildren() {
-    const { children } = this.props;
-    // console.log({ children }); matches working version
-    // console.log(this.props); has all of working version
+    const { children } = this.props; //working
     if (!children) return;
     return React.Children.map(children, c => {
       if (!c) return;
-      // console.log(this.map);  //matches working version
-    // console.log(this.props.google); //matches working version
-    // console.log(this.props.currentLocation);//matches working version
-    // console.log(this.props.currentLocation);//matches working version
+
       return React.cloneElement(c, {
-        map: this.map,
-        google: this.props.google,
-        mapCenter: this.props.currentLocation,
-        currentLocation: this.props.currentLocation
+        map: this.map, // !!!!! not working... map is NOT getting into this
+        google: this.props.google, //working
+        mapCenter: this.props.currentLocation, //working
+        currentLocation: this.props.currentLocation //working
       });
     });
   }
 
 
   render() {
-    const style = Object.assign({}, mapStyles.map); // style is matching working version but with the object showing - old one said Object
+    const style = Object.assign({}, mapStyles.map); // working but with object showing - old one said Object
    return (
      <div>
        <div ref="map" style={style}>
