@@ -9,7 +9,6 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     //props is activeMarker: null, bathroom array (unordered), dispatch, google: maps object, loaded: true, selectedplace which is an empty object, showingWindow: false
-    console.log(this.props);
     this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
@@ -91,6 +90,7 @@ export class MapContainer extends Component {
   render() {
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
+      // console.log(room);
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
@@ -121,7 +121,7 @@ export class MapContainer extends Component {
               url: "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c1bbf92032be44a0209449f/1545322390351/X.png?format=300w",
               anchor: new this.props.google.maps.Point(32,32),
               scaledSize: new this.props.google.maps.Size(40,40)}} />
-          {markerLoop}
+            {markerLoop}
           <InfoWindow
             marker={this.props.activeMarker}
             visible={this.props.showingInfoWindow}

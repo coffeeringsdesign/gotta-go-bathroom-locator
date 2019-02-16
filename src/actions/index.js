@@ -40,6 +40,7 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     const bathroomPropArray = [];
     const bathName = indivBathroomInfo.name;
     const bathAddress = indivBathroomInfo.address;
+    const bathLongLat = indivBathroomInfo.longLat;
     const bathNeedsCode = indivBathroomInfo.needsCode;
     const bathNeedsKey = indivBathroomInfo.needsKey;
     const bathHandicapAccess = indivBathroomInfo.handicapAccess;
@@ -49,7 +50,7 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     const origins = [Object.values(currentLocationCoords).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
     const mode = 'WALKING';
-    bathroomPropArray.push(bathName, bathAddress, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId);
+    bathroomPropArray.push(bathName, bathAddress, bathLongLat, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId);
     fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch);
   }
 }
