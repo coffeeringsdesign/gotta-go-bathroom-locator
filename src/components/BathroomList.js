@@ -22,7 +22,6 @@ distance.key(API_KEY);
 class BathroomList extends Component {
   constructor(props) {
     super(props);
-    // current location is now in props
   }
 
   fetchBathroomData(){
@@ -37,11 +36,10 @@ class BathroomList extends Component {
     }
   }
 
+
     render() {
-      // console.log(this.props);
       this.fetchBathroomData();
       this.reorderBathrooms();
-      // console.log(this.props); this is reordered
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -62,7 +60,6 @@ class BathroomList extends Component {
                   count={count}
                   id={room.id} />
               })},
-
           </div>
           <div className="mapResultsContainer">
             {Object.keys(this.props.bathrooms).map((i) => {
@@ -74,13 +71,41 @@ class BathroomList extends Component {
       );
     }
 }
-/// from previously working version with  map showing
-// <div className="mapResultsContainer">
-//           {Object.keys(this.state.bathrooms).map((i) => {
-//             let rooms = this.state.bathrooms;
-//             return <Map bathroom={rooms} />
-//           })},
-//           </div>
+  // what I tried and didn't work:
+  // {for (i = 0, i <= this.props.bathrooms[5], i++) {
+  //   let count = parseInt(i) + 1;
+  //   let room = this.props.bathrooms[i];
+  //   return <Bathroom name={room.name}
+  //     address={room.address}
+  //     longLat={room.longLat}
+  //     needsCode={room.needsCode}
+  //     needsKey={room.needsKey}
+  //     distance={room.distance}
+  //     duration={room.duration}
+  //     handicapAccess={room.handicapAccess}
+  //     gendered={room.gendered}
+  //     code={room.code}
+  //     count={count}
+  //     id={room.id} />
+  // }},
+
+// WHAT WAS WORKING
+// {Object.keys(this.props.bathrooms).map((i) => {
+//   let count = parseInt(i) + 1;
+//   let room = this.props.bathrooms[i];
+//   return <Bathroom name={room.name}
+//     address={room.address}
+//     longLat={room.longLat}
+//     needsCode={room.needsCode}
+//     needsKey={room.needsKey}
+//     distance={room.distance}
+//     duration={room.duration}
+//     handicapAccess={room.handicapAccess}
+//     gendered={room.gendered}
+//     code={room.code}
+//     count={count}
+//     id={room.id} />
+// })},
 
 
 // temporarily removing searchbar - goes under <Logo /> above: <SearchBar />

@@ -55,12 +55,14 @@ export class MapContainer extends Component {
     // this.props.dispatch(showInfoWindowToTrue());
     // this.props.dispatch(selectAPlace(props)); //what props am i sending
     // this.props.dispatch(activeMarker(marker));
+
   onMarkerClick = function(props, marker, e) { //getting triggered on click
     this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
+      selectedPlace: props, //setting the clicked on place object as selectedPlace
+      activeMarker: marker, //actual representation of the place object plus google maps info
       showingInfoWindow: true
-    })};
+    })
+  };
 
   render() {
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
@@ -82,8 +84,30 @@ export class MapContainer extends Component {
           anchor: new this.props.google.maps.Point(32,32),
           scaledSize: new this.props.google.maps.Size(25,35)}} />
     });
-    // console.log(this.props.google.maps.Point(32,32));
-// all of below seems like it should work
+
+    let condRenderedModal;
+    if (this.state) {
+      condRenderedModal =
+      <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}>
+              <div className="mapModalStyles">
+                <h3>{this.state.selectedPlace.name}</h3>
+                <h4>{this.state.selectedPlace.address}</h4>
+                <h5>Distance from you: {this.state.selectedPlace.distance}</h5>
+                <h5>Duration to walk: {this.state.selectedPlace.duration}</h5>
+                <h5>{this.keyedModalValues()}</h5>
+                <h5>{this.codedModalValues()}</h5>
+                <h5>{this.handicapModalValues()}</h5>
+                <h5>{this.genderedModalValues()}</h5>
+              </div>
+        </InfoWindow>
+    } else {
+      condRenderedModal = null;
+    }
+
+
     return (
       <div>
         <CurrentLocation
@@ -97,28 +121,12 @@ export class MapContainer extends Component {
               anchor: new this.props.google.maps.Point(32,32),
               scaledSize: new this.props.google.maps.Size(40,40)}} />
             {markerLoop}
-          <InfoWindow
-            marker={this.props.activeMarker}
-            visible={this.props.showingInfoWindow}
-            onClose={this.onClose}>
-
-            <div className="mapModalStyles">
-              <h3>{this.props.selectedPlace.name}</h3>
-              <h4>{this.props.selectedPlace.address}</h4>
-              <h5>{this.keyedModalValues()}</h5>
-              <h5>{this.codedModalValues()}</h5>
-              <h5>{this.handicapModalValues()}</h5>
-              <h5>{this.genderedModalValues()}</h5>
-            </div>
-
-          </InfoWindow>
+            {condRenderedModal}
         </CurrentLocation>
       </div>
     );
   }
 }
-
-
 
 const mapStateToProps = state => {
   return {
