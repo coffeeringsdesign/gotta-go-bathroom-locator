@@ -9,21 +9,31 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     //props is activeMarker: null, bathroom array (unordered), dispatch, google: maps object, loaded: true, selectedplace which is an empty object, showingWindow: false
+    console.log(this.props);
+    this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
-  onMarkerClick = (props, marker, e) =>
+  // marker={this.props.activeMarker}
+  // visible={this.props.showingInfoWindow}
+  // onClose={this.onClose}>
+  //
+  // <div className="mapModalStyles">
+  //   <h3>{this.props.selectedPlace.name}</h3>
+  //   <h4>{this.props.selectedPlace.address}</h4>
+
+  onMarkerClick = function(props, marker, e) {
 
   //current refactor on pause to get map showing again:
     // this.props.dispatch(showInfoWindowToTrue());
     // this.props.dispatch(selectAPlace(props)); //what props am i sending
     // this.props.dispatch(activeMarker(marker));
-
+    // console.log(this)
     this.setState({
 
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    });
+    })};
 
 
 
@@ -81,7 +91,6 @@ export class MapContainer extends Component {
   render() {
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
-      console.log(room);
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
@@ -98,7 +107,7 @@ export class MapContainer extends Component {
           anchor: new this.props.google.maps.Point(32,32),
           scaledSize: new this.props.google.maps.Size(25,35)}} />
     });
-
+    // console.log(this.props.google.maps.Point(32,32));
 // all of below seems like it should work
     return (
       <div>
@@ -135,14 +144,18 @@ export class MapContainer extends Component {
 }
 
 
+
 const mapStateToProps = state => {
   return {
     // currentLocation: state.currentLocation,
     // bathrooms: state.bathrooms,
     // nearestBathrooms: state.nearestBathrooms
-    activeMarker: state.activeMarker,
-    showingInfoWindow: state.showingInfoWindow,
-    selectedPlace: state.selectedPlace
+    activeMarker: {},
+    showingInfoWindow: false,
+    selectedPlace: {}
+    // activeMarker: state.activeMarker,
+    // showingInfoWindow: state.showingInfoWindow,
+    // selectedPlace: state.selectedPlace
   };
 };
 

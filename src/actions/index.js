@@ -55,8 +55,6 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
 }
 export function fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch) {
   return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
-
-
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
     let distDurArray = [dist, dur];
