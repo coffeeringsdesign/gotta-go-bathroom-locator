@@ -36,10 +36,10 @@ class BathroomList extends Component {
     }
   }
 
-
     render() {
       this.fetchBathroomData();
       this.reorderBathrooms();
+
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -72,7 +72,7 @@ class BathroomList extends Component {
     }
 }
   // what I tried and didn't work:
-  // {for (i = 0, i <= this.props.bathrooms[5], i++) {
+  // {for (i = 0; i <= this.props.bathrooms[5]; i++) {
   //   let count = parseInt(i) + 1;
   //   let room = this.props.bathrooms[i];
   //   return <Bathroom name={room.name}

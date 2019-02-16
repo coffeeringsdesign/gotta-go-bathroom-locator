@@ -95,8 +95,8 @@ export class MapContainer extends Component {
               <div className="mapModalStyles">
                 <h3>{this.state.selectedPlace.name}</h3>
                 <h4>{this.state.selectedPlace.address}</h4>
-                <h5>Distance from you: {this.state.selectedPlace.distance}</h5>
-                <h5>Duration to walk: {this.state.selectedPlace.duration}</h5>
+                <h5>Distance away: {this.state.selectedPlace.distance}</h5>
+                <h5>Walking duration: {this.state.selectedPlace.duration}</h5>
                 <h5>{this.keyedModalValues()}</h5>
                 <h5>{this.codedModalValues()}</h5>
                 <h5>{this.handicapModalValues()}</h5>
