@@ -38,57 +38,33 @@ function Bathroom( props ) {
   };
 
   function closestSixBathrooms() {
-    if(props.count < 6) {
-        let bathroomInformation =
-          <div className="indivBathroomDisplay">
-            <div className="bathroomTextInfoBlock">
-              <div>
-                <h3 className="numbered">{props.count}</h3>
-              </div>
-              <div className="stackedNameAddressLines">
-                <div className="nameDistanceLine">
-                  <h3>{props.name}</h3>
-                  <h5>{props.distance} {props.duration}</h5>
-                </div>
-                <h3 className="addressLine">{props.address}</h3>
-              </div>
-            </div>
-            <div className="iconDisplay">
-              {renderGenderIcon()}
-              {renderHandicapIcon()}
-              {renderCodeIcon()}
-              {renderKeyIcon()}
-            </div>
+    if(props.count < 7) {
+      return(<div className="indivBathroomDisplay">
+        <div className="bathroomTextInfoBlock">
+          <div>
+            <h3 className="numbered">{props.count}</h3>
           </div>
+          <div className="stackedNameAddressLines">
+            <div className="nameDistanceLine">
+              <h3>{props.name}</h3>
+              <h5>{props.distance} {props.duration}</h5>
+            </div>
+            <h3 className="addressLine">{props.address}</h3>
+          </div>
+        </div>
+        <div className="iconDisplay">
+          {renderGenderIcon()}
+          {renderHandicapIcon()}
+          {renderCodeIcon()}
+          {renderKeyIcon()}
+        </div>
+      </div>)
     }
   }
 
-
-  const bathroomInformation =
-    <div className="indivBathroomDisplay">
-      <div className="bathroomTextInfoBlock">
-        <div>
-          <h3 className="numbered">{props.count})</h3>
-        </div>
-        <div className="stackedNameAddressLines">
-          <div className="nameDistanceLine">
-            <h3>{props.name}</h3>
-            <h5>{props.distance} {props.duration}</h5>
-          </div>
-          <h3 className="addressLine">{props.address}</h3>
-        </div>
-      </div>
-      <div className="iconDisplay">
-        {renderGenderIcon()}
-        {renderHandicapIcon()}
-        {renderCodeIcon()}
-        {renderKeyIcon()}
-      </div>
-    </div>
   return (
     <div >
-      closestSixBathrooms()
-      {bathroomInformation}
+      {closestSixBathrooms()}
     </div>
   );
 }
