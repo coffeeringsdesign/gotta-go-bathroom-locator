@@ -29,14 +29,14 @@ export class MapContainer extends Component {
 
 
 //get map showing again... changing state to props
-  // onClose = props => {
-  //   if (this.state.showingInfoWindow) {
-  //     this.setState({
-  //       showingInfoWindow: false,
-  //       activeMarker: null
-  //     });
-  //   }
-  // };
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
@@ -48,40 +48,40 @@ export class MapContainer extends Component {
   };
 
   // JUST THE CONDITIONAL RENDER OF BATHROOMS
-  // keyedModalValues() {
-  //   if (this.props.selectedPlace.needsKey === true) {
-  //     return <h5>Requires Key: Yes</h5>;
-  //   } else {
-  //     return <h5>Requires Key: No</h5>;
-  //   }
-  // };
-  // codedModalValues() {
-  //   if (this.props.selectedPlace.needsCode === true) {
-  //     return <h5>Requires Code: {this.props.selectedPlace.code}</h5>;
-  //   } else {
-  //     return <h5>Requires Code: No</h5>;
-  //   }
-  // };
-  // handicapModalValues() {
-  //   if (this.props.selectedPlace.handicapAccess === true) {
-  //     return <h5>Handicap Accessable: Yes</h5>;
-  //   } else {
-  //     return <h5>Handicap Accessable: No</h5>
-  //   }
-  // };
-  // genderedModalValues() {
-  //   if (this.props.selectedPlace.gendered === true) {
-  //     return <h5>Gender Neutral: No</h5>;
-  //   } else {
-  //     return <h5>Gender Neutral: Yes</h5>;
-  //   }
-  // };
+  keyedModalValues() {
+    if (this.props.selectedPlace.needsKey === true) {
+      return <h5>Requires Key: Yes</h5>;
+    } else {
+      return <h5>Requires Key: No</h5>;
+    }
+  };
+  codedModalValues() {
+    if (this.props.selectedPlace.needsCode === true) {
+      return <h5>Requires Code: {this.props.selectedPlace.code}</h5>;
+    } else {
+      return <h5>Requires Code: No</h5>;
+    }
+  };
+  handicapModalValues() {
+    if (this.props.selectedPlace.handicapAccess === true) {
+      return <h5>Handicap Accessable: Yes</h5>;
+    } else {
+      return <h5>Handicap Accessable: No</h5>
+    }
+  };
+  genderedModalValues() {
+    if (this.props.selectedPlace.gendered === true) {
+      return <h5>Gender Neutral: No</h5>;
+    } else {
+      return <h5>Gender Neutral: Yes</h5>;
+    }
+  };
 
 
   render() {
-    //all of below seems like it should work
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
+      console.log(room);
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
@@ -113,28 +113,27 @@ export class MapContainer extends Component {
               anchor: new this.props.google.maps.Point(32,32),
               scaledSize: new this.props.google.maps.Size(40,40)}} />
           {markerLoop}
+          <InfoWindow
+            marker={this.props.activeMarker}
+            visible={this.props.showingInfoWindow}
+            onClose={this.onClose}>
 
+            <div className="mapModalStyles">
+              <h3>{this.props.selectedPlace.name}</h3>
+              <h4>{this.props.selectedPlace.address}</h4>
+              <h5>{this.keyedModalValues()}</h5>
+              <h5>{this.codedModalValues()}</h5>
+              <h5>{this.handicapModalValues()}</h5>
+              <h5>{this.genderedModalValues()}</h5>
+            </div>
+
+          </InfoWindow>
         </CurrentLocation>
       </div>
     );
   }
 }
-// goes right below {markerLoop} above
-// <InfoWindow
-//   marker={this.props.activeMarker}
-//   visible={this.props.showingInfoWindow}
-//   onClose={this.onClose}>
-//
-//   <div className="mapModalStyles">
-//     <h3>{this.props.selectedPlace.name}</h3>
-//     <h4>{this.props.selectedPlace.address}</h4>
-//     <h5>{this.keyedModalValues()}</h5>
-//     <h5>{this.codedModalValues()}</h5>
-//     <h5>{this.handicapModalValues()}</h5>
-//     <h5>{this.genderedModalValues()}</h5>
-//   </div>
-//
-// </InfoWindow>
+
 
 const mapStateToProps = state => {
   return {

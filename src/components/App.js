@@ -17,6 +17,7 @@ class App extends Component {
     });
   }
 
+
   render(props) {
     if (!this.props.currentLocation) {
       this.findCurrentLocation();

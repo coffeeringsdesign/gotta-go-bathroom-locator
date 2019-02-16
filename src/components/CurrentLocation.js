@@ -14,14 +14,15 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
 
     const {lat, lng} = this.props.initialCenter;
-    this.state = this.props.currentLocation
+    this.state = this.props.currentLocation;
   }
 
   recenterMap() {
     const map = this.map;
+    // console.log(this.map);
     const current = this.props.currentLocation;
     const google = this.props.google;
     const maps = google.maps;
@@ -49,28 +50,32 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-  loadMap() {
-    if (this.props && this.props.google) {
-      const {google} = this.props;
-      const maps = google.maps;
-
-      const mapRef = this.refs.map;
-      const node = ReactDOM.findDOMNode(mapRef);
-
-      let {zoom} = this.props;
-      const {lat, lng} = this.props.currentLocation;
-      const center = new maps.LatLng(lat, lng);
+  // NOT IMPACTED BY REMOVING SET STATE ABOVE
+  loadMap(prevProps, prevState) {
+    if (this.props && this.props.google) { // doesn't change
+      const {google} = this.props; // doesn't change
+      const maps = google.maps; // doesn't change
+      const mapRef = this.refs.map; //doesn't change
+      const node = ReactDOM.findDOMNode(mapRef); //doesn't change
+      let {zoom} = this.props; //doesn't change
+      const {lat, lng} = this.props.currentLocation; //doesn't change
+      const center = new maps.LatLng(lat, lng); //doesn't change
       const mapConfig = Object.assign({}, {
         center: center,
         zoom: zoom
-      });
-      this.map = new maps.Map(node, mapConfig);
-      console.log(this.map);
+      }); // doesn't change
+      this.map = new maps.Map(node, mapConfig);//doesn't change
+      // console.log(prevProps);
+      // console.log(prevState);
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  // NOT ALWAYS CALLED - NEED TO COME BACK TO IT
+  componentDidUpdate(prevProps, prevState) { //doesn't change
     if (prevProps.google !== this.props.google) {
+      // console.log("took a photo for when this actually logs");
+      // console.log(prevProps.google);
+      // console.log(this.props.google);
       this.loadMap();
     }
     if (prevState.currentLocation !== this.props.currentLocation) {
@@ -78,26 +83,26 @@ export class CurrentLocation extends React.Component {
     }
   }
 
+  // NOT IMPACTED BY REMOVING SET STATE ABOVE
   renderChildren() {
-    const {children} = this.props;
+    const {children} = this.props;  //doesn't change
     if (!children)
       return;
 
-    return React.Children.map(children, c => {
-
+    return React.Children.map(children, c => { // children or c doesn't change
       if (!c)
         return;
       return React.cloneElement(c, {
-        map: this.map,
-        google: this.props.google,
-        mapCenter: this.props.currentLocation,
-        currentLocation: this.props.currentLocation
+        map: this.map, //doesn't change
+        google: this.props.google, //doesn't change
+        mapCenter: this.props.currentLocation, //doesn't change
+        currentLocation: this.props.currentLocation //doesn't change
       });
     });
   }
 
   render() {
-    const style = Object.assign({}, mapStyles.map);
+    const style = Object.assign({}, mapStyles.map); //doesn't change
     return (<div>
       <div style={style} ref="map">
         Loading map...
@@ -108,7 +113,7 @@ export class CurrentLocation extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {currentLocation: state.currentLocation};
+  return {currentLocation: state.currentLocation}; // coming in slightly different but I think when the setState above is commented it out just finds the one coming in from the store.
 };
 
 export default connect(mapStateToProps)(CurrentLocation);
