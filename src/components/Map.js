@@ -90,10 +90,11 @@ export class MapContainer extends Component {
   render() {
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
-      // console.log(room);
+      console.log(room);
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
+        position={room.longLat}
         distance={room.distance}
         duration={room.duration}
         needsCode={room.needsCode}
