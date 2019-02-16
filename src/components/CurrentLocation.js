@@ -113,7 +113,7 @@ export class CurrentLocation extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {currentLocation: state.currentLocation}; // coming in slightly different but I think when the setState above is commented it out just finds the one coming in from the store.
+  return {currentLocation: state.currentLocation}; //
 };
 
 export default connect(mapStateToProps)(CurrentLocation);

@@ -12,51 +12,7 @@ export class MapContainer extends Component {
     this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
-  // marker={this.props.activeMarker}
-  // visible={this.props.showingInfoWindow}
-  // onClose={this.onClose}>
-  //
-  // <div className="mapModalStyles">
-  //   <h3>{this.props.selectedPlace.name}</h3>
-  //   <h4>{this.props.selectedPlace.address}</h4>
-
-  onMarkerClick = function(props, marker, e) {
-
-  //current refactor on pause to get map showing again:
-    // this.props.dispatch(showInfoWindowToTrue());
-    // this.props.dispatch(selectAPlace(props)); //what props am i sending
-    // this.props.dispatch(activeMarker(marker));
-    // console.log(this)
-    this.setState({
-
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    })};
-
-
-
-
-//get map showing again... changing state to props
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
-  // JUST THE CONDITIONAL RENDER OF BATHROOMS
+  // CONDITIONAL RENDER OF BATHROOMS BOOLEAN VALUES
   keyedModalValues() {
     if (this.props.selectedPlace.needsKey === true) {
       return <h5>Requires Key: Yes</h5>;
@@ -86,11 +42,29 @@ export class MapContainer extends Component {
     }
   };
 
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
+  //current refactor need to move to reducers:
+    // this.props.dispatch(showInfoWindowToTrue());
+    // this.props.dispatch(selectAPlace(props)); //what props am i sending
+    // this.props.dispatch(activeMarker(marker));
+  onMarkerClick = function(props, marker, e) { //getting triggered on click
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })};
 
   render() {
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let room = this.props.bathroom[i];
-      console.log(room);
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
         address={room.address}
@@ -160,7 +134,6 @@ const mapStateToProps = state => {
   };
 };
 
-// in previous map working  version. no props mapped, no connect below... and all props heading down to InfoWindow where state not props
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)

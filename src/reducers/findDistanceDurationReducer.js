@@ -5,7 +5,6 @@ const findDistanceDurationReducer = (state = initialState.bathrooms, action) => 
 
   switch (action.type) {
     case types.DISTANCE_DURATIONS:
-    console.log(action.bathroom);
     return [
         ...state,
         {
