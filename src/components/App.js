@@ -21,7 +21,6 @@ class App extends Component {
     });
   }
 
-
   render(props) {
     if (!this.props.currentLocation) {
       this.findCurrentLocation();
@@ -31,11 +30,10 @@ class App extends Component {
         <div className="searchAndReturnContainer">
           <Logo />
           <Router>
-          <Switch>
-            <Route exact path='/' component={BathroomList} />
-
-            <Route path='/addBathroom' component={AddBathroomForm} />
-          </Switch>
+            <Switch>
+              <Route exact path='/' component={BathroomList} />
+              <Route path='/addBathroom' component={AddBathroomForm} />
+            </Switch>
           </Router>
         </div>
       </div>
