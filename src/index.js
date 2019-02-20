@@ -5,7 +5,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-import { HashRouter } from 'react-router-dom';
+// import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
@@ -18,11 +18,11 @@ const store = createStore(rootReducer, applyMiddleware(middlewareLogger, thunkMi
 
 const render = (Component) => {
   ReactDOM.render(
-    <HashRouter>
+
       <Provider store={store}>
         <App />
-      </Provider>
-    </HashRouter>,
+      </Provider>,
+
     document.getElementById('root')
   );
 };
