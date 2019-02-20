@@ -3,6 +3,10 @@ import './../App.scss';
 import BathroomList from './BathroomList';
 import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
+import { Switch, Route } from 'react-router-dom';
+import Logo from './Logo';
+import GoToAddaBathroomForm from './GoToAddaBathroomForm';
+import AddBathroomForm from './AddBathroomForm';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +29,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="searchAndReturnContainer">
-          <BathroomList />
+          <Logo />
+          <Switch>
+            <Route exact path='/' component={BathroomList} />
+            <AddBathroomForm />
+            <Route path='/addBathroom' compnent={AddBathroomForm} />
+          </Switch>
         </div>
       </div>
     );

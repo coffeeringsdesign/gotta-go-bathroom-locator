@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Bathroom from './Bathroom';
+import GoToAddaBathroomForm from './GoToAddaBathroomForm';
 import * as actions from './../actions';
 import Map from './Map';
 import './styles.scss';
-import SearchBar from './SearchBar';
-import AddBathroomForm from './AddBathroomForm';
-import Logo from './Logo';
 import CurrentLocation from './CurrentLocation';
 import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
@@ -43,7 +41,8 @@ class BathroomList extends Component {
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
-            <Logo />
+
+            <GoToAddaBathroomForm />
               {Object.keys(this.props.bathrooms).map((i) => {
                 let count = parseInt(i) + 1;
                 let room = this.props.bathrooms[i];
@@ -71,45 +70,6 @@ class BathroomList extends Component {
       );
     }
 }
-  // what I tried and didn't work:
-  // {for (i = 0; i <= this.props.bathrooms[5]; i++) {
-  //   let count = parseInt(i) + 1;
-  //   let room = this.props.bathrooms[i];
-  //   return <Bathroom name={room.name}
-  //     address={room.address}
-  //     longLat={room.longLat}
-  //     needsCode={room.needsCode}
-  //     needsKey={room.needsKey}
-  //     distance={room.distance}
-  //     duration={room.duration}
-  //     handicapAccess={room.handicapAccess}
-  //     gendered={room.gendered}
-  //     code={room.code}
-  //     count={count}
-  //     id={room.id} />
-  // }},
-
-// WHAT WAS WORKING
-// {Object.keys(this.props.bathrooms).map((i) => {
-//   let count = parseInt(i) + 1;
-//   let room = this.props.bathrooms[i];
-//   return <Bathroom name={room.name}
-//     address={room.address}
-//     longLat={room.longLat}
-//     needsCode={room.needsCode}
-//     needsKey={room.needsKey}
-//     distance={room.distance}
-//     duration={room.duration}
-//     handicapAccess={room.handicapAccess}
-//     gendered={room.gendered}
-//     code={room.code}
-//     count={count}
-//     id={room.id} />
-// })},
-
-
-// temporarily removing searchbar - goes under <Logo /> above: <SearchBar />
-// temporarily removing the add bathroom form - goes right under the Object.keys under logo <AddBathroomForm />
 
 const mapStateToProps = state => {
   return {

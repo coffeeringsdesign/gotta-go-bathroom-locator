@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.scss';
 import firebase from 'firebase';
+import GoToBathroomList from './GoToBathroomList';
 
 class AddBathroomForm extends Component {
   constructor(props, { state }) {
@@ -51,6 +52,7 @@ class AddBathroomForm extends Component {
   render() {
     return (
       <div className="addBathroomContainer">
+        <GoToBathroomList />
         <form className="addBathroomForm" onSubmit={this.handleSubmit}>
           <h4>Name:</h4>
           <input id="name" className="newBathroomInputs" type="text" name="name" placeholder="Please enter the establishments name..." value={this.props.name} onChange={this.handleChange} />
