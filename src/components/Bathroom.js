@@ -38,6 +38,7 @@ function Bathroom( props ) {
   };
 
   function closestSixBathrooms() {
+    // console.log(props);
     if(props.count < 7) {
       return(<div className="indivBathroomDisplay">
         <div className="bathroomTextInfoBlock">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 import firebase from 'firebase';
 import GoToBathroomList from './GoToBathroomList';
+import v4 from 'uuid/v4';
 
 class AddBathroomForm extends Component {
   constructor(props, { state }) {
@@ -41,7 +42,7 @@ class AddBathroomForm extends Component {
       handicapAccess: this.state.handicapAccess,
       gendered: this.state.gendered,
       code: this.state.code,
-      // id: this.state.id,
+      id: v4(),
     }
     bathroomRef.push(bathroom);
     this.setState({
@@ -53,11 +54,10 @@ class AddBathroomForm extends Component {
       handicapAccess: '',
       gendered: '',
       code: '',
-      // id: '',
+      id: '',
     });
     console.log(this.state);
   }
-
 
   render() {
     return (
