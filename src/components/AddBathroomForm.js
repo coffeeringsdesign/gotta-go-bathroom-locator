@@ -17,14 +17,15 @@ class AddBathroomForm extends Component {
   }
 
   handleChange(e) {
+    console.log(e.target.value);
     this.setState({
        [e.target.name]: e.target.value,
-       selectedHandicap: e.targetvalue,
-       selectedGendered: e.targetvalue,
-       selectedKeyed: e.targetvalue,
-       selectedCoded: e.targetvalue
+       selectedHandicap: e.target.value,
+       selectedGendered: e.target.value,
+       selectedKeyed: e.target.value,
+       selectedCoded: e.target.value
      });
-     console.log(this.state);
+     // console.log(this.state);
    }
 
   handleSubmit(e) {
