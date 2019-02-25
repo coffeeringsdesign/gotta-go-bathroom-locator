@@ -46,7 +46,6 @@ class BathroomList extends Component {
               {Object.keys(this.props.bathrooms).map((i) => {
                 let count = parseInt(i) + 1;
                 let room = this.props.bathrooms[i];
-                console.log(room);
                 return <Bathroom name={room.name}
                   address={room.address}
                   longLat={room.longLat}

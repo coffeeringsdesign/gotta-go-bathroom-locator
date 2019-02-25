@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Logo from './Logo';
-import GoToAddaBathroomForm from './GoToAddaBathroomForm';
 import AddBathroomForm from './AddBathroomForm';
 
 class App extends Component {

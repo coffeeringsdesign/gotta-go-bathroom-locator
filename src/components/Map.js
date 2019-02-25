@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './styles.scss';
 import CurrentLocation from './CurrentLocation';
 import { connect } from 'react-redux';
