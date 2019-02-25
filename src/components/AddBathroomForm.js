@@ -13,11 +13,18 @@ class AddBathroomForm extends Component {
   }
 
   handleChange(e) {
-    // console.log(e.target.value);
     this.setState({
        [e.target.name]: e.target.value,
      });
    }
+
+  determineCodeOrUncoded = code => {
+    if (code === undefined) {
+      return '';
+    } else {
+      return code;
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -26,14 +33,7 @@ class AddBathroomForm extends Component {
     let keyNeeded =(this.state.needsKey === 'true');
     let handicapAcc =(this.state.handicapAccess === 'true');
     let genderedYes =(this.state.gendered === 'true');
-
-    // if (this.state.code.length == 0) {
-    //   let coded = "";
-    //   return coded;
-    // } else {
-    //   let coded = this.state.code;
-    //   return coded;
-    // }
+    
 
     const bathroom = {
       name: this.state.name,
@@ -43,7 +43,7 @@ class AddBathroomForm extends Component {
       needsKey: keyNeeded,
       handicapAccess: handicapAcc,
       gendered: genderedYes,
-      code: this.state.code,
+      code: this.determineCodeOrUncoded(this.state.code),
       id: v4(),
     }
     bathroomRef.push(bathroom);
