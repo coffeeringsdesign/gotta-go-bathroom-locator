@@ -10,7 +10,6 @@ import AddBathroomForm from './AddBathroomForm';
 class App extends Component {
   constructor(props) {
     super(props);
-    // current location is now in props
   }
 
   findCurrentLocation() {
@@ -21,6 +20,7 @@ class App extends Component {
   }
 
   render(props) {
+    console.log(this.props);
     if (!this.props.currentLocation) {
       this.findCurrentLocation();
     }
@@ -31,7 +31,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path='/' component={BathroomList} />
-              <Route path='/addBathroom' component={AddBathroomForm} />
+              <Route path='/addBathroom'  render={(props)=><AddBathroomForm dispatch={this.props.dispatch}/>} />
             </Switch>
           </Router>
         </div>

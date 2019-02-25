@@ -120,3 +120,21 @@ export const selectedAPlace = () => {
     type: types.SELECT_A_PLACE
   })
 }
+
+//  GETTING NEW LONG LAT FOR NEWLY ADDED Bathroom
+export function fetchNewLongLat(address) {
+  return null
+  // return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
+  //   let dist = distances.rows[0].elements[0].distance.text;
+  //   let dur = distances.rows[0].elements[0].duration.text;
+  //   let distDurArray = [dist, dur];
+  //   dispatch(findDistDur(distDurArray, bathroomPropArray));
+  // }));
+}
+// export const findDistDur = (distDurArray, bathroom) => {
+//   return ({
+//     type: types.DISTANCE_DURATIONS,
+//     distDurArray,
+//     bathroom
+//   });
+// }

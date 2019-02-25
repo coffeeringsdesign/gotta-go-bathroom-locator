@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 import firebase from 'firebase';
 import GoToBathroomList from './GoToBathroomList';
+import { fetchNewLongLat } from './../actions';
 import v4 from 'uuid/v4';
 
 class AddBathroomForm extends Component {
@@ -9,7 +10,6 @@ class AddBathroomForm extends Component {
     super(props, { state });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    let coded = '';
   }
 
   handleChange(e) {
@@ -26,6 +26,16 @@ class AddBathroomForm extends Component {
     }
   }
 
+  getNewLongLat(address){
+    this.props.dispatch(fetchNewLongLat(address));
+  }
+
+  // fetchBathroomData(){
+  //   if (this.props.currentLocation && !this.props.bathrooms[0]) {
+  //     this.props.dispatch(fetchInitialBathroomInformation(this.props.currentLocation));
+  //   }
+  // }
+
   handleSubmit(e) {
     e.preventDefault();
     const bathroomRef = firebase.database().ref('bathrooms');
@@ -33,7 +43,7 @@ class AddBathroomForm extends Component {
     let keyNeeded =(this.state.needsKey === 'true');
     let handicapAcc =(this.state.handicapAccess === 'true');
     let genderedYes =(this.state.gendered === 'true');
-    
+    this.getNewLongLat(this.state.address);
 
     const bathroom = {
       name: this.state.name,
@@ -58,7 +68,7 @@ class AddBathroomForm extends Component {
       code: '',
       id: '',
     });
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   render() {
