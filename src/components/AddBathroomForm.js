@@ -5,6 +5,7 @@ import GoToBathroomList from './GoToBathroomList';
 import {fetchNewLongLat} from './../actions';
 import v4 from 'uuid/v4';
 import Geocode from 'react-geocode';
+import { connect } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY;
 Geocode.setApiKey(API_KEY);
 
@@ -13,7 +14,7 @@ class AddBathroomForm extends Component {
     super(props, {state});
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // console.log(props);
+    console.log(props);
   }
 
   handleChange(e) {
@@ -43,11 +44,13 @@ class AddBathroomForm extends Component {
     let handicapAcc = (this.state.handicapAccess === 'true');
     let genderedYes = (this.state.gendered === 'true');
     this.getNewLongLat(this.state.address);
+    console.log(this.props);
+    console.log(this.state);
 
     const bathroom = {
       name: this.state.name,
       address: this.state.address,
-      // longLat: this.state.longLat,
+      longLat: this.props.tempBathroomLongLat,
       needsCode: codeNeeded,
       needsKey: keyNeeded,
       handicapAccess: handicapAcc,
@@ -114,4 +117,11 @@ class AddBathroomForm extends Component {
   }
 };
 
-export default AddBathroomForm;
+const mapStateToProps = state => {
+  return {
+    tempBathroomLongLat: state.tempBathroomLongLat
+  };
+};
+
+
+export default connect(mapStateToProps)(AddBathroomForm);

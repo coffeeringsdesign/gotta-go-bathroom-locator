@@ -6,7 +6,6 @@ const tempBathroomLongLatReducer = (state = initialState.tempBathroomLongLat, ac
 
   switch (action.type) {
     case types.ADD_NEW_BATHROOM_LAT_LNG:
-    console.log(action);
     let lat = action.lat;
     let lng = action.lng;
     let newLatLongObject = { lat, lng }
