@@ -10,6 +10,7 @@ class AddBathroomForm extends Component {
     super(props, { state });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // console.log(props);
   }
 
   handleChange(e) {
@@ -27,7 +28,7 @@ class AddBathroomForm extends Component {
   }
 
   getNewLongLat(address){
-    this.props.dispatch(fetchNewLongLat(address));
+    this.props.dispatch(fetchNewLongLat(address, this.props.dispatch));
   }
 
   // fetchBathroomData(){

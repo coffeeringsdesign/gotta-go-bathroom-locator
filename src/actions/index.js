@@ -1,8 +1,12 @@
 // import constants from './../../src/constants';
 // import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
+import Geocode from 'react-geocode';
+const geocode = require('react-geocode');
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
+// const API_KEY = process.env.REACT_APP_API_KEY;
+// distance.key(API_KEY);
 
 // FETCHING CURRENT LOCATION
 export function fetchCurrentLocation(coords, props) {
@@ -49,7 +53,7 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     const bathId = indivBathroomInfo.id;
     const origins = [Object.values(currentLocationCoords).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
-    const mode = 'WALKING';
+    const mode = 'walking';
     bathroomPropArray.push(bathName, bathAddress, bathLongLat, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId);
     fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch);
   }
@@ -121,20 +125,18 @@ export const selectedAPlace = () => {
   })
 }
 
-//  GETTING NEW LONG LAT FOR NEWLY ADDED Bathroom
-export function fetchNewLongLat(address) {
-  return null
-  // return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
-  //   let dist = distances.rows[0].elements[0].distance.text;
-  //   let dur = distances.rows[0].elements[0].duration.text;
-  //   let distDurArray = [dist, dur];
-  //   dispatch(findDistDur(distDurArray, bathroomPropArray));
-  // }));
+export function fetchNewLongLat(submittedAddress, dispatch) {
+  return fetch(Geocode.fromAddress(submittedAddress, (longLat) => {
+    let longLatNew = longLat;
+    console.log(longLat);
+    // dispatch(findDistDur(distDurArray, bathroomPropArray));
+  }));
 }
-// export const findDistDur = (distDurArray, bathroom) => {
-//   return ({
-//     type: types.DISTANCE_DURATIONS,
-//     distDurArray,
-//     bathroom
-//   });
+// export function fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch) {
+//   return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
+//     let dist = distances.rows[0].elements[0].distance.text;
+//     let dur = distances.rows[0].elements[0].duration.text;
+//     let distDurArray = [dist, dur];
+//     dispatch(findDistDur(distDurArray, bathroomPropArray));
+//   }));
 // }
