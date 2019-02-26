@@ -126,17 +126,36 @@ export const selectedAPlace = () => {
 }
 
 export function fetchNewLongLat(submittedAddress, dispatch) {
-  return fetch(Geocode.fromAddress(submittedAddress, (longLat) => {
-    let longLatNew = longLat;
-    console.log(longLat);
-    // dispatch(findDistDur(distDurArray, bathroomPropArray));
-  }));
+  return function(dispatch) {
+  Geocode.fromAddress(submittedAddress).then(
+  response => {
+    const { lat, lng } = response.results[0].geometry.location;
+    console.log(lat, lng);
+  },
+  error => {
+    console.error(error);
+  }
+);
 }
-// export function fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch) {
-//   return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
-//     let dist = distances.rows[0].elements[0].distance.text;
-//     let dur = distances.rows[0].elements[0].duration.text;
-//     let distDurArray = [dist, dur];
-//     dispatch(findDistDur(distDurArray, bathroomPropArray));
+}
+//
+// return function(dispatch) {
+//         axios.get(window.url_api+'/exercises/'+id, {headers:{'Authorization':'Bearer '+context.props.token}})
+//             .then(response => {
+//                 dispatch({
+//                     type: 'GET_EXERCISE_ID',
+//                     payload: response.data
+//                 })
+//             })
+//     }
+// }
+
+
+
+// export function fetchNewLongLat(submittedAddress, dispatch) {
+//   return fetch(Geocode.fromAddress(submittedAddress, (err, longLat) => {
+//     let longLatNew = longLat;
+//     console.log(longLat);
+//     // dispatch(findDistDur(distDurArray, bathroomPropArray));
 //   }));
 // }
