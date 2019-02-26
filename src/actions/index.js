@@ -2,16 +2,18 @@
 // import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
 import Geocode from 'react-geocode';
-const geocode = require('react-geocode');
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
-// const API_KEY = process.env.REACT_APP_API_KEY;
-// distance.key(API_KEY);
+const API_KEY = process.env.REACT_APP_API_KEY;
+Geocode.setApiKey(API_KEY);
 
 // FETCHING CURRENT LOCATION
 export function fetchCurrentLocation(coords, props) {
-  return function (dispatch) {
-    let newCoords = {lat: coords.latitude, lng: coords.longitude};
+  return function(dispatch) {
+    let newCoords = {
+      lat: coords.latitude,
+      lng: coords.longitude
+    };
     dispatch(findCurLocation(newCoords));
   }
 };
@@ -24,7 +26,7 @@ export const findCurLocation = (newCoords) => ({
 
 // FETCHING BATHROOMS FROM DATABASE
 export function fetchInitialBathroomInformation(currentLocationCoords, dispatch) {
-  return function (dispatch) {
+  return function(dispatch) {
     const bathroomsRef = firebase.database().ref('bathrooms');
     bathroomsRef.on('value', (snapshot) => {
       let bathrooms = snapshot.val(); //bathrooms is array of indiv bathrooms
@@ -40,7 +42,7 @@ export function fetchInitialBathroomInformation(currentLocationCoords, dispatch)
 
 // FETCHING DISTANCE & DURATION
 export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) {
-  return function (dispatch) {
+  return function(dispatch) {
     const bathroomPropArray = [];
     const bathName = indivBathroomInfo.name;
     const bathAddress = indivBathroomInfo.address;
@@ -75,14 +77,14 @@ export const findDistDur = (distDurArray, bathroom) => {
 }
 
 // REORERING THE BATHROOMS NEAREST USER
-export function reorderNearestBathrooms(bathrooms, dispatch){
-  return function (dispatch) {
+export function reorderNearestBathrooms(bathrooms, dispatch) {
+  return function(dispatch) {
     dispatch(reorderBathrooms(bathrooms));
   }
 }
 
 export const reorderBathrooms = bathrooms => {
-  return({
+  return ({
     type: types.REORDER_BATHROOMS,
     bathrooms
   })
@@ -90,72 +92,62 @@ export const reorderBathrooms = bathrooms => {
 
 
 // ACTIVE Marker
-export function activeMarker(dispatch){
-  return function (dispatch) {
+export function activeMarker(dispatch) {
+  return function(dispatch) {
     dispatch(setActiveMarker());
   }
 }
 export const setActiveMarker = () => {
-  return({
+  return ({
     type: types.ACTIVE_MARKER
   })
 }
 
 // SHOWING INFO WINDOW
-export function showInfoWindowToTrue(dispatch){
-  return function (dispatch) {
+export function showInfoWindowToTrue(dispatch) {
+  return function(dispatch) {
     dispatch(letsShowInfoWindow());
   }
 }
 export const letsShowInfoWindow = () => {
-  return({
+  return ({
     type: types.SHOW_INFO_WINDOW
   })
 }
 
-  // SELECTED A PLACE
-export function selectAPlace(dispatch){
-  return function (dispatch) {
+// SELECTED A PLACE
+export function selectAPlace(dispatch) {
+  return function(dispatch) {
     dispatch(selectedAPlace());
   }
 }
 export const selectedAPlace = () => {
-  return({
+  return ({
     type: types.SELECT_A_PLACE
   })
 }
-
+// THIS IS WORKING FOR GETTING LONG LAT BUT NEED TO REFACTOR TO USE
 export function fetchNewLongLat(submittedAddress, dispatch) {
   return function(dispatch) {
-  Geocode.fromAddress(submittedAddress).then(
-  response => {
-    const { lat, lng } = response.results[0].geometry.location;
-    console.log(lat, lng);
-  },
-  error => {
-    console.error(error);
+    Geocode.fromAddress(submittedAddress).then(
+      response => {
+        const {
+          lat,
+          lng
+        } = response.results[0].geometry.location;
+        // console.log("lat" + lat, "long" + lng);
+        dispatch(findNewLongLat(lat, lng));
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
-);
 }
+export const findNewLongLat = (lat, lng) => {
+  return ({
+    type: types.ADD_NEW_BATHROOM_LAT_LNG,
+    lat,
+    lng
+  });
 }
-//
-// return function(dispatch) {
-//         axios.get(window.url_api+'/exercises/'+id, {headers:{'Authorization':'Bearer '+context.props.token}})
-//             .then(response => {
-//                 dispatch({
-//                     type: 'GET_EXERCISE_ID',
-//                     payload: response.data
-//                 })
-//             })
-//     }
-// }
-
-
-
-// export function fetchNewLongLat(submittedAddress, dispatch) {
-//   return fetch(Geocode.fromAddress(submittedAddress, (err, longLat) => {
-//     let longLatNew = longLat;
-//     console.log(longLat);
-//     // dispatch(findDistDur(distDurArray, bathroomPropArray));
-//   }));
-// }

@@ -8,5 +8,6 @@ export const initialState = {
   // showingInfoWindow: false,
   // selectedPlace: {},
   bathrooms: [],
-  nearestBathrooms: []
+  nearestBathrooms: [],
+  tempBathroomLongLat: null
 };
