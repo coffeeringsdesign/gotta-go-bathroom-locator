@@ -55,15 +55,16 @@ export function fetchDistanceDuration(indivBathroomInfo, currentLocationCoords) 
     const bathId = indivBathroomInfo.id;
     const origins = [Object.values(currentLocationCoords).join()];
     const destinations = [Object.values(indivBathroomInfo.longLat).join()];
-    const mode = 'walking';
     bathroomPropArray.push(bathName, bathAddress, bathLongLat, bathNeedsCode, bathNeedsKey, bathHandicapAccess, bathGendered, bathCode, bathId);
-    fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch);
+    fetchDistance(origins, destinations, bathroomPropArray, dispatch);
   }
 }
-export function fetchDistance(origins, destinations, mode, bathroomPropArray, dispatch) {
-  return fetch(distance.matrix(origins, destinations, mode, (err, distances) => {
+export function fetchDistance(origins, destinations, bathroomPropArray, dispatch) {
+  distance.mode('walking');
+  return fetch(distance.matrix(origins, destinations, (err, distances) => {
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
+    console.log(distances);
     let distDurArray = [dist, dur];
     dispatch(findDistDur(distDurArray, bathroomPropArray));
   }));
@@ -103,6 +104,9 @@ export const setActiveMarker = () => {
   })
 }
 
+
+
+
 // SHOWING INFO WINDOW
 export function showInfoWindowToTrue(dispatch) {
   return function(dispatch) {
@@ -115,6 +119,8 @@ export const letsShowInfoWindow = () => {
   })
 }
 
+
+
 // SELECTED A PLACE
 export function selectAPlace(dispatch) {
   return function(dispatch) {
@@ -126,7 +132,10 @@ export const selectedAPlace = () => {
     type: types.SELECT_A_PLACE
   })
 }
-// THIS IS WORKING FOR GETTING LONG LAT BUT NEED TO REFACTOR TO USE
+
+
+
+// GETTING LONGITUDE AND LATITUDE OF NEW SUBMITTED BATHROOM ADDRESS
 export function fetchNewLongLat(submittedAddress, dispatch) {
   return function(dispatch) {
     Geocode.fromAddress(submittedAddress).then(

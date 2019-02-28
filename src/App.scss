@@ -9,6 +9,9 @@ $bodyTextFont: 'Roboto', sans-serif;
 @mixin informationDisplayWidth {
   width: 570px;
 }
+* {
+  border: 1px dotted green;
+}
 
 .App {
   margin-left: auto;

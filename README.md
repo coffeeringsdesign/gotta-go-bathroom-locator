@@ -68,10 +68,10 @@ Using Command Line:
 3. ``cd Desktop `` to navigate to your desktop
 4. ``cd gotta-go-bathroom-locator`` to enter the site folder
 5.  You will need to get an API key from Google Maps in order to access Google Maps. https://developers.google.com/maps/documentation/javascript/tutorial
-6.  Place it within this text: ``REACT_APP_API_KEY=PLACE_YOUR_KEY_HERE`` in a file called .env inside the main directory 
+6.  Place it within this text: ``REACT_APP_API_KEY=PLACE_YOUR_KEY_HERE`` in a file called .env inside the main directory
 7.  Place ``.env`` in the .gitignore file.
 8. ``npm install`` to install all webpack dependencies
-9. ``npm run start`` this will webpack and immediate pop open the site on your brower. I recommend Chrome.
+9. ``npm run start`` this will webpack and immediate pop open the site on your browser. I recommend Chrome.
 10. I recommend Atom to edit any html, javascript, or sass.
 
 ## Support and contact details
@@ -81,8 +81,9 @@ Please feel free to get in touch. Reach out to me at kendra@coffeeringsdesign.co
 ## Technologies Used
 
 Javascript, JSX, Sketch, Sass, React, Redux, Atom,
-Googe Maps React: https://www.npmjs.com/package/google-map-react,
-Google Distance Matrix API: https://www.npmjs.com/package/google-distance-matrix
+google-map-react: https://www.npmjs.com/package/google-map-react - a React component to help use the Google Maps Javascript API to display a map, center it around the users location, and display the bathrooms locations nearby.
+google-distance-matrix: https://www.npmjs.com/package/google-distance-matrix - a React module to help use the Google Distance Matrix API to determine the bathrooms distance from the user location.
+react-geocode: https://www.npmjs.com/package/react-geocode - a React module to help use the Google Maps Geocoding API to grab longitude & latitude for an address when a user submits a new bathroom.
 
 ## Documentation Used:
 This tutorial was really helpful: https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
