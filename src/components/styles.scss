@@ -4,10 +4,6 @@
   border-radius: 5px;
   background-color: $white;
 }
-// 
-// * {
-//   border: green dotted 1px;
-// }
 
 .logoImage {
   width: 90%;
@@ -85,8 +81,12 @@
   }
   .iconDisplay {
     margin-left: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 120px;
     .icon {
       width: 30px;
+      height: 100%;
     }
   }
 }
@@ -118,4 +118,25 @@
   font-family: $titleFont;
   text-align: left;
   line-height: 30%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.buttonContainer p {
+  color: white;
+  margin: 0;
+}
+.goToAddaBathroom {
+  padding: 10px 15px;
+  color: white;
+  font-size: .8em;
+  background-color: $medBlue;
+  border-radius: 5px;
+  border: 0;
+  &:hover {
+    background-color: lighten($medBlue, 20%);
+  }
 }

@@ -11,6 +11,7 @@ import { fetchDistanceDuration } from './../actions';
 import { fetchInitialBathroomInformation } from './../actions';
 import { reorderNearestBathrooms } from './../actions';
 import { connect } from 'react-redux';
+import Logo from './Logo';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
 const firebase = require('firebase/app');
@@ -41,7 +42,7 @@ class BathroomList extends Component {
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
-
+            <Logo />
             <GoToAddaBathroomForm />
               {Object.keys(this.props.bathrooms).map((i) => {
                 let count = parseInt(i) + 1;

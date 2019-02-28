@@ -4,7 +4,6 @@ import BathroomList from './BathroomList';
 import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Logo from './Logo';
 import AddBathroomForm from './AddBathroomForm';
 
 class App extends Component {
@@ -27,7 +26,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="searchAndReturnContainer">
-          <Logo />
           <Router>
             <Switch>
               <Route exact path='/' component={BathroomList} />

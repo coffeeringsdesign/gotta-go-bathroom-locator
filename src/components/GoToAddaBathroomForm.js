@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function GoToAddaBathroomForm() {
   return (
     <div className="buttonContainer">
-      <p>Help expand the database?</p>
+      <p>Help us expand the database?</p>
       <Link to="/addBathroom"><button className="goToAddaBathroom" type="submit">Enter a bathroom here!</button></Link>
     </div>
   )
