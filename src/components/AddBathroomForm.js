@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import GoToBathroomList from './GoToBathroomList';
 import {fetchNewLongLat} from './../actions';
 import v4 from 'uuid/v4';
-import Geocode from 'react-geocode';
 import { connect } from 'react-redux';
 
 class AddBathroomForm extends Component {

@@ -64,7 +64,6 @@ export function fetchDistance(origins, destinations, bathroomPropArray, dispatch
   return fetch(distance.matrix(origins, destinations, (err, distances) => {
     let dist = distances.rows[0].elements[0].distance.text;
     let dur = distances.rows[0].elements[0].duration.text;
-    console.log(distances);
     let distDurArray = [dist, dur];
     dispatch(findDistDur(distDurArray, bathroomPropArray));
   }));

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import { fetchCurrentLocation } from './../actions';
 
 const mapStyles = {
   map: {
@@ -14,10 +15,10 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
 
-    const {lat, lng} = this.props.initialCenter;
-    this.state = this.props.currentLocation;
+    // const {lat, lng} = this.props.initialCenter;
+    this.state = this.props.currentLocation; //needed for prevProps
   }
 
   recenterMap() {
@@ -32,7 +33,7 @@ export class CurrentLocation extends React.Component {
       map.panTo(center);
     }
   }
-  
+
   // WORKING CURRENTLY PRIOR TO REFACTOR
   // componentDidMount() {
   //   if (this.props.centerAroundCurrentLocation) {
@@ -51,22 +52,23 @@ export class CurrentLocation extends React.Component {
   //   }
   // }
 
+
   componentDidMount() {
-    if (this.props.centerAroundCurrentLocation) {
+    console.log(this.state);
+    if (this.props.currentLocation) {
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
           const coords = pos.coords;
-          this.setState({
-            currentLocation: {
-              lat: coords.latitude,
-              lng: coords.longitude
-            }
-          });
+          this.props.dispatch(fetchCurrentLocation(coords, this.props));
         });
       }
-      this.loadMap();
+
+        this.loadMap();
+
     }
   }
+
+
 
   // NOT IMPACTED BY REMOVING SET STATE ABOVE
   loadMap(prevProps, prevState) {
