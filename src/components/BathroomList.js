@@ -4,7 +4,6 @@ import GoToAddaBathroomForm from './GoToAddaBathroomForm';
 import * as actions from './../actions';
 import Map from './Map';
 import './styles.scss';
-import CurrentLocation from './CurrentLocation';
 import { GoogleApiWrapper } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import { fetchDistanceDuration } from './../actions';

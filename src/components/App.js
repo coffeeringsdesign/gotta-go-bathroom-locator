@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   findCurrentLocation() {
+    console.log("2");
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
       this.props.dispatch(fetchCurrentLocation(coords, this.props));
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   render(props) {
-    // console.log(this.props);
+    console.log("1");
     if (!this.props.currentLocation) {
       this.findCurrentLocation();
     }

@@ -8,7 +8,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-    //props is activeMarker: null, bathroom array (unordered), dispatch, google: maps object, loaded: true, selectedplace which is an empty object, showingWindow: false
     this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
@@ -64,8 +63,30 @@ export class MapContainer extends Component {
     })
   };
 
+  determineNumberedMarker(count) {
+    console.log('called');
+    if (count === 1) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edca29140b7803eced2c7/1551817895447/?format=100w"
+    } else if (count === 2) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edcaeee6eb068a4ef5155/1551817908369/?format=100w"
+    } else if (count === 3) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edcb8f4e1fc40150bd87a/1551817919172/?format=100w"
+    } else if (count === 4) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edcc04e17b6391319301e/1551817926131/?format=100w"
+    } else if (count === 5) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edcc815fcc01c68a36a05/1551817934464/?format=100w"
+    } else if (count === 6) {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edcd1eb3931526488e528/1551817942967/?format=100w"
+    } else {
+      return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7ee1c54785d3be7f44f4d4/1551819212349/?format=100w"
+    }
+  }
+
   render() {
+    console.log(this.props);
+    console.log("3");
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
+      let count = parseInt(i) + 1;
       let room = this.props.bathroom[i];
       return <Marker name={room.name}
         onClick={this.onMarkerClick}
@@ -77,10 +98,11 @@ export class MapContainer extends Component {
         needsKey={room.needsKey}
         handicapAccess={room.handicapAccess}
         gendered={room.gendered}
+        count={count}
         code={room.code}
         id={room.id}
         icon={{
-          url: "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c1bc09dcd83669fc0dd58e9/1545322656436/filled.png?format=100w",
+          url: this.determineNumberedMarker(count),
           anchor: new this.props.google.maps.Point(32,32),
           scaledSize: new this.props.google.maps.Size(25,35)}} />
     });
@@ -130,7 +152,7 @@ export class MapContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    // currentLocation: state.currentLocation,
+    currentLocation: state.currentLocation,
     // bathrooms: state.bathrooms,
     // nearestBathrooms: state.nearestBathrooms
     activeMarker: {},
