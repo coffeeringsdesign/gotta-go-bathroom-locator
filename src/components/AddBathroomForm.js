@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import GoToBathroomList from './GoToBathroomList';
 import {fetchNewLongLat} from './../actions';
 import v4 from 'uuid/v4';
+import Logo from './Logo';
 import { connect } from 'react-redux';
 
 class AddBathroomForm extends Component {
@@ -67,13 +68,14 @@ class AddBathroomForm extends Component {
 
   render() {
     return (<div className="addBathroomContainer">
-      <GoToBathroomList/>
+      <Logo />
+      <GoToBathroomList />
       <form className="addBathroomForm" onSubmit={this.handleSubmit}>
         <h4>Name:</h4>
         <input id="name" className="newBathroomInputs" type="text" name="name" placeholder="Please enter the establishments name..." value={this.props.name} onChange={this.handleChange}/>
 
         <h4>Address:</h4>
-        <input id="address" className="newBathroomInputs" type="text" name="address" placeholder="Please enter the address..." value={this.props.address} onChange={this.handleChange}/>
+        <input id="address" className="newBathroomInputs" type="text" name="address" placeholder="Please enter the address including City, State & Zip..." value={this.props.address} onChange={this.handleChange}/>
 
         <h4>Is the bathroom handicap accessible?</h4>
         <input id="handicapYes" className="newBathroomRadios" type="radio" name="handicapAccess" value="true" onChange={this.handleChange}/>
@@ -103,7 +105,7 @@ class AddBathroomForm extends Component {
         <input id="code" className="newBathroomInputs" type="text" name="code" placeholder="leave blank if no code is needed..." value={this.props.code} onChange={this.handleChange}/>
 
         <br></br>
-        <button className="searchButton" type="submit">Add</button>
+        <button className="searchButton" type="submit">Add Bathroom to Database</button>
       </form>
     </div>)
   }

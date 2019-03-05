@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 function GoToBathroomList() {
   return (
     <div className="buttonContainer">
-
-      <Link to="/"><button className="goToAddaBathroom" type="submit">Back to Bathrooms</button></Link>
+      <p>Add a Bathroom Below or...</p>
+      <Link to="/"><button className="goToAddaBathroom" type="submit">Go Back to Bathrooms</button></Link>
     </div>
   )
 };

@@ -63,6 +63,7 @@ export class MapContainer extends Component {
     })
   };
 
+  // CHANGES THE MARKER ON THE MAP TO MATCH THE COUNT OF NEAREST BATHROOM
   determineNumberedMarker(count) {
     console.log('called');
     if (count === 1) {

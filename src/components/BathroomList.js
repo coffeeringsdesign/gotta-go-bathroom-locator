@@ -5,15 +5,12 @@ import * as actions from './../actions';
 import Map from './Map';
 import './styles.scss';
 import { GoogleApiWrapper } from 'google-maps-react';
-import PropTypes from 'prop-types';
-import { fetchDistanceDuration } from './../actions';
 import { fetchInitialBathroomInformation } from './../actions';
 import { reorderNearestBathrooms } from './../actions';
 import { connect } from 'react-redux';
 import Logo from './Logo';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
-const firebase = require('firebase/app');
 const distance = require('google-distance-matrix');
 distance.key(API_KEY);
 
@@ -78,10 +75,6 @@ const mapStateToProps = state => {
     nearestBathrooms: state.nearestBathrooms
   };
 };
-
-// BathroomList.propTypes = {
-//   dispatch: PropTypes.func
-// };
 
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
