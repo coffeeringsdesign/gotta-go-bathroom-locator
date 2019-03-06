@@ -103,6 +103,11 @@
   }
 }
 
+.addBahtroomsAll {
+  display: flex;
+  flex-direction: row;
+}
+
 .addBathroomForm {
   color: $white;
   margin-top: 20px;
@@ -158,4 +163,8 @@
 }
 .goToAddaBathroom {
   @include buttonStyles;
+}
+
+.thankYouContainer {
+  color: white;
 }

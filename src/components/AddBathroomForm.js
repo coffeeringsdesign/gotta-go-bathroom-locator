@@ -5,6 +5,7 @@ import GoToBathroomList from './GoToBathroomList';
 import {fetchNewLongLat} from './../actions';
 import v4 from 'uuid/v4';
 import Logo from './Logo';
+import ThanksForm from './ThanksForm';
 import { connect } from 'react-redux';
 
 class AddBathroomForm extends Component {
@@ -32,15 +33,33 @@ class AddBathroomForm extends Component {
     this.props.dispatch(fetchNewLongLat(address, this.props.dispatch));
   }
 
+  // function renderKeyIcon() {
+  //   if(props.needsKey === true) {
+  //     return(
+  //       <img className="icon" src={keyIcon} alt="needs a key for access" />
+  //     );
+  //   }
+  // };
+
+  showThankYou() {
+    let thanks = (
+      <div>
+        <h2>Your Input has been added.</h2>
+        <h4>Thank you for your contribution!</h4>
+      </div>
+    );
+    return thanks;
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    this.showThankYou();
     const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');
     let keyNeeded = (this.state.needsKey === 'true');
     let handicapAcc = (this.state.handicapAccess === 'true');
     let genderedYes = (this.state.gendered === 'true');
     this.getNewLongLat(this.state.address);
-
     const bathroom = {
       name: this.state.name,
       address: this.state.address,
@@ -67,7 +86,9 @@ class AddBathroomForm extends Component {
   }
 
   render() {
-    return (<div className="addBathroomContainer">
+    let thanks = null;
+    return (<div className="addBathroomsAll">
+    <div className="addBathroomContainer">
       <Logo />
       <GoToBathroomList />
       <form className="addBathroomForm" onSubmit={this.handleSubmit}>
@@ -107,7 +128,9 @@ class AddBathroomForm extends Component {
         <br></br>
         <button className="searchButton" type="submit">Add Bathroom to Database</button>
       </form>
-    </div>)
+    </div>
+    ${thanks}
+</div>)
   }
 };
 
