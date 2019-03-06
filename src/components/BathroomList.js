@@ -9,6 +9,7 @@ import { fetchInitialBathroomInformation } from './../actions';
 import { reorderNearestBathrooms } from './../actions';
 import { connect } from 'react-redux';
 import Logo from './Logo';
+// import { ClassicSpinner } from 'react-spinners-kit';
 const API_KEY = process.env.REACT_APP_API_KEY;
 require('firebase/database');
 const distance = require('google-distance-matrix');
@@ -17,6 +18,9 @@ distance.key(API_KEY);
 class BathroomList extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //         loading: true,
+    //     };
   }
 
   fetchBathroomData(){
@@ -31,10 +35,17 @@ class BathroomList extends Component {
     }
   }
 
+  // componentDidMount(){
+  //   this.setState({
+  //     loading: false
+  //   });
+  // }
+
     render() {
       this.fetchBathroomData();
       this.reorderBathrooms();
 
+      // const { loading } = this.state;
       return (
         <div className="resultsMapContainer">
           <div className="listResultsContainer">
@@ -56,8 +67,10 @@ class BathroomList extends Component {
                   count={count}
                   id={room.key} />
               })},
+
           </div>
           <div className="mapResultsContainer">
+
             {Object.keys(this.props.bathrooms).map((i) => {
               let rooms = this.props.bathrooms;
               return <Map bathroom={rooms} />

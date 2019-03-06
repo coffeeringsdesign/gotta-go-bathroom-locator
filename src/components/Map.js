@@ -84,8 +84,9 @@ export class MapContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log("3");
+    // console.log(this.props);
+    // console.log("3");
+
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let count = parseInt(i) + 1;
       let room = this.props.bathroom[i];
@@ -129,7 +130,6 @@ export class MapContainer extends Component {
     } else {
       condRenderedModal = null;
     }
-
 
     return (
       <div>

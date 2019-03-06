@@ -33,23 +33,27 @@ class AddBathroomForm extends Component {
     this.props.dispatch(fetchNewLongLat(address, this.props.dispatch));
   }
 
-  // function renderKeyIcon() {
-  //   if(props.needsKey === true) {
-  //     return(
-  //       <img className="icon" src={keyIcon} alt="needs a key for access" />
-  //     );
-  //   }
-  // };
 
-  showThankYou() {
-    let thanks = (
-      <div>
-        <h2>Your Input has been added.</h2>
-        <h4>Thank you for your contribution!</h4>
-      </div>
-    );
-    return thanks;
-  }
+  // showThankYou() {
+  //   console.log('thank you is called');
+  //   this.setState({thanks: (
+  //     <div className="thankYouContainer">
+  //       <h2>Your Input has been added.</h2>
+  //       <h4>Thank you for your contribution!</h4>
+  //     </div>
+  //   )})
+  //   this.checkForThankYou();
+  // }
+  //
+  // checkForThankYou() {
+  //   console.log('checked is called');
+  //   if (this.state.thanks) {
+  //     let thanks = this.state.thanks;
+  //     return thanks;
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -86,7 +90,8 @@ class AddBathroomForm extends Component {
   }
 
   render() {
-    let thanks = null;
+    // console.log(this.state.thanks.props);
+    let thanks = "yo";
     return (<div className="addBathroomsAll">
     <div className="addBathroomContainer">
       <Logo />
@@ -129,7 +134,6 @@ class AddBathroomForm extends Component {
         <button className="searchButton" type="submit">Add Bathroom to Database</button>
       </form>
     </div>
-    ${thanks}
 </div>)
   }
 };
