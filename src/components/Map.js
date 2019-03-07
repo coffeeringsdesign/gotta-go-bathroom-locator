@@ -11,36 +11,6 @@ export class MapContainer extends Component {
     this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
-  // CONDITIONAL RENDER OF BATHROOMS BOOLEAN VALUES
-  keyedModalValues() {
-    if (this.props.selectedPlace.needsKey === true) {
-      return <h5>Requires Key: Yes</h5>;
-    } else {
-      return <h5>Requires Key: No</h5>;
-    }
-  };
-  codedModalValues() {
-    if (this.props.selectedPlace.needsCode === true) {
-      return <h5>Requires Code: {this.props.selectedPlace.code}</h5>;
-    } else {
-      return <h5>Requires Code: No</h5>;
-    }
-  };
-  handicapModalValues() {
-    // console.log(this.props);
-    if (this.props.selectedPlace.handicapAccess === true) {
-      return <h5>Handicap Accessable: Yes</h5>;
-    } else {
-      return <h5>Handicap Accessable: No</h5>
-    }
-  };
-  genderedModalValues() {
-    if (this.props.selectedPlace.gendered === true) {
-      return <h5>Gender Neutral: No</h5>;
-    } else {
-      return <h5>Gender Neutral: Yes</h5>;
-    }
-  };
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
@@ -57,9 +27,13 @@ export class MapContainer extends Component {
     // this.props.dispatch(activeMarker(marker));
 
   onMarkerClick = function(props, marker, e) { //getting triggered on click
-    // console.log(props);
+    console.log(props);
     this.setState({
-      selectedPlace: props, //setting the clicked on place object as selectedPlace
+      selectedPlace: props, //setting the clicked on place
+      selectedPlaceGendered: props.gendered,
+      selectedPlaceKeyed: props.needsKey,
+      selectedPlaceCoded: props.needsCode,
+      selectedPlaceHandicap: props.handicapAccess,
       activeMarker: marker, //actual representation of the place object plus google maps info
       showingInfoWindow: true
     })
@@ -123,10 +97,11 @@ export class MapContainer extends Component {
                 <h4>{this.state.selectedPlace.address}</h4>
                 <h5>Distance away: {this.state.selectedPlace.distance}</h5>
                 <h5>Walking duration: {this.state.selectedPlace.duration}</h5>
-                <h5>{this.keyedModalValues()}</h5>
-                <h5>{this.codedModalValues()}</h5>
-                <h5>{this.handicapModalValues()}</h5>
-                <h5>{this.genderedModalValues()}</h5>
+                {this.state.selectedPlace.needsKey === false ? <h5>Requires Key: No</h5> : <h5>Requires Key: Yes</h5>}
+                {this.state.selectedPlace.needsCode === false ? <h5>Requires Code: No</h5> : <h5>Requires Code: Yes</h5>}
+                {this.state.selectedPlace.handicapAccess === false ? <h5>Handicap Accessable: No</h5> : <h5>Handicap Accessable: Yes</h5>}
+                {this.state.selectedPlace.gendered === false ? <h5>Gendered: No</h5> : <h5>Gendered: Yes</h5>}
+
               </div>
         </InfoWindow>
     } else {
