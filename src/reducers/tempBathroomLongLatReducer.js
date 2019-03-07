@@ -8,8 +8,9 @@ const tempBathroomLongLatReducer = (state = initialState.tempBathroomLongLat, ac
     case types.ADD_NEW_BATHROOM_LAT_LNG:
     let lat = action.lat;
     let lng = action.lng;
-    let newLatLongObject = { lat, lng }
-    tempNewLongLatStateSlice = Object.assign({}, newLatLongObject);
+    let longLat = { lat, lng }
+    tempNewLongLatStateSlice = Object.assign(action.bathroom, {longLat});
+    console.log(tempNewLongLatStateSlice);
     return tempNewLongLatStateSlice;
 
   default:

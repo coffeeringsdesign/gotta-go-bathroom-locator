@@ -54,10 +54,17 @@ class AddBathroomForm extends Component {
   //     return null;
   //   }
   // }
+  componentDidUpdate(prevProps){
+    const bathroomRef = firebase.database().ref('bathrooms');
+    if(prevProps.tempBathroomLongLat !== this.props.tempBathroomLongLat){
+      console.log('yas bitch');
+      bathroomRef.push(this.props.tempBathroomLongLat);
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    const bathroomRef = firebase.database().ref('bathrooms');
+    // const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');
     let keyNeeded = (this.state.needsKey === 'true');
     let handicapAcc = (this.state.handicapAccess === 'true');
@@ -73,7 +80,7 @@ class AddBathroomForm extends Component {
       id: v4()
     }
     this.getNewLongLat(bathroom);
-    bathroomRef.push(bathroom);
+    // bathroomRef.push(this.props.tempBathroomLongLat);
     this.setState({
       name: '',
       address: '',
