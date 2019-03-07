@@ -2,6 +2,7 @@
 // import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
 import Geocode from 'react-geocode';
+const cors = require('cors')({origin: true});
 const distance = require('google-distance-matrix');
 const firebase = require('firebase/app');
 const API_KEY = process.env.REACT_APP_API_KEY;

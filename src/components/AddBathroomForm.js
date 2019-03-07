@@ -57,7 +57,7 @@ class AddBathroomForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.showThankYou();
+    // this.showThankYou();
     const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');
     let keyNeeded = (this.state.needsKey === 'true');
@@ -91,7 +91,7 @@ class AddBathroomForm extends Component {
 
   render() {
     // console.log(this.state.thanks.props);
-    let thanks = "yo";
+    // let thanks = "yo";
     return (<div className="addBathroomsAll">
     <div className="addBathroomContainer">
       <Logo />

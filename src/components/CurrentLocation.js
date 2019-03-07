@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
+const cors = require('cors')({origin: true});
 
 const mapStyles = {
   map: {

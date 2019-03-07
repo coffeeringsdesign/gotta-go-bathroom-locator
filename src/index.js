@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
+const cors = require('cors')({origin: true});
 
 const store = createStore(rootReducer, applyMiddleware(middlewareLogger, thunkMiddleware));
 

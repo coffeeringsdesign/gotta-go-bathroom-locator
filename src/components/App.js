@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AddBathroomForm from './AddBathroomForm';
+const cors = require('cors')({origin: true});
 
 class App extends Component {
   constructor(props) {
