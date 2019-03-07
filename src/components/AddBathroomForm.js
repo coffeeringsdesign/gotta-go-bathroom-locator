@@ -5,7 +5,6 @@ import GoToBathroomList from './GoToBathroomList';
 import {fetchNewLongLat} from './../actions';
 import v4 from 'uuid/v4';
 import Logo from './Logo';
-import ThanksForm from './ThanksForm';
 import { connect } from 'react-redux';
 
 class AddBathroomForm extends Component {
@@ -64,8 +63,6 @@ class AddBathroomForm extends Component {
   }
 
   render() {
-    // console.log(this.state.thanks.props);
-    let thanks = null;
     return (
     <div className="addBathroomsAll">
       <Logo />

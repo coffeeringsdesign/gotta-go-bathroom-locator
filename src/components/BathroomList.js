@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Bathroom from './Bathroom';
 import GoToAddaBathroomForm from './GoToAddaBathroomForm';
-import * as actions from './../actions';
+// import * as actions from './../actions';
 import Map from './Map';
 import './styles.scss';
 import { GoogleApiWrapper } from 'google-maps-react';
