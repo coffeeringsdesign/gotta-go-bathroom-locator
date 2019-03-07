@@ -29,8 +29,8 @@ class AddBathroomForm extends Component {
     }
   }
 
-  getNewLongLat(address){
-    this.props.dispatch(fetchNewLongLat(address, this.props.dispatch));
+  getNewLongLat(bathroom){
+    this.props.dispatch(fetchNewLongLat(bathroom, this.props.dispatch));
   }
 
 
@@ -57,18 +57,14 @@ class AddBathroomForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props);
-    // this.showThankYou();
     const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');
     let keyNeeded = (this.state.needsKey === 'true');
     let handicapAcc = (this.state.handicapAccess === 'true');
     let genderedYes = (this.state.gendered === 'true');
-    this.getNewLongLat(this.state.address);
     const bathroom = {
       name: this.state.name,
       address: this.state.address,
-      longLat: this.props.tempBathroomLongLat,
       needsCode: codeNeeded,
       needsKey: keyNeeded,
       handicapAccess: handicapAcc,
@@ -76,6 +72,7 @@ class AddBathroomForm extends Component {
       code: this.determineCodeOrUncoded(this.state.code),
       id: v4()
     }
+    this.getNewLongLat(bathroom);
     bathroomRef.push(bathroom);
     this.setState({
       name: '',

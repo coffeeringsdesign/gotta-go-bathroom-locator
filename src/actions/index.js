@@ -136,16 +136,15 @@ export const selectedAPlace = () => {
 
 
 // GETTING LONGITUDE AND LATITUDE OF NEW SUBMITTED BATHROOM ADDRESS
-export function fetchNewLongLat(submittedAddress, dispatch) {
+export function fetchNewLongLat(bathroom, dispatch) {
   return function(dispatch) {
-    Geocode.fromAddress(submittedAddress).then(
+    Geocode.fromAddress(bathroom.address).then(
       response => {
         const {
           lat,
           lng
         } = response.results[0].geometry.location;
-        // console.log("lat" + lat, "long" + lng);
-        dispatch(findNewLongLat(lat, lng));
+        dispatch(findNewLongLat(lat, lng, bathroom));
       },
       error => {
         console.error(error);
@@ -153,10 +152,11 @@ export function fetchNewLongLat(submittedAddress, dispatch) {
     );
   }
 }
-export const findNewLongLat = (lat, lng) => {
+export const findNewLongLat = (lat, lng, bathroom) => {
   return ({
     type: types.ADD_NEW_BATHROOM_LAT_LNG,
     lat,
-    lng
+    lng,
+    bathroom
   });
 }

@@ -10,7 +10,6 @@ const tempBathroomLongLatReducer = (state = initialState.tempBathroomLongLat, ac
     let lng = action.lng;
     let newLatLongObject = { lat, lng }
     tempNewLongLatStateSlice = Object.assign({}, newLatLongObject);
-    console.log(tempNewLongLatStateSlice);
     return tempNewLongLatStateSlice;
 
   default:
