@@ -57,6 +57,7 @@ class AddBathroomForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.props);
     // this.showThankYou();
     const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');

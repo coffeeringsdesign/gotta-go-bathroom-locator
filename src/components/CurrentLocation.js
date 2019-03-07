@@ -23,7 +23,7 @@ export class CurrentLocation extends React.Component {
 
   recenterMap() {
     const map = this.map;
-    console.log("9");
+    // console.log("9");
     const current = this.props.currentLocation;
     const google = this.props.google;
     const maps = google.maps;
@@ -54,7 +54,7 @@ export class CurrentLocation extends React.Component {
 
 
   componentDidMount() {
-    console.log("7");
+    // console.log("7");
     if (this.props.currentLocation) {
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -72,7 +72,7 @@ export class CurrentLocation extends React.Component {
 
   // NOT IMPACTED BY REMOVING SET STATE ABOVE
   loadMap(prevProps, prevState) {
-    console.log("8");
+    // console.log("8");
     if (this.props && this.props.google) {
       const {google} = this.props;
       const maps = google.maps;
@@ -91,7 +91,7 @@ export class CurrentLocation extends React.Component {
 
   // NOT ALWAYS CALLED - NEED TO COME BACK TO IT
   componentDidUpdate(prevProps, prevState) {
-    console.log("6");
+    // console.log("6");
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
@@ -102,7 +102,7 @@ export class CurrentLocation extends React.Component {
 
   // NOT IMPACTED BY REMOVING SET STATE ABOVE
   renderChildren() {
-    console.log("5");
+    // console.log("5");
     const {children} = this.props;
     if (!children)
       return;
@@ -121,7 +121,7 @@ export class CurrentLocation extends React.Component {
 
   render() {
     // console.log(this.props);
-    console.log("4");
+    // console.log("4");
     const style = Object.assign({}, mapStyles.map);
     return (<div>
       <div style={style} ref="map">

@@ -27,7 +27,7 @@ export class MapContainer extends Component {
     }
   };
   handicapModalValues() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.selectedPlace.handicapAccess === true) {
       return <h5>Handicap Accessable: Yes</h5>;
     } else {
@@ -57,7 +57,7 @@ export class MapContainer extends Component {
     // this.props.dispatch(activeMarker(marker));
 
   onMarkerClick = function(props, marker, e) { //getting triggered on click
-    console.log(props);
+    // console.log(props);
     this.setState({
       selectedPlace: props, //setting the clicked on place object as selectedPlace
       activeMarker: marker, //actual representation of the place object plus google maps info
@@ -67,7 +67,7 @@ export class MapContainer extends Component {
 
   // CHANGES THE MARKER ON THE MAP TO MATCH THE COUNT OF NEAREST BATHROOM
   determineNumberedMarker(count) {
-    console.log('called');
+    // console.log('called');
     if (count === 1) {
       return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edca29140b7803eced2c7/1551817895447/?format=100w"
     } else if (count === 2) {
@@ -86,7 +86,7 @@ export class MapContainer extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     // console.log("3");
 
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {

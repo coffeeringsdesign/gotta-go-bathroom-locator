@@ -9,5 +9,5 @@ export const initialState = {
   // selectedPlace: {},
   bathrooms: [],
   nearestBathrooms: [],
-  tempBathroomLongLat: {}
+  tempBathroomLongLat: null
 };

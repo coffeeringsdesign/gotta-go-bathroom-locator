@@ -2,6 +2,7 @@
   "name": "gotta-go",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "cors": "^2.8.5",
     "firebase": "^5.7.0",
