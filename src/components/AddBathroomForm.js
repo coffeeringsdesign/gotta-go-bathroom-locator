@@ -33,38 +33,26 @@ class AddBathroomForm extends Component {
     this.props.dispatch(fetchNewLongLat(bathroom, this.props.dispatch));
   }
 
+  showThankYou() {
+    let thanks = (
+      <div className="thankYouContainer">
+        <h2>Your Input has been submitted.</h2>
+        <h4>Thank you for your contribution!</h4>
+      </div>
+    );
+    console.log(thanks);
+  }
 
-  // showThankYou() {
-  //   console.log('thank you is called');
-  //   this.setState({thanks: (
-  //     <div className="thankYouContainer">
-  //       <h2>Your Input has been added.</h2>
-  //       <h4>Thank you for your contribution!</h4>
-  //     </div>
-  //   )})
-  //   this.checkForThankYou();
-  // }
-  //
-  // checkForThankYou() {
-  //   console.log('checked is called');
-  //   if (this.state.thanks) {
-  //     let thanks = this.state.thanks;
-  //     return thanks;
-  //   } else {
-  //     return null;
-  //   }
-  // }
   componentDidUpdate(prevProps){
     const bathroomRef = firebase.database().ref('bathrooms');
     if(prevProps.tempBathroomLongLat !== this.props.tempBathroomLongLat){
-      console.log('yas bitch');
       bathroomRef.push(this.props.tempBathroomLongLat);
+      this.showThankYou();
     }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // const bathroomRef = firebase.database().ref('bathrooms');
     let codeNeeded = (this.state.needsCode === 'true');
     let keyNeeded = (this.state.needsKey === 'true');
     let handicapAcc = (this.state.handicapAccess === 'true');
@@ -80,23 +68,11 @@ class AddBathroomForm extends Component {
       id: v4()
     }
     this.getNewLongLat(bathroom);
-    // bathroomRef.push(this.props.tempBathroomLongLat);
-    this.setState({
-      name: '',
-      address: '',
-      longLat: '',
-      needsCode: '',
-      needsKey: '',
-      handicapAccess: '',
-      gendered: '',
-      code: '',
-      id: ''
-    });
   }
 
   render() {
     // console.log(this.state.thanks.props);
-    // let thanks = "yo";
+    let thanks = null;
     return (<div className="addBathroomsAll">
     <div className="addBathroomContainer">
       <Logo />
@@ -139,6 +115,7 @@ class AddBathroomForm extends Component {
         <button className="searchButton" type="submit">Add Bathroom to Database</button>
       </form>
     </div>
+    {thanks}
 </div>)
   }
 };

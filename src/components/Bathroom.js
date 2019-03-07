@@ -80,8 +80,8 @@ Bathroom.propTypes = {
   handicapAccess: PropTypes.bool.isRequired,
   gendered: PropTypes.bool.isRequired,
   code: PropTypes.string.isRequired,
-  count: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  id: PropTypes.number,
 }
 
 export default Bathroom;
