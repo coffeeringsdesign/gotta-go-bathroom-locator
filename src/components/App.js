@@ -14,10 +14,7 @@ class App extends Component {
 
   findCurrentLocation() {
     // console.log("2");
-    navigator.geolocation.getCurrentPosition(pos => {
-      const coords = pos.coords;
-      this.props.dispatch(fetchCurrentLocation(coords, this.props));
-    });
+    this.props.dispatch(fetchCurrentLocation(this.props));
   }
 
   render(props) {

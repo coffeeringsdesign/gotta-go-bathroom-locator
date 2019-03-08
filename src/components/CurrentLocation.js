@@ -34,40 +34,17 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-  // WORKING CURRENTLY PRIOR TO REFACTOR
-  // componentDidMount() {
-  //   if (this.props.centerAroundCurrentLocation) {
-  //     if (navigator && navigator.geolocation) {
-  //       navigator.geolocation.getCurrentPosition(pos => {
-  //         const coords = pos.coords;
-  //         this.setState({
-  //           currentLocation: {
-  //             lat: coords.latitude,
-  //             lng: coords.longitude
-  //           }
-  //         });
-  //       });
-  //     }
-  //     this.loadMap();
-  //   }
-  // }
-
 
   componentDidMount() {
-    // console.log("7");
-    if (this.props.currentLocation) {
-      if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
-          const coords = pos.coords;
-          this.props.dispatch(fetchCurrentLocation(coords, this.props));
-        });
-      }
-
-        this.loadMap();
-
+    if (this.props.centerAroundCurrentLocation) {
+      this.setState({
+        currentLocation: this.props.currentLocation
+      });
+      this.loadMap();
     }
   }
 
+// the breakdown that is happening is that somewhere the map is relying on this.state.currentLocation... I have it at this.props.currentLocation --- so When setState is removed the map breaks.
 
 
   // NOT IMPACTED BY REMOVING SET STATE ABOVE
@@ -92,6 +69,8 @@ export class CurrentLocation extends React.Component {
   // NOT ALWAYS CALLED - NEED TO COME BACK TO IT
   componentDidUpdate(prevProps, prevState) {
     // console.log("6");
+    console.log(prevProps);
+    console.log(prevState);
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
@@ -133,7 +112,7 @@ export class CurrentLocation extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {currentLocation: state.currentLocation}; //
+  return {currentLocation: state.currentLocation};
 };
 
 export default connect(mapStateToProps)(CurrentLocation);

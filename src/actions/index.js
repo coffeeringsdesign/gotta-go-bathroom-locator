@@ -8,14 +8,19 @@ const firebase = require('firebase/app');
 const API_KEY = process.env.REACT_APP_API_KEY;
 Geocode.setApiKey(API_KEY);
 
-// FETCHING CURRENT LOCATION
+// FETCHING CURRENT LOCATION 
 export function fetchCurrentLocation(coords, props) {
   return function(dispatch) {
-    let newCoords = {
-      lat: coords.latitude,
-      lng: coords.longitude
-    };
-    dispatch(findCurLocation(newCoords));
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const coords = pos.coords;
+        let newCoords = {
+          lat: coords.latitude,
+          lng: coords.longitude
+        };
+        dispatch(findCurLocation(newCoords));
+      });
+    }
   }
 };
 export const findCurLocation = (newCoords) => ({
@@ -77,19 +82,21 @@ export const findDistDur = (distDurArray, bathroom) => {
   });
 }
 
+
+
 // REORERING THE BATHROOMS NEAREST USER
 export function reorderNearestBathrooms(bathrooms, dispatch) {
   return function(dispatch) {
     dispatch(reorderBathrooms(bathrooms));
   }
 }
-
 export const reorderBathrooms = bathrooms => {
   return ({
     type: types.REORDER_BATHROOMS,
     bathrooms
   })
 }
+
 
 
 // ACTIVE Marker
@@ -103,7 +110,6 @@ export const setActiveMarker = () => {
     type: types.ACTIVE_MARKER
   })
 }
-
 
 
 
