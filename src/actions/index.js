@@ -1,5 +1,3 @@
-// import constants from './../../src/constants';
-// import v4 from 'uuid/v4';
 import * as types from './../constants/ActionTypes';
 import Geocode from 'react-geocode';
 const cors = require('cors')({origin: true});
@@ -8,7 +6,7 @@ const firebase = require('firebase/app');
 const API_KEY = process.env.REACT_APP_API_KEY;
 Geocode.setApiKey(API_KEY);
 
-// FETCHING CURRENT LOCATION 
+// FETCHING CURRENT LOCATION
 export function fetchCurrentLocation(coords, props) {
   return function(dispatch) {
     if (navigator && navigator.geolocation) {

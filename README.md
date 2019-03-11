@@ -1,35 +1,41 @@
 ![Kendra Kelly Logo](/src/assets/images/kkgithub.png)
 
 # Gotta Go - Bathroom Locator
-###### Planning Repository: [Gotta Go Planning Repository](https://github.com/coffeeringsdesign/gotta-go-bathroom-locator)
+###### To view please install and enable this extension for Chrome:  [Moesif Orign & CORS Changer ](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US)
+
+###### Then load the site:  [Gotta Go - Bathroom Locator](https://github.com/coffeeringsdesign/gotta-go-bathroom-locator)
+
+###### Planning Repository: [Gotta Go Planning Repository](gotta-go-bathr-1544748567317.firebaseapp.com)
 
 #### By _**Kendra Kelly**_
 
 ## Project Description
-Gotta Go - Bathroom Locator, my Epicodus Capstone project:
+Gotta Go - Bathroom Locator, Epicodus Capstone project:
 
-##### Name of Student:
-Kendra Kelly
+##### Name: Kendra Kelly
 
-##### Name of Project:
-Gotta Go
+##### Project Name: Gotta Go
 
-##### Project’s Purpose or Goal:
-Bathroom finder by location. Focused on the needs of the person.
+##### Purpose or Goal: A web application created to help fulfill the basic need of locating and accessing the nearest bathroom.
 
-##### List the absolute minimum features the project requires to meet this purpose or goal:
+Each bathroom entry includes various information about that bathroom:
+
+* Access Requirements: whether a key or code needed to get in the door. If a code is needed the code is supplied.
+* Handicap Facilities: whether or not this particular bathroom has the needed space and facilities for handicap individuals.
+* Gendered Status: whether the bathrooms are gender neutral or split by gender. This is to allow for safe and comfortable bathroom access for transgender or gender non-conforming individuals.
+
+##### Minimum features to meet this purpose or goal:
 * Uses a map API (google or other) to find the users location and displays the nearest bathrooms and a rundown of their features.
 * Creating and/or connecting to a database that includes these bathroom locations and information.
 * Information about bathrooms include: gender neutrality, handicap accessibility, how to access (code needed or purchase requirement).
 
-##### What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.
-* Google Maps, Mapbox or another Map API.
-* Refuge Restrooms API, or possibly build one from scratch if needed.
+##### Tools, frameworks, libraries, APIs, modules and/or other resources used to meet MVP:.
+* Google Maps Javascript API, Googles Distance Matrix API, Googles Geocoding API.
+* Custom built bathroom API on Firebase.
 * React, Redux, Sass, Webpack, JavaScript.
 
-##### If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here: Be specific.
+##### Stretch goal features beyond MVP:
 * A form that allows visitors to add a bathroom and it's appropriate features.
-* Add more information about the bathroom within the database. This includes information about stalls, cleanliness, size, etc.
 * Great design including Sass.
 
 ##### What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
@@ -37,12 +43,11 @@ Bathroom finder by location. Focused on the needs of the person.
 * Firebase
 
 ## User Needs/Wishes:
-1.  As a user I would like to enter a location and be able to see a list of bathrooms located near me for easy access.
-2.  As a user I would like to have the app automatically render bathrooms near me by my location so that I don't have to manually search.
-3.  As a user I would like to be able to see a map and see the bathrooms near me visually represented for navigation purposes.
-4.  I would like to know of the nearest bathroom has handicap access and room for wheelchairs.
-5.  I would like to know if the bathrooms are gendered and are appropriately setup for my needs.
-6. I would like to know what I need to do to access the bathroom. Is a code needed, if so what is it? Do I need to make a purchase prior to access?
+1.  As a user I would like to have the app automatically render bathrooms near me by my location so that I don't have to manually search.
+2.  As a user I would like to be able to see a map and see the bathrooms near me visually represented for navigation purposes.
+3.  I would like to know of the nearest bathroom has handicap access and room for wheelchairs.
+4.  I would like to know if the bathrooms are gendered and are appropriately setup for my needs.
+5.  I would like to know what I need to do to access the bathroom. Is a code needed, if so what is it?
 
 ## Initial Interface Sketches:
 | Splash Page | Search Interface |
@@ -50,16 +55,20 @@ Bathroom finder by location. Focused on the needs of the person.
 | ![Splash Page Mockup](/src/assets/images/mockup-splash-interface.jpeg) | ![Search Page Mockup](/src/assets/images/mockup-search-interface.jpeg) |
 
 ## Component Tree:
-![Component Tree Layout](/src/assets/images/GottaGoComponentTree.png)
+![Component Tree Layout](/src/assets/images/component-tree.png)
 
-## Splash Page High Res Wireframe
-![Splash Page Mockup](/src/assets/images/mockup-splash-page.png)
-
-## Search Page High Res Wireframe
-![Search Page Mockup](/src/assets/images/mockup-search-page.png)
+## Main Page High Res Wireframe
+| Main Page Wireframe | Main Page Final Screenshot |
+| --------- | --------------|
+| ![Main Page Wireframe](/src/assets/images/gotta-go-wireframe-main-page.png) | ![Main Page Final Screenshot](/src/assets/images/mockup-search-interface.jpeg) |
 
 ## Detail Page High Res Wireframe
-![Search Page Mockup](/src/assets/images/mockup-search-detail-page.png)
+| Detail Page Wireframe | Detail Page Final Screenshot |
+| --------- | --------------|
+| ![Detail Page Wireframe](/src/assets/images/gotta-go-wireframe-detail-page.png) | ![Detail Page Final Screenshot](/src/assets/images/mockup-search-interface.jpeg) |
+
+## Add Bathroom Form Page Screenshot
+![Add Bathroom Form Page Screenshot](/src/assets/images/GottaGoComponentTree.png)
 
 ## Setup/Installation Requirements
 Using Command Line:
@@ -74,24 +83,22 @@ Using Command Line:
 9. ``npm run start`` this will webpack and immediate pop open the site on your browser. I recommend Chrome.
 10. I recommend Atom to edit any html, javascript, or sass.
 
+## Technologies Used
+
+* Javascript, JSX, Sketch, Sass, React, Redux, Atom,
+* google-map-react: https://www.npmjs.com/package/google-map-react - a React component to help use the Google Maps Javascript API to display a map, center it around the users location, and display the bathrooms locations nearby.
+* google-distance-matrix: https://www.npmjs.com/package/google-distance-matrix - a React module to help use the Google Distance Matrix API to determine the bathrooms distance from the user location.
+* react-geocode: https://www.npmjs.com/package/react-geocode - a React module to help use the Google Maps Geocoding API to grab longitude & latitude for an address when a user submits a new bathroom.
+
 ## Support and contact details
 
 Please feel free to get in touch. Reach out to me at kendra@coffeeringsdesign.com.
 
-## Technologies Used
-
-Javascript, JSX, Sketch, Sass, React, Redux, Atom,
-google-map-react: https://www.npmjs.com/package/google-map-react - a React component to help use the Google Maps Javascript API to display a map, center it around the users location, and display the bathrooms locations nearby.
-google-distance-matrix: https://www.npmjs.com/package/google-distance-matrix - a React module to help use the Google Distance Matrix API to determine the bathrooms distance from the user location.
-react-geocode: https://www.npmjs.com/package/react-geocode - a React module to help use the Google Maps Geocoding API to grab longitude & latitude for an address when a user submits a new bathroom.
-
 ## Documentation Used:
-This tutorial was really helpful: https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
-Google Map APIs docs are pretty good but not necessarily helpful with react: https://developers.google.com/maps/documentation/javascript/tutorial
-I would recommend searching for your question + React to find a more specific answer.
+* This tutorial was really helpful: https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
+* Google Map APIs docs are pretty good but not necessarily helpful with react: https://developers.google.com/maps/documentation/javascript/tutorial. I would recommend searching for your question + React to find a more specific answer.
 
 ### License
-
 *MIT*
 
 Copyright (c) 2018 **Kendra Kelly**

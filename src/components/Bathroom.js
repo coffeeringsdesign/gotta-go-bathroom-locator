@@ -48,7 +48,7 @@ function Bathroom( props ) {
           <div className="stackedNameAddressLines">
             <div className="nameDistanceLine">
               <h3>{props.name}</h3>
-              <h5>{props.distance} {props.duration}</h5>
+              <h5 className="distanceDurationLines">{props.distance} {props.duration}</h5>
             </div>
             <h3 className="addressLine">{props.address}</h3>
           </div>
