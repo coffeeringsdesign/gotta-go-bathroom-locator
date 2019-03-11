@@ -13,12 +13,10 @@ class App extends Component {
   }
 
   findCurrentLocation() {
-    // console.log("2");
     this.props.dispatch(fetchCurrentLocation(this.props));
   }
 
   render(props) {
-    // console.log("1");
     if (!this.props.currentLocation) {
       this.findCurrentLocation();
     }

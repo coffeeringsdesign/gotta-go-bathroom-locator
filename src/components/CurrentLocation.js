@@ -16,14 +16,11 @@ const mapStyles = {
 export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props);
-
-    // const {lat, lng} = this.props.initialCenter;
-    this.state = this.props.currentLocation; //needed for prevProps
+    this.state = this.props.currentLocation;
   }
 
   recenterMap() {
     const map = this.map;
-    // console.log("9");
     const current = this.props.currentLocation;
     const google = this.props.google;
     const maps = google.maps;
@@ -34,7 +31,6 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
       this.setState({
@@ -44,12 +40,7 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-// the breakdown that is happening is that somewhere the map is relying on this.state.currentLocation... I have it at this.props.currentLocation --- so When setState is removed the map breaks.
-
-
-  // NOT IMPACTED BY REMOVING SET STATE ABOVE
   loadMap(prevProps, prevState) {
-    // console.log("8");
     if (this.props && this.props.google) {
       const {google} = this.props;
       const maps = google.maps;
@@ -66,11 +57,7 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-  // NOT ALWAYS CALLED - NEED TO COME BACK TO IT
   componentDidUpdate(prevProps, prevState) {
-    // console.log("6");
-    console.log(prevProps);
-    console.log(prevState);
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
@@ -79,9 +66,7 @@ export class CurrentLocation extends React.Component {
     }
   }
 
-  // NOT IMPACTED BY REMOVING SET STATE ABOVE
   renderChildren() {
-    // console.log("5");
     const {children} = this.props;
     if (!children)
       return;
@@ -99,8 +84,6 @@ export class CurrentLocation extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
-    // console.log("4");
     const style = Object.assign({}, mapStyles.map);
     return (<div>
       <div style={style} ref="map">

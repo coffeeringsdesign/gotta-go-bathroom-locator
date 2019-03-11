@@ -11,7 +11,6 @@ export class MapContainer extends Component {
     this.onMarkerClick =this.onMarkerClick.bind(this);
   }
 
-
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -21,27 +20,21 @@ export class MapContainer extends Component {
     }
   };
 
-  //current refactor need to move to reducers:
-    // this.props.dispatch(showInfoWindowToTrue());
-    // this.props.dispatch(selectAPlace(props)); //what props am i sending
-    // this.props.dispatch(activeMarker(marker));
-
-  onMarkerClick = function(props, marker, e) { //getting triggered on click
+  onMarkerClick = function(props, marker, e) {
     console.log(props);
     this.setState({
-      selectedPlace: props, //setting the clicked on place
+      selectedPlace: props,
       selectedPlaceGendered: props.gendered,
       selectedPlaceKeyed: props.needsKey,
       selectedPlaceCoded: props.needsCode,
       selectedPlaceHandicap: props.handicapAccess,
-      activeMarker: marker, //actual representation of the place object plus google maps info
+      activeMarker: marker,
       showingInfoWindow: true
     })
   };
 
   // CHANGES THE MARKER ON THE MAP TO MATCH THE COUNT OF NEAREST BATHROOM
   determineNumberedMarker(count) {
-    // console.log('called');
     if (count === 1) {
       return "https://static1.squarespace.com/static/54f8c7f6e4b044cd78aadb07/t/5c7edca29140b7803eced2c7/1551817895447/?format=100w"
     } else if (count === 2) {
@@ -60,9 +53,6 @@ export class MapContainer extends Component {
   }
 
   render() {
-    // console.log(this.state);
-    // console.log("3");
-
     const markerLoop = Object.keys(this.props.bathroom).map((i) => {
       let count = parseInt(i) + 1;
       let room = this.props.bathroom[i];
@@ -131,17 +121,11 @@ export class MapContainer extends Component {
 const mapStateToProps = state => {
   return {
     currentLocation: state.currentLocation,
-    // bathrooms: state.bathrooms,
-    // nearestBathrooms: state.nearestBathrooms
     activeMarker: {},
     showingInfoWindow: false,
     selectedPlace: {}
-    // activeMarker: state.activeMarker,
-    // showingInfoWindow: state.showingInfoWindow,
-    // selectedPlace: state.selectedPlace
   };
 };
-
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: (API_KEY)

@@ -60,15 +60,15 @@ Each bathroom entry includes various information about that bathroom:
 ## Main Page High Res Wireframe
 | Main Page Wireframe | Main Page Final Screenshot |
 | --------- | --------------|
-| ![Main Page Wireframe](/src/assets/images/gotta-go-wireframe-main-page.png) | ![Main Page Final Screenshot](/src/assets/images/mockup-search-interface.jpeg) |
+| ![Main Page Wireframe](/src/assets/images/gotta-go-wireframe-main-page.png) | ![Main Page Final Screenshot](/src/assets/images/main-page-screenshot.png) |
 
 ## Detail Page High Res Wireframe
 | Detail Page Wireframe | Detail Page Final Screenshot |
 | --------- | --------------|
-| ![Detail Page Wireframe](/src/assets/images/gotta-go-wireframe-detail-page.png) | ![Detail Page Final Screenshot](/src/assets/images/mockup-search-interface.jpeg) |
+| ![Detail Page Wireframe](/src/assets/images/gotta-go-wireframe-detail-page.png) | ![Detail Page Final Screenshot](/src/assets/images/detail-page-screenshot.png) |
 
 ## Add Bathroom Form Page Screenshot
-![Add Bathroom Form Page Screenshot](/src/assets/images/GottaGoComponentTree.png)
+![Add Bathroom Form Page Screenshot](/src/assets/images/add-bathroom-form-page-screenshot.png)
 
 ## Setup/Installation Requirements
 Using Command Line:

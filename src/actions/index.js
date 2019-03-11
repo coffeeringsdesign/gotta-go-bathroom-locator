@@ -26,7 +26,7 @@ export const findCurLocation = (newCoords) => ({
   newCoords
 });
 
-
+// 45.507996, -122.651659
 
 // FETCHING BATHROOMS FROM DATABASE
 export function fetchInitialBathroomInformation(currentLocationCoords, dispatch) {
