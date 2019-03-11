@@ -1,20 +1,18 @@
 ![Kendra Kelly Logo](/src/assets/images/kkgithub.png)
 
-# Gotta Go - Bathroom Locator
+# Gotta Go - Bathroom Locator (Epicodus Capstone)
+#### By _**Kendra Kelly**_
 ###### To view please install and enable this extension for Chrome:  [Moesif Orign & CORS Changer ](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US)
 
 ###### Then load the site:  [Gotta Go - Bathroom Locator](https://github.com/coffeeringsdesign/gotta-go-bathroom-locator)
 
 ###### Planning Repository: [Gotta Go Planning Repository](gotta-go-bathr-1544748567317.firebaseapp.com)
 
-#### By _**Kendra Kelly**_
 
-## Project Description
+
+## Description
 Gotta Go - Bathroom Locator, Epicodus Capstone project:
 
-##### Name: Kendra Kelly
-
-##### Project Name: Gotta Go
 
 ##### Purpose or Goal: A web application created to help fulfill the basic need of locating and accessing the nearest bathroom.
 
