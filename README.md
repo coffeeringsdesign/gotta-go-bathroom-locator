@@ -13,7 +13,7 @@ ___
 ## Description:
 A web application created to help fulfill the need of locating and accessing the nearest bathroom focused around the needs and comfort of the user.
 
-Each bathroom entry includes various information about that bathroom:
+##### Each bathroom entry includes various information about that bathroom:
 
 * Access Requirements: whether a key or code needed to get in the door. If a code is needed the code is supplied.
 * Handicap Facilities: whether or not this particular bathroom has the needed space and facilities for handicap individuals.
@@ -60,7 +60,7 @@ Each bathroom entry includes various information about that bathroom:
 ## Detail Page High Res Wireframe
 | Detail Page Wireframe | Detail Page Final Screenshot |
 | --------- | --------------|
-| ![Detail Page Wireframe](/src/assets/images/gotta-go-wireframe-detail-page.png) | ![Detail Page Final Screenshot](/src/assets/images/detail-page-screenshot.png) |
+| ![Detail Page Wireframe](/src/assets/images/gotta-go-wireframe-detail-page2.png) | ![Detail Page Final Screenshot](/src/assets/images/detail-page-screenshot.png) |
 
 ## Add Bathroom Form Page Screenshot
 ![Add Bathroom Form Page Screenshot](/src/assets/images/add-bathroom-form-page-screenshot.png)
