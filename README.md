@@ -2,19 +2,16 @@
 
 # Gotta Go - Bathroom Locator (Epicodus Capstone)
 #### By _**Kendra Kelly**_
-###### To view please install and enable this extension for Chrome:  [Moesif Orign & CORS Changer ](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US)
+###### To view live site please install and enable this extension for Chrome:  [Moesif Origin & CORS Changer ](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US)
 
 ###### Then load the site:  [Gotta Go - Bathroom Locator](https://github.com/coffeeringsdesign/gotta-go-bathroom-locator)
 
 ###### Planning Repository: [Gotta Go Planning Repository](gotta-go-bathr-1544748567317.firebaseapp.com)
 
+___
 
-
-## Description
-Gotta Go - Bathroom Locator, Epicodus Capstone project:
-
-
-##### Purpose or Goal: A web application created to help fulfill the basic need of locating and accessing the nearest bathroom.
+## Description:
+A web application created to help fulfill the need of locating and accessing the nearest bathroom focused around the needs and comfort of the user.
 
 Each bathroom entry includes various information about that bathroom:
 
