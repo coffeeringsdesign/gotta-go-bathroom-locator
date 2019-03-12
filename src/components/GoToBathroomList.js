@@ -6,7 +6,7 @@ function GoToBathroomList() {
   return (
     <div className="buttonContainer">
       <p>Add a Bathroom Below or...</p>
-      <Link to="/"><button className="goToAddaBathroom" type="submit">Go Back to Bathrooms</button></Link>
+      <Link to="/BathroomList"><button className="goToAddaBathroom" type="submit">Go Back to Bathrooms</button></Link>
     </div>
   )
 };

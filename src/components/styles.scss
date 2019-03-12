@@ -173,12 +173,16 @@
   color: white;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
   .entranceGraphic {
-    justify-content: center;
+
     border: white 2px solid;
     border-radius: 5px;
     padding: 30px;
+    width: 40%;
+    height: 570px;
     .bottomLine {
       border-bottom: 2px white solid;
       padding-bottom: 20px;

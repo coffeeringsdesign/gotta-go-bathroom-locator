@@ -23,15 +23,15 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <div className="searchAndReturnContainer">
-          <Router>
-            <Switch>
-              <Route exact path='/' component={EntranceButton} />
+        <Router>
+          <Switch>
+            <Route exact path='/' component={EntranceButton} />
+            <div className="searchAndReturnContainer">
               <Route path='/BathroomList' component={BathroomList} />
               <Route path='/addBathroom'  render={(props)=><AddBathroomForm dispatch={this.props.dispatch}/>} />
-            </Switch>
-          </Router>
-        </div>
+            </div>
+          </Switch>
+        </Router>
       </div>
     );
   }
