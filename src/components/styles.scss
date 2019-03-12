@@ -169,3 +169,23 @@
 .distanceDurationLines {
   font-size: 12px;
 }
+.entrancePage {
+  color: white;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .entranceGraphic {
+    justify-content: center;
+    border: white 2px solid;
+    border-radius: 5px;
+    padding: 30px;
+    .bottomLine {
+      border-bottom: 2px white solid;
+      padding-bottom: 20px;
+    }
+    .topLine {
+      border-top: 2px white solid;
+      padding-top: 20px;
+    }
+  }
+}

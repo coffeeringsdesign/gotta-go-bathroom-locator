@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../App.scss';
 import BathroomList from './BathroomList';
+import EntranceButton from './EntranceButton';
 import { connect } from 'react-redux';
 import { fetchCurrentLocation } from './../actions';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -25,7 +26,8 @@ class App extends Component {
         <div className="searchAndReturnContainer">
           <Router>
             <Switch>
-              <Route exact path='/' component={BathroomList} />
+              <Route exact path='/' component={EntranceButton} />
+              <Route path='/BathroomList' component={BathroomList} />
               <Route path='/addBathroom'  render={(props)=><AddBathroomForm dispatch={this.props.dispatch}/>} />
             </Switch>
           </Router>
