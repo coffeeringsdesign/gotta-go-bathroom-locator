@@ -40,7 +40,8 @@ class AddBathroomForm extends Component {
   }
 
   refreshPage(){
-    document.location.reload(true);
+    console.log('called');
+    window.location.href=window.location.href;
   }
 
   handleSubmit(e) {
@@ -113,7 +114,6 @@ class AddBathroomForm extends Component {
       <div className="thankYouContainer">
       <h2>Your Input has been submitted.</h2>
       <h4>Thank you for your contribution!</h4>
-      <button className="goToAddaBathroom" type="button" onClick="this.refreshPage()">Add Another?</button>
       </div> : null}
     </div>)
   }
